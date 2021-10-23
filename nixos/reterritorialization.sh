@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
 
@@ -22,4 +22,4 @@ flatpak install flathub org.gnome.Fractal
 flatpak install flathub de.haeckerfelix.Fragments
 flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark
 
-./home/calabar/Documentos/Git/machine-abstraite/nixos/terminal-color.sh
+sh /home/calabar/Documentos/Git/machine-abstraite/nixos/terminal-color.sh

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 parted /dev/sda -- mklabel gpt
 parted /dev/sda -- mkpart primary 512MiB -2GiB
