@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
-# $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/gbrlgian/machine-abstraite/main/nixos/territorialisation.sh)" README
-
+#!/usr/bin/bash
 
 parted /dev/sda -- mklabel gpt
 parted /dev/sda -- mkpart primary 512MiB -2GiB
@@ -19,13 +16,13 @@ mount /dev/sda1 /mnt/boot
 
 swapon /dev/sda2
 
-mv $(curl -fsSL https://raw.githubusercontent.com/gbrlgian/machine-abstraite/main/nixos/configuration.nix) /mnt/etc/nixos
+nixos-generate-config --root /mnt
 
 mv $(curl -fsSL https://raw.githubusercontent.com/gbrlgian/machine-abstraite/main/nixos/nvidia.nix) /mnt/etc/nixos
 
 nixos-install
 
-curl -fsSL https://raw.githubusercontent.com/gbrlgian/machine-abstraite/main/nixos/reterritorialisation.sh /mnt/home/calabar
+curl -fsSL https://raw.githubusercontent.com/gbrlgian/machine-abstraite/main/nixos/reterritorialization.sh /mnt/home/calabar
 
 umount -a
 
