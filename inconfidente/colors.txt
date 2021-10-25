@@ -1,0 +1,26 @@
+*background:  #23201D
+*background-ubuntu: #222222
+*foreground:  #a89f93
+*whiter-foreground: #d1cdc7
+
+*black:  #141211
+*red:  #664949
+*green:  #56664c
+*yellow:  #6d614a
+*blue:  #4e5366
+*purple:  #664d61
+*aqua:  #4d6664
+*gray:  #7f796f
+*brown:  #3a342f
+*red:  #664949
+*green:  #56664c
+*yellow:  #6d614a
+*blue:  #4e5366
+*purple:  #664d61
+*aqua:  #4d6664
+*white:  #a89f93
+*white2: #7F796F
+*whiter: #AFA89E
+
+bars: #2B2723
+buttons: #332E29
