@@ -2,6 +2,9 @@ dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+echo "deltarpm=true" >> /etc/dnf/dnf.conf
+echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
 
 ###########################################################
 
@@ -46,6 +49,7 @@ dracut -f
 
 git config --global user.name "Gabriel Gian"
 git config --global user.email "gabrielgian@protonmail.com"
+git config credential.helper 'cache --timeout=120'
 
 git clone https://github.com/gbrlgian/compsci /home/calabar/Documentos/Git/compsci
 git clone https://github.com/gbrlgian/books /home/calabar/Documentos/Git/books
