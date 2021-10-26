@@ -6,7 +6,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ###########################################################
 
 
-dnf install -y acpid clisp dbus-devel dbus-glib-devel dbus-libs	dkms elixir fontawesome-fonts gcc geary ghc gimp glib2-devel	gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop keepassxc kernel-devel kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make npm nvidia-drivers pkgconfig php powerline powerline-fonts rust shotwell util-linux-user vim vim-powerline vulkan-headers vulkan-tools zsh     
+dnf install -y acpid clisp dbus-devel dbus-glib-devel dbus-libs	dkms elixir fontawesome-fonts gcc geary ghc gimp glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all keepassxc kernel-devel kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make npm nvidia-drivers pkgconfig php powerline powerline-fonts rust shotwell util-linux-user vim vim-powerline vulkan-headers vulkan-tools zsh     
 
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
