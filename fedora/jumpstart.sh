@@ -3,13 +3,15 @@ dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "fastestmirror=True" >> /etc/dnf/dnf.conf
-echo "deltarpm=true" >> /etc/dnf/dnf.conf
+echo "deltarpm=True" >> /etc/dnf/dnf.conf
 echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
+
 
 ###########################################################
 
 
-dnf install -y acpid clisp dbus-devel dbus-glib-devel dbus-libs	dkms elixir fontawesome-fonts gcc geary ghc gimp glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all keepassxc kernel-devel kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make npm nvidia-drivers pkgconfig php powerline powerline-fonts rust shotwell util-linux-user vim vim-powerline vulkan-headers vulkan-tools zsh     
+dnf install -y acpid clisp dbus-devel dbus-glib-devel dbus-libs	dkms elixir fontawesome-fonts gcc geary ghc gimp glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make npm nvidia-drivers pkgconfig php powerline powerline-fonts rust shotwell util-linux-user vim vim-powerline vulkan-headers vulkan-tools zsh     
 
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
@@ -18,15 +20,26 @@ dnf install -y lame\* --exclude=lame-devel
 
 dnf group upgrade --with-optional Multimedia
 
-dnf remove -y cheese cockpit eog gnome-abrt gnome-calendar gnome-clocks gnome-connections gnome-contacts gnome-maps gnome-photos gnome-tour gnome-system-monitor gnome-weather	mediawriter rhythmbox yelp    
+dnf remove -y cheese cockpit eog gnome-abrt gnome-calendar gnome-clocks gnome-connections gnome-contacts gnome-maps gnome-photos gnome-system-monitor gnome-tour gnome-user-docs gnome-weather	mediawriter rhythmbox yelp    
 
-
-flatpak install flathub org.gimp.GIMP
-flatpak install flathub org.inkscape.Inkscape
-flatpak install flathub org.gnome.Fractal
 flatpak install flathub com.spotify.Client
-flatpak install flathub com.valvesoftware.Steam
+flatpak install flathub org.gnome.Fractal
 flatpak install flathub de.haeckerfelix.Fragments
+flatpak install flathub org.freedesktop.Sdk.Extension.gcc8
+flatpak install flathub org.gimp.GIMP
+flatpak install flathub org.freedesktop.Sdk.Extension.golang
+flatpak install flathub org.freedesktop.Sdk.Extension.haskell
+flatpak install flathub org.inkscape.Inkscape
+flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
+flatpak install flathub org.freedesktop.Sdk.Extension.llvm12
+flatpak install flathub org.freedesktop.Sdk.Extension.node16
+flatpak install flathub org.freedesktop.Sdk.Extension.openjdk17
+flatpak install flathub com.jetbrains.PyCharm-Community
+flatpak install flathub org.freedesktop.Sdk.Extension.php80
+flatpak install flathub org.freedesktop.Sdk.Extension.rust-stable
+flatpak install flathub com.valvesoftware.Steam
+flatpak install flathub org.freedesktop.Sdk.Extension.texlive
+flatpak install flathub org.freedesktop.Sdk.Extension.toolchain-aarch64
 
 
 rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg 
@@ -49,12 +62,20 @@ dracut -f
 
 git config --global user.name "Gabriel Gian"
 git config --global user.email "gabrielgian@protonmail.com"
-git config credential.helper 'cache --timeout=120'
+
 
 git clone https://github.com/gbrlgian/compsci /home/calabar/Documentos/Git/compsci
+cd /home/calabar/Documentos/Git/compsci && git config credential.helper store
+
 git clone https://github.com/gbrlgian/books /home/calabar/Documentos/Git/books
-it clone https://github.com/gbrlgian/compsci /home/calabar/Documentos/Git/machine-abstraite
+cd /home/calabar/Documentos/Git/books && git config credential.helper store
+
+git clone https://github.com/gbrlgian/compsci /home/calabar/Documentos/Git/machine-abstraite
+cd /home/calabar/Documentos/Git/machine-abstraite && git config credential.helper store
+
 git clone https://github.com/gbrlgian/private /home/calabar/Documentos/Git/private
+cd /home/calabar/Documentos/Git/private && git config credential.helper store
+
 
 
 ###########################################################
@@ -92,8 +113,13 @@ cp /home/calabar/Documentos/Git/machine-abstraite/config/desktop/nvidia-powermiz
 
 sh -c /home/calabar/Documentos/Git/machine-abstraite/inconfidente/terminal-color.sh
 
+cp /home/calabar/Documentos/Git/machine-abstraite/fedora/flatpak/com.jetbrains.IntelliJ-IDEA-Community.desktop /var/lib/flatpak/app/com.jetbrains.IntelliJ-IDEA-Community/current/active/export/share/applications
+
+cp /home/calabar/Documentos/Git/machine-abstraite/fedora/flatpak/com.jetbrains.PyCharm-Community.desktop /var/lib/flatpak/app/com.jetbrains.PyCharm-Community/current/active/export/share/applications
+
 
 ###########################################################
+
 
 dnf clean all
 chown -R calabar /home/calabar/
