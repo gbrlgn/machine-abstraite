@@ -41,6 +41,10 @@ flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub org.freedesktop.Sdk.Extension.texlive
 flatpak install flathub org.freedesktop.Sdk.Extension.toolchain-aarch64
 
+flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.IntelliJ-IDEA-Community
+
+flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.PyCharm-Community
+
 
 rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg 
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg" | tee -a /etc/yum.repos.d/vscodium.repo
@@ -77,7 +81,6 @@ git clone https://github.com/gbrlgian/private /home/calabar/Documentos/Git/priva
 cd /home/calabar/Documentos/Git/private && git config credential.helper store
 
 
-
 ###########################################################
 
 
@@ -112,10 +115,6 @@ cp -r /home/calabar/Documentos/Git/machine-abstraite/Wallpapers /home/calabar/Im
 cp /home/calabar/Documentos/Git/machine-abstraite/config/desktop/nvidia-powermizer.desktop /home/calabar/.config/autostart/
 
 sh -c /home/calabar/Documentos/Git/machine-abstraite/inconfidente/terminal-color.sh
-
-cp /home/calabar/Documentos/Git/machine-abstraite/fedora/flatpak/com.jetbrains.IntelliJ-IDEA-Community.desktop /var/lib/flatpak/app/com.jetbrains.IntelliJ-IDEA-Community/current/active/export/share/applications
-
-cp /home/calabar/Documentos/Git/machine-abstraite/fedora/flatpak/com.jetbrains.PyCharm-Community.desktop /var/lib/flatpak/app/com.jetbrains.PyCharm-Community/current/active/export/share/applications
 
 
 ###########################################################
