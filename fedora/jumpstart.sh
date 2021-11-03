@@ -11,7 +11,7 @@ echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 ###########################################################
 
 
-dnf install -y acpid clisp dbus-devel dbus-glib-devel dbus-libs	dkms elixir fontawesome-fonts gcc geary ghc gimp glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make npm nvidia-drivers pkgconfig php powerline powerline-fonts rust shotwell util-linux-user vim vim-powerline vulkan-headers vulkan-tools zsh     
+dnf install -y acpid akmod-nvidia clisp dbus-devel dbus-glib-devel dbus-libs	dkms dnf-plugins-core elixir fontawesome-fonts gcc geary ghc gimp glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make npm pkgconfig php powerline powerline-fonts rust shotwell util-linux-user vim vim-powerline vulkan-headers vulkan-tools xorg-x11-drv-nvidia-cuda zsh     
 
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
