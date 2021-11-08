@@ -50,6 +50,8 @@ flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.PyCharm-Communit
 
 flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.vscodium.codium
 
+flatpak upgrade
+
 
 ###########################################################
 
@@ -90,20 +92,16 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 mkdir -p /home/danger/.zsh
 git clone https://github.com/sindresorhus/pure.git /home/danger/.zsh/pure
 
-cp /home/danger/Documentos/Git/machine-abstraite/config/zsh/.zshrc /home/danger/
-
-git clone https://github.com/VundleVim/Vundle.vim.git /home/danger/.vim/bundle/Vundle.vim
-
-cp /home/danger/Documentos/Git/machine-abstraite/config/.vimrc /home/danger
-vim -c PluginInstall -c q!
+cp /home/danger/Documentos/Git/machine-abstraite/config/.zshrc /home/danger/
 
 
 ###########################################################
 
+cd /home/danger/.config
 
-# pkill codium
+ausearch -c 'hl2_linux' --raw | audit2allow -M hl2linux
 
-# cp -r /home/danger/Documentos/Git/machine-abstraite/inconfidente/vscode/inconfidente-vsc /home/danger/.vscode-oss/extensions
+semodule -X 300 -i hl2linux.pp
 
 
 ###########################################################
@@ -112,8 +110,6 @@ vim -c PluginInstall -c q!
 cp -r /home/danger/Documentos/Git/machine-abstraite/Wallpapers /home/danger/Imagens
 
 cp /home/danger/Documentos/Git/machine-abstraite/config/desktop/nvidia-powermizer.desktop /home/danger/.config/autostart/
-
-sh -c /home/danger/Documentos/Git/machine-abstraite/inconfidente/terminal-color.sh
 
 
 ###########################################################
