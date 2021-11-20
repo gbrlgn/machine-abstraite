@@ -22,6 +22,8 @@ dnf group upgrade --with-optional Multimedia
 
 dnf remove -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome-contacts gnome-photos gnome-system-monitor gnome-tour gnome-user-docs gnome-weather mediawriter rhythmbox yelp
 
+dnf install -y https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+
 
 flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark 
 flatpak install flathub com.spotify.Client

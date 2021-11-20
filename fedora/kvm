@@ -1,0 +1,35 @@
+// modules-load
+
+sudo su
+echo "vfio" > /etc/modules-load.d/vfio.conf
+echo "vfio-pci" > /etc/modules-load.d/vfio-pci.conf
+echo "vfio_iommu_type1" > /etc/modules-load.d/vfio_iommu_type1.conf
+
+// Kernel parameter
+sudo nvim /etc/default/grub
+
+GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt"
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+reboot
+
+#!/bin/bash
+shopt -s nullglob
+for g in `find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V`; do
+    echo "IOMMU Group ${g##*/}:"
+    for d in $g/devices/*; do
+        echo -e "\t$(lspci -nns ${d##*/})"
+    done;
+done;
+
+// Example
+IOMMU Group 1:
+	00:01.0 PCI bridge [0604]: Intel Corporation 6th-10th Gen Core Processor PCIe Controller (x16) [8086:1901] (rev 07)
+	01:00.0 3D controller [0302]: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile] [10de:1c8c] (rev a1)
+	01:00.1 Audio device [0403]: NVIDIA Corporation GP107GL High Definition Audio Controller [10de:0fb9] (rev a1)
+	
+sudo nvim /etc/modprobe.d/vfio.conf
+options vfio-pci ids=8086:1901,10de:1c8c,10de:0fb9
+
+dracut -f --kver `uname -r`
