@@ -1,19 +1,15 @@
 // modules-load
-
-sudo su
+sudo
 echo "vfio" > /etc/modules-load.d/vfio.conf
 echo "vfio-pci" > /etc/modules-load.d/vfio-pci.conf
 echo "vfio_iommu_type1" > /etc/modules-load.d/vfio_iommu_type1.conf
 
-// Kernel parameter
-sudo nvim /etc/default/grub
+// modprobe
+sudo nvim /etc/modprobe.d/vfio.conf
+options vfio-pci ids=8086:1901,10de:1c8c,10de:0fb9
 
-GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt"
 
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-
-reboot
-
+// Get IDs
 #!/bin/bash
 shopt -s nullglob
 for g in `find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V`; do
@@ -28,8 +24,28 @@ IOMMU Group 1:
 	00:01.0 PCI bridge [0604]: Intel Corporation 6th-10th Gen Core Processor PCIe Controller (x16) [8086:1901] (rev 07)
 	01:00.0 3D controller [0302]: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile] [10de:1c8c] (rev a1)
 	01:00.1 Audio device [0403]: NVIDIA Corporation GP107GL High Definition Audio Controller [10de:0fb9] (rev a1)
-	
-sudo nvim /etc/modprobe.d/vfio.conf
-options vfio-pci ids=8086:1901,10de:1c8c,10de:0fb9
+
+// Kernel parameter
+sudo nvim /etc/default/grub
+
+GRUB_CMDLINE_LINUX="rd.driver.pre=vfio_pci vfio-pci-ids=8086:1901,10de:1c8c,10de:0fb9 intel_iommu=on iommu=pt"
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+// dracut
+sudo echo 'add_drivers+=" vfio_pci vfio vfio_iommu_type1 vfio_virqfd "' >> /etc/dracut.conf.d/10-vfio.conf
 
 dracut -f --kver `uname -r`
+
+reboot
+
+// libvirt
+sudo systemctl enable libvirtd.service
+sudo systemctl start libvirtd.service
+
+// virtlogd
+sudo systemctl enable virtlogd-admin.socket
+sudo systemctl start virtlogd-admin.socket
+
+// virsh
+sudo virsh net-autostart default
