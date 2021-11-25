@@ -11,7 +11,7 @@ echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 ###########################################################
 
 
-dnf install -y acpid akmod-nvidia clisp cpp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany fontawesome-fonts gcc geary ghc glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl libvirt linux-firmware make neovim NetworkManager-tui newsflash npm pkgconfig php pip powerline powerline-fonts qemu rust shotwell util-linux-user virt-manager vulkan-headers vulkan-tools wike xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 zsh
+dnf install -y acpid akmod-nvidia clisp cpp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts gcc geary ghc glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl libvirt linux-firmware make neovim NetworkManager-tui newsflash npm pkgconfig php pip powerline powerline-fonts qemu rust shotwell util-linux-user virt-manager vulkan-headers vulkan-tools wike xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 xxd zsh
 
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
