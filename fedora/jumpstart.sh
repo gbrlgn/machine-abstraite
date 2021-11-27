@@ -11,20 +11,21 @@ echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 ###########################################################
 
 
-dnf install -y acpid akmod-nvidia clisp cpp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts gcc geary ghc glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl libvirt linux-firmware make neovim NetworkManager-tui newsflash npm pkgconfig php pip powerline powerline-fonts qemu rust shotwell util-linux-user virt-manager vulkan-headers vulkan-tools wike xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 xxd zsh
+dnf install -y acpid akmod-nvidia binutils clisp coreutils cpp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts gcc geary ghc glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel keepassxc kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl libvirt linux-firmware make neovim NetworkManager-tui newsflash npm pkgconfig php pip powerline powerline-fonts R rstudio rstudio-gui rust shotwell steam util-linux-user vulkan-headers vulkan-tools wike xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 zsh
 
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 
 dnf install -y lame\* --exclude=lame-devel
 
-dnf group upgrade --with-optional Multimedia
+dnf group upgrade -y --with-optional Multimedia
 
-dnf remove -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome-contacts gnome-photos gnome-system-monitor gnome-tour gnome-user-docs gnome-weather mediawriter rhythmbox yelp
+dnf remove -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome-contacts gnome-photos gnome-system-monitor gnome-tour gnome-user-docs gnome-weather mediawriter rhythmbox totem yelp
 
 dnf install -y https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 
 
+flatpak install flathub io.github.celluloid_player.Celluloid
 flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark 
 flatpak install flathub com.spotify.Client
 flatpak install flathub com.vscodium.codium
@@ -42,7 +43,6 @@ flatpak install flathub org.freedesktop.Sdk.Extension.openjdk17
 flatpak install flathub com.jetbrains.PyCharm-Community
 flatpak install flathub org.freedesktop.Sdk.Extension.php80
 flatpak install flathub org.freedesktop.Sdk.Extension.rust-stable
-flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub org.freedesktop.Sdk.Extension.toolchain-aarch64
 
 
@@ -117,12 +117,14 @@ cp /home/danger/Documentos/Git/machine-abstraite/config/desktop/nvidia-powermize
 ###########################################################
 
 
-rm /usr/share/applications/java-17-openjdk*
+rm /usr/share/applications/java*
 rm /usr/share/applications/org.gnome.Tour.desktop
 
 
 ###########################################################
 
+dnf upgrade -y
+flatpak upgrade
 
 passwd -l root
 dnf clean all
