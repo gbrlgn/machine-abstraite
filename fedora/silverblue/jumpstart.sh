@@ -1,5 +1,3 @@
-dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "fastestmirror=True \
@@ -11,18 +9,12 @@ echo "fastestmirror=True \
 ###########################################################
 
 
-dnf install -y acpid akmod-nvidia binutils clisp coreutils cpp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts gcc geary ghc glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make neovim NetworkManager-tui newsflash npm pkgconfig php pip powerline powerline-fonts rust shotwell steam util-linux-user vulkan-headers vulkan-tools wike xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 zsh
+rpm-ostree install -y acpid akmod-nvidia binutils coreutils dbus-devel dbus-glib-devel dbus-libs dkms fontawesome-fonts glib2-devel gstreamer1-* hanazono-fonts htop ibm-plex-fonts-all kernel-devel kernel-devel-matched kernel-headers lame libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware neovim NetworkManager-tui powerline powerline-fonts steam vulkan-headers vulkan-tools xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 zsh
+
+rpm-ostree kargs --append=rd.driver.blacklist=nouveau --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
 
 
-dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-
-dnf install -y lame\* --exclude=lame-devel
-
-dnf group upgrade -y --with-optional Multimedia
-
-dnf remove -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome-contacts gnome-photos gnome-system-monitor gnome-tour gnome-user-docs gnome-weather mediawriter rhythmbox totem yelp
-
-dnf install -y https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+rpm-ostree uninstall -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome-contacts gnome-photos gnome-system-monitor gnome-tour gnome-user-docs gnome-weather mediawriter rhythmbox totem yelp
 
 
 flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark 
@@ -67,9 +59,6 @@ flatpak upgrade
 
 
 echo "danger" > /etc/hostname
-echo "blacklist nouveau \
-	options nouveau modeset=0" >> /etc/modprobe.d/blacklist-nouveau.conf
-dracut -v -f
 
 
 ###########################################################
@@ -126,15 +115,12 @@ cp /home/dancer/Documentos/Git/machine-abstraite/config/nvidia-powermizer.deskto
 ###########################################################
 
 
-rm /usr/share/applications/java*
-rm /usr/share/applications/openjdk*
 rm /usr/share/applications/org.gnome.Tour.desktop
 
 
 ###########################################################
 
-dnf upgrade -y
-dnf clean all
+rpm-ostree upgrade -y
 flatpak upgrade
 
 passwd -l root
