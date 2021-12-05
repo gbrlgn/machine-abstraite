@@ -2,16 +2,16 @@ dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-echo "fastestmirror=True \
-	deltarpm=True \
-	max_parallel_downloads=10 \
-	excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
+echo "fastestmirror=True" >> /etc/dnf/dnf.conf
+echo "deltarpm=True" >> /etc/dnf/dnf.conf
+echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
+echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 
 
 ###########################################################
 
 
-dnf install -y acpid akmod-nvidia binutils clisp coreutils cpp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts gcc geary ghc glib2-devel gnome-extensions-app gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make neovim NetworkManager-tui newsflash npm pkgconfig php pip powerline powerline-fonts rust shotwell steam util-linux-user vulkan-headers vulkan-tools wike xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.i686 xorg-x11-drv-nvidia-libs.x86_64 zsh
+dnf install -y acpid akmod-nvidia binutils clisp dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core elixir epiphany ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts geary ghc glib2-devel gnome-music gnome-tweaks go hanazono-fonts htop ibm-plex-fonts-all java-latest-openjdk java-latest-openjdk-devel kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make NetworkManager-tui npm php pip powerline powerline-fonts rust shotwell util-linux-user vim vulkan-headers vulkan-tools xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.x86_64 zsh
 
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
@@ -43,6 +43,7 @@ flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
 flatpak install flathub io.github.seadve.Kooha
 flatpak install flathub org.freedesktop.Sdk.Extension.llvm12
 flatpak install flathub fr.romainvigier.MetadataCleaner
+flatpak install flathub com.gitlab.newsflash
 flatpak install flathub org.freedesktop.Sdk.Extension.node16
 flatpak install flathub org.freedesktop.Sdk.Extension.openjdk17
 flatpak install flathub org.gnome.PasswordSafe
@@ -53,6 +54,7 @@ flatpak install flathub org.freedesktop.Sdk.Extension.rust-stable
 flatpak install flathub re.sonny.Tangram
 flatpak install flathub com.github.liferooter.textpieces
 flatpak install flathub org.freedesktop.Sdk.Extension.toolchain-aarch64
+flatpak install flathub com.github.hugolabe.Wike
 
 
 flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.IntelliJ-IDEA-Community
@@ -67,8 +69,7 @@ flatpak upgrade
 
 
 echo "danger" > /etc/hostname
-echo "blacklist nouveau \
-	options nouveau modeset=0" >> /etc/modprobe.d/blacklist-nouveau.conf
+echo "blacklist nouveau" >> /etc/modprobe.d/blacklist-nouveau.conf
 dracut -v -f
 
 
@@ -103,16 +104,6 @@ mkdir -p /home/dancer/.zsh
 git clone https://github.com/sindresorhus/pure.git /home/dancer/.zsh/pure
 
 cp /home/dancer/Documentos/Git/machine-abstraite/config/.zshrc /home/dancer
-
-
-###########################################################
-
-
-cd /home/dancer/.config
-
-ausearch -c 'hl2_linux' --raw | audit2allow -M hl2linux
-
-semodule -X 300 -i hl2linux.pp
 
 
 ###########################################################
