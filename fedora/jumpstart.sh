@@ -25,7 +25,7 @@ dnf remove -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome
 dnf install -y https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 
 
-flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark 
+flatpak install fedora org.gtk.Gtk3theme.Adwaita-dark 
 flatpak install flathub io.github.celluloid_player.Celluloid
 flatpak install flathub com.spotify.Client
 flatpak install flathub com.vscodium.codium
@@ -34,11 +34,12 @@ flatpak install flathub org.gustavoperedo.FontDownloader
 flatpak install flathub org.gnome.Fractal
 flatpak install flathub de.haeckerfelix.Fragments
 flatpak install flathub org.freedesktop.Sdk.Extension.gcc8
-flatpak install flathub org.gimp.GIMP
+flatpak install fedora org.gnome.Geary
+flatpak install fedora org.gimp.GIMP
 flatpak install flathub org.freedesktop.Sdk.Extension.golang
 flatpak install flathub dev.geopjr.Hashbrown
 flatpak install flathub org.freedesktop.Sdk.Extension.haskell
-flatpak install flathub org.inkscape.Inkscape
+flatpak install fedora org.inkscape.Inkscape
 flatpak install flathub com.jetbrains.IntelliJ-IDEA-Community
 flatpak install flathub io.github.seadve.Kooha
 flatpak install flathub org.freedesktop.Sdk.Extension.llvm12
@@ -46,7 +47,7 @@ flatpak install flathub fr.romainvigier.MetadataCleaner
 flatpak install flathub com.gitlab.newsflash
 flatpak install flathub org.freedesktop.Sdk.Extension.node16
 flatpak install flathub org.freedesktop.Sdk.Extension.openjdk17
-flatpak install flathub org.gnome.PasswordSafe
+flatpak install fedora org.gnome.PasswordSafe
 flatpak install flathub org.freedesktop.Sdk.Extension.php80
 flatpak install flathub org.gnome.Podcasts
 flatpak install flathub com.jetbrains.PyCharm-Community
@@ -69,8 +70,6 @@ flatpak upgrade
 
 
 echo "danger" > /etc/hostname
-echo "blacklist nouveau" >> /etc/modprobe.d/blacklist-nouveau.conf
-dracut -v -f
 
 
 ###########################################################
@@ -126,6 +125,7 @@ rm /usr/share/applications/org.gnome.Tour.desktop
 
 dnf upgrade -y
 dnf clean all
+dnf autoremove
 flatpak upgrade
 
 passwd -l root
