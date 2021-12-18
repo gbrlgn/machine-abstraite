@@ -18,17 +18,21 @@ flatpak install flathub io.github.seadve.Kooha
 flatpak install fedora org.libreoffice.LibreOffice
 flatpak install flathub org.freedesktop.Sdk.Extension.llvm12
 flatpak install flathub fr.romainvigier.MetadataCleaner
+flatpak install fedora org.gnome.Music
+flatpak install flathub com.gitlab.newsflash
 flatpak install flathub org.freedesktop.Sdk.Extension.node16
 flatpak install flathub org.freedesktop.Sdk.Extension.openjdk17
 flatpak install flathub org.gnome.PasswordSafe
 flatpak install flathub org.freedesktop.Sdk.Extension.php80
-flatpak install fedora org.gnome.Podcasts
+flatpak install flathub org.gnome.Podcasts
 flatpak install flathub com.jetbrains.PyCharm-Community
 flatpak install flathub org.freedesktop.Sdk.Extension.rust-stable
+flatpak install fedora org.gnome.Shotwell
 flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub re.sonny.Tangram
 flatpak install flathub com.github.liferooter.textpieces
 flatpak install flathub org.freedesktop.Sdk.Extension.toolchain-aarch64
+flatpak install flathub com.github.hugolabe.Wike
 
 
 flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.IntelliJ-IDEA-Community
