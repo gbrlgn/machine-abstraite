@@ -28,7 +28,6 @@ flatpak install flathub org.gnome.Podcasts
 flatpak install flathub com.jetbrains.PyCharm-Community
 flatpak install flathub org.freedesktop.Sdk.Extension.rust-stable
 flatpak install fedora org.gnome.Shotwell
-flatpak install flathub com.valvesoftware.Steam
 flatpak install flathub re.sonny.Tangram
 flatpak install flathub com.github.liferooter.textpieces
 flatpak install flathub org.freedesktop.Sdk.Extension.toolchain-aarch64
