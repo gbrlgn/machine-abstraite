@@ -9,4 +9,6 @@ dnf install -y binutils clisp coreutils cpp dbus-devel dbus-glib-devel dbus-libs
 
 # Clojure
 	
-sudo dnf install -y binutils clojure dkms dnf-plugins-core java-latest-openjdk java-latest-openjdk-devel kernel-devel kernel-devel-matched kernel-headers leiningen linux-firmware make
+sudo dnf install -y binutils clojure dkms dnf-plugins-core java-latest-openjdk java-latest-openjdk-devel kernel-devel kernel-devel-matched kernel-headers linux-firmware make
+
+cp /var/home/dancer/Documentos/Git/machine-abstraite/fedora/silverblue/clojure/lein /usr/local/bin
