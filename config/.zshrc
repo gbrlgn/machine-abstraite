@@ -1,4 +1,4 @@
-export ZSH="/home/danger/.oh-my-zsh"
+export ZSH="/home/dancer/.oh-my-zsh"
 
 ZSH_THEME=""
 
@@ -6,6 +6,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-fpath+=/home/danger/.zsh/pure
+fpath+=/home/dancer/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
