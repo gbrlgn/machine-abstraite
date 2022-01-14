@@ -33,7 +33,7 @@ in
 
 
   networking = {
-    hostName = "00000";
+    hostName = "danger";
     interfaces.enp59s0.useDHCP = true;
     interfaces.wlp60s0.useDHCP = true;
     networkmanager.enable = true;
@@ -52,8 +52,16 @@ in
     };
     modesetting.enable = true;
   };
-  hardware.pulseaudio.enable = true;
-  sound.enable = true;
+  # hardware.pulseaudio.enable = true;
+  # sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
 
 ###############################################################################
@@ -65,7 +73,7 @@ in
       desktopManager.gnome.enable = true;
       desktopManager.xterm.enable = false;
       displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = false;
+      displayManager.gdm.wayland = true;
       enable = true;
       layout = "us";
       libinput.enable = true;
@@ -77,10 +85,10 @@ in
 ###############################################################################
   
 
-  users.users.calabar = {
-    name = "calabar";
+  users.users.dancer = {
+    name = "dancer";
     isNormalUser = true;
-    home = "/home/calabar";
+    home = "/home/dancer";
     extraGroups = [ "wheel" "networkmanager" "video"];
     initialPassword = "assemblage";
     shell = pkgs.zsh;
@@ -97,7 +105,7 @@ in
 
 
   programs.dconf.enable = true;
-  programs.ssh.askPassword = "";
+  programs.ssh.askPassword = "assemblage";
 
 
 ###############################################################################
@@ -108,85 +116,50 @@ in
       gnome.gnome-system-monitor        	gnome.gnome-contacts
       gnome.gnome-weather               	gnome.gnome-keyring
       gnome.gnome-photos                	gnome.gnome-clocks
-      gnome.yelp-xsl                    	gnome.seahorse
-      gnome.cheese                      	gnome.yelp
-      gnome.eog                         	gnome-connections
-      gnome-user-docs                   	gnome-tour
+      gnome.cheese                          gnome.eog
+      gnome.seahorse                        gnome.totem
+      gnome.yelp                            gnome.yelp-xsl
+      gnome-connections                     gnome-user-docs                   gnome-tour
     ];
   
   environment.systemPackages = with pkgs; 
     [
-      aspellDicts.pt_BR                 	binutils
-      cargo                             	coreutils
+      aspellDicts.pt_BR                     binutils
+      cargo                                 coreutils
       curl                              	clisp
-      clojure                           	dbus
-      elixir                            	emacs
-      epiphany                          	ffmpeg 
-      firefox                           	firmwareLinuxNonfree
-      flatpak                           	gcc
-      ghc                               	gimp
-      git                               	glib
-      gnome.gnome-tweaks                	gnumake
-      go                                	go-tools
-      htop                              	ibm-plex
-      imagemagick                       	inkscape
-      jdk                               	keepassxc
-      libreoffice                       	liferea
-      linuxPackages.nvidia_x11          	nerdfonts
-      nodePackages.npm                  	ntfs3g
-      pciutils                          	php80
-      php80Packages.composer            	python
-      p7zip                             	rustc
-      steam                             	powerline-fonts
-      powerline-symbols                 	pure-prompt
-      unzip                             	unrar
-      util-linux                        	vscodium
-      wget                              	zlib 
-      zsh
-      (
-        with import <nixpkgs> {};
-
-        vim_configurable.customize {
-          name = "vim";
-          vimrcConfig = {
-            customRC = ''
-              set number 
-              syntax on
-
-              map <C-n> :NERDTreeToggle<CR>
-              let g:airline_powerline_fonts = 1 
-              let g:tex_flavor = 'tex'
-
-              set tabstop=4
-              set shiftwidth=4
-              set expandtab
-              setlocal spell spelllang=br
-            '';
-
-            vam = {
-              knownPlugins = pkgs.vimPlugins;
-              pluginDictionaries = [
-                { names = 
-                  [
-                    "ale"			"nerdtree"
-                    "vimtex"			"vim-airline"
-                    "vim-airline-themes"	"vim-devicons"
-                    "YouCompleteMe"
-                  ];
-                }
-              ];
-            };
-          };
-        }
-      )
+      clojure                               dbus
+      docker                                elixir
+      emacs                                 ffmpeg
+      firefox                               firmwareLinuxNonfree
+      flatpak                               gcc
+      ghc                                   git
+      glib                                  gnome.gnome-tweaks
+      gnumake                               go
+      go-tools                              htop
+      imagemagick                           jdk
+      kubernetes                            leiningen
+      linuxPackages.nvidia_x11              lua
+      mitscheme                             nerdfonts
+      nodePackages.npm                      ntfs3g
+      pciutils                              python39Packages.pip
+      pipenv                                python
+      p7zip                                 postgresql
+      powerline-fonts                       powerline-symbols
+      pure-prompt                           redis
+      rustc                                 tangram
+      unzip                                 unrar
+      util-linux                            wget
+      zlib                                  zsh
     ];
 
 
 ###############################################################################
 
 
-    home-manager.users.calabar = {
+    home-manager.users.dancer = {
       programs = {
+        home-manager.enable = true;
+
         git = {
           enable = true;
           userName  = "Gabriel Gian";
@@ -195,15 +168,14 @@ in
             credential.helper = "${
               pkgs.git.override { withLibsecret = true; }
             }/bin/git-credential-libsecret";
+            core.editor = "flatpak run --file-forwarding re.sonny.Commit @@";
           };
         };
-
-        home-manager.enable = true;
 
         zsh = {
           enable = true;
           profileExtra = ''
-            export ZSH="/home/calabar/.oh-my-zsh"
+            export ZSH="/home/dancer/.oh-my-zsh"
 
             ZSH_THEME=""
             plugins=(
@@ -234,7 +206,7 @@ in
 ###############################################################################
 
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "21.11";
 
 
 ###############################################################################
