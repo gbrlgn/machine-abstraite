@@ -1,7 +1,14 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }: 
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec -a "$0" "$@"
+  '';
 in
 
 {
@@ -44,15 +51,14 @@ in
 
   
   hardware.nvidia = {
-    powerManagement.enable = true;
+    modesetting.enable = true;
     prime = {
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
       offload.enable = true;
     };
-    modesetting.enable = true;
   };
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
   # sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -62,6 +68,13 @@ in
     pulse.enable = true;
     jack.enable = true;
   };
+  specialisation = {
+    external-display.configuration = {
+      system.nixos.tags = [ "external-display" ];
+      hardware.nvidia.prime.offload.enable = lib.mkForce false;
+      hardware.nvidia.powerManagement.enable = lib.mkForce false;
+    };
+  };
 
 
 ###############################################################################
@@ -69,19 +82,19 @@ in
 
   services.flatpak.enable = true;
   services.xserver = {
-      autorun = true;
-      desktopManager.gnome.enable = true;
-      desktopManager.xterm.enable = false;
-      displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = true;
-      enable = true;
-      layout = "us";
-      libinput.enable = true;
-      videoDrivers = [ "modesetting" "nvidia" ];
+    autorun = true;
+    desktopManager.gnome.enable = true;
+    desktopManager.xterm.enable = false;
+    displayManager.gdm.enable = true;
+    displayManager.gdm.wayland = true;
+    enable = true;
+    layout = "us";
+    libinput.enable = true;
+    videoDrivers = [ "nvidia" ];
   };
   # services.printing.enable = true;
 
-
+  
 ###############################################################################
   
 
@@ -105,7 +118,7 @@ in
 
 
   programs.dconf.enable = true;
-  programs.ssh.askPassword = "assemblage";
+  programs.ssh.askPassword = "";
 
 
 ###############################################################################
@@ -113,94 +126,47 @@ in
   
   environment.gnome.excludePackages = with pkgs; 
     [ 
-      gnome.gnome-system-monitor        	gnome.gnome-contacts
-      gnome.gnome-weather               	gnome.gnome-keyring
-      gnome.gnome-photos                	gnome.gnome-clocks
-      gnome.cheese                          gnome.eog
-      gnome.seahorse                        gnome.totem
-      gnome.yelp                            gnome.yelp-xsl
-      gnome-connections                     gnome-user-docs                   gnome-tour
+      epiphany gnome.gnome-system-monitor gnome.gnome-contacts
+      gnome.gnome-weather gnome.gnome-keyring gnome.gnome-photos 
+      gnome.gnome-clocks gnome.cheese gnome.eog gnome.seahorse
+      gnome.totem gnome.yelp gnome.yelp-xsl gnome-connections
+      gnome-user-docs gnome-tour
     ];
-  
+
+  environment.shells = with pkgs; [ bashInteractive zsh ];
   environment.systemPackages = with pkgs; 
     [
-      aspellDicts.pt_BR                     binutils
-      cargo                                 coreutils
-      curl                              	clisp
-      clojure                               dbus
-      docker                                elixir
-      emacs                                 ffmpeg
-      firefox                               firmwareLinuxNonfree
-      flatpak                               gcc
-      ghc                                   git
-      glib                                  gnome.gnome-tweaks
-      gnumake                               go
-      go-tools                              htop
-      imagemagick                           jdk
-      kubernetes                            leiningen
-      linuxPackages.nvidia_x11              lua
-      mitscheme                             nerdfonts
-      nodePackages.npm                      ntfs3g
-      pciutils                              python39Packages.pip
-      pipenv                                python
-      p7zip                                 postgresql
-      powerline-fonts                       powerline-symbols
-      pure-prompt                           redis
-      rustc                                 tangram
-      unzip                                 unrar
-      util-linux                            wget
-      zlib                                  zsh
+      aspellDicts.pt_BR binutils cargo coreutils curl clisp
+      clojure dbus docker elixir emacs ffmpeg firefox
+      firmwareLinuxNonfree flatpak font-awesome gcc ghc git
+      glib gnome.gnome-tweaks go go-tools htop imagemagick
+      jdk kubernetes leiningen lua mitscheme nodePackages.npm
+      ntfs3g nvidia-offload pciutils python39Packages.pip
+      pipenv python p7zip postgresql powerline-fonts
+      powerline-symbols pure-prompt redis rustc tangram
+      unzip unrar util-linux wget zlib zsh
     ];
 
 
 ###############################################################################
 
 
-    home-manager.users.dancer = {
-      programs = {
-        home-manager.enable = true;
-
-        git = {
-          enable = true;
-          userName  = "Gabriel Gian";
-          userEmail = "gabrielgian@protonmail.com";
-          extraConfig = {
-            credential.helper = "${
-              pkgs.git.override { withLibsecret = true; }
-            }/bin/git-credential-libsecret";
-            core.editor = "flatpak run --file-forwarding re.sonny.Commit @@";
-          };
-        };
-
-        zsh = {
-          enable = true;
-          profileExtra = ''
-            export ZSH="/home/dancer/.oh-my-zsh"
-
-            ZSH_THEME=""
-            plugins=(
-                zsh-autosuggestions
-                zsh-completions
-                zsh-syntax-highlighting
-            )
-            
-            fpath+=$HOME/.zsh/pure
-            autoload -U promptinit; promptinit
-            prompt pure
-            zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-            zstyle :prompt:pure:prompt:error color red
-            zstyle :prompt:pure:prompt:success color green
-            zstyle :prompt:pure:prompt:continuation color blue
-            zstyle :prompt:pure:git:dirty color purple
-            zstyle :prompt:pure:git:arrow color blue
-            zstyle :prompt:pure:git:stash color gray
-            zstyle :prompt:pure:git:branch color cyan
-            zstyle :prompt:pure:git:branch:cached color red
-            zstyle :prompt:pure:execution_time color yellow
-          '';
+  home-manager.users.dancer = {
+    programs = {
+      home-manager.enable = true;
+      git = {
+        enable = true;
+        userName  = "Gabriel Gian";
+        userEmail = "gabrielgian@protonmail.com";
+        extraConfig = {
+          credential.helper = "${
+            pkgs.git.override { withLibsecret = true; }
+          }/bin/git-credential-libsecret";
+          core.editor = "flatpak run --file-forwarding re.sonny.Commit @@";
         };
       };
     };
+  };
 
 
 ###############################################################################

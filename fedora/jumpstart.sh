@@ -70,6 +70,8 @@ echo "fpath+=/home/dancer/.zsh/pure" >> /home/dancer/.zshrc
 echo "autoload -U promptinit; promptinit" >> /home/dancer/.zshrc
 echo "prompt pure" >> /home/dancer/.zshrc
 
+bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
+
 
 ###########################################################
 
