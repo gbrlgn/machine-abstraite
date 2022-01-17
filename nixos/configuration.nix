@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: 
+{ config, pkgs, lib, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
@@ -12,12 +12,12 @@ let
 in
 
 {
-  imports = 
+  imports =
     [
       ./hardware-configuration.nix
       (import "${home-manager}/nixos")
     ];
-  
+
 
 ###############################################################################
 
@@ -30,7 +30,7 @@ in
 
 
 ###############################################################################
- 
+
 
   i18n.defaultLocale = "pt_BR.UTF-8";
   time.timeZone = "America/Sao_Paulo";
@@ -49,7 +49,7 @@ in
 
 ###############################################################################
 
-  
+
   hardware.nvidia = {
     modesetting.enable = true;
     prime = {
@@ -95,9 +95,9 @@ in
   };
   # services.printing.enable = true;
 
-  
+
 ###############################################################################
-  
+
 
   users.users.dancer = {
     name = "dancer";
@@ -124,9 +124,9 @@ in
 
 ###############################################################################
 
-  
-  environment.gnome.excludePackages = with pkgs; 
-    [ 
+
+  environment.gnome.excludePackages = with pkgs;
+    [
       epiphany gnome.gnome-system-monitor gnome.gnome-contacts
       gnome.gnome-weather gnome.gnome-keyring gnome.gnome-photos
       gnome.gnome-clocks gnome.cheese gnome.eog gnome.seahorse
@@ -135,11 +135,11 @@ in
     ];
 
   environment.shells = with pkgs; [ bashInteractive zsh ];
-  environment.systemPackages = with pkgs; 
+  environment.systemPackages = with pkgs;
     [
       aspellDicts.pt_BR
       binutils
-      cargo celluloud clisp clojure coreutils curl
+      cargo celluloid clisp clojure coreutils curl
       dbus docker
       elixir emacs
       ffmpeg firefox firmwareLinuxNonfree flatpak
