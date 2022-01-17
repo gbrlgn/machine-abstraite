@@ -83,9 +83,10 @@ in
   services.flatpak.enable = true;
   services.xserver = {
     autorun = true;
-    desktopManager.gnome.enable = true;
     desktopManager.xterm.enable = false;
+    desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+    displayManager.gdm.nvidiaWayland = true;
     displayManager.gdm.wayland = true;
     enable = true;
     layout = "us";
@@ -127,7 +128,7 @@ in
   environment.gnome.excludePackages = with pkgs; 
     [ 
       epiphany gnome.gnome-system-monitor gnome.gnome-contacts
-      gnome.gnome-weather gnome.gnome-keyring gnome.gnome-photos 
+      gnome.gnome-weather gnome.gnome-keyring gnome.gnome-photos
       gnome.gnome-clocks gnome.cheese gnome.eog gnome.seahorse
       gnome.totem gnome.yelp gnome.yelp-xsl gnome-connections
       gnome-user-docs gnome-tour
@@ -136,15 +137,30 @@ in
   environment.shells = with pkgs; [ bashInteractive zsh ];
   environment.systemPackages = with pkgs; 
     [
-      aspellDicts.pt_BR binutils cargo coreutils curl clisp
-      clojure dbus docker elixir emacs ffmpeg firefox
-      firmwareLinuxNonfree flatpak font-awesome gcc ghc git
-      glib gnome.gnome-tweaks go go-tools htop imagemagick
-      jdk kubernetes leiningen lua mitscheme nodePackages.npm
-      ntfs3g nvidia-offload pciutils python39Packages.pip
-      pipenv python p7zip postgresql powerline-fonts
-      powerline-symbols pure-prompt redis rustc tangram
-      unzip unrar util-linux wget zlib zsh
+      aspellDicts.pt_BR
+      binutils
+      cargo celluloud clisp clojure coreutils curl
+      dbus docker
+      elixir emacs
+      ffmpeg firefox firmwareLinuxNonfree flatpak
+      fractal fragments font-awesome
+      gaphor gcc ghc git gimp glib
+      gnome-podcasts gnome.geary gnome.gnome-tweaks go go-tools
+      htop
+      imagemagick inkscape
+      jdk jetbrains.idea-community jetbrains.pycharm-community
+      kubernetes
+      leiningen less libreoffice lua
+      metadata-cleaner mitscheme
+      newsflash nodePackages.npm ntfs3g nvidia-offload
+      pciutils python39Packages.pip pciutils pipenv python p7zip
+      postgresql powerline-fonts powerline-symbols pure-prompt
+      redis rustc
+      shotwell spotify steam
+      tangram
+      unzip unrar util-linux
+      vscodium wget wike
+      zlib zsh
     ];
 
 
