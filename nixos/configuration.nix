@@ -157,7 +157,6 @@ in
       postgresql powerline-fonts powerline-symbols pure-prompt
       redis rustc
       shotwell spotify steam
-      tangram
       unzip unrar util-linux
       vscodium wget wike
       zlib zsh
