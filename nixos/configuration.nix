@@ -27,6 +27,8 @@ in
     systemd-boot.enable = true;
   };
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
 
 
 ###############################################################################
@@ -152,7 +154,7 @@ in
       kubernetes
       leiningen less libreoffice lua
       metadata-cleaner mitscheme
-      newsflash nodePackages.npm ntfs3g nvidia-offload
+      newsflash nodePackages.npm ntfs3g nvidia-offload linuxPackages.nvidia_x11
       pciutils python39Packages.pip pciutils pipenv python p7zip
       postgresql powerline-fonts powerline-symbols pure-prompt
       redis rustc
