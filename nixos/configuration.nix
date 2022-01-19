@@ -28,6 +28,7 @@ in
   };
   boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
+  boot.kernelPackages = [ pkgs.linuxPackages_latest ];
   boot.blacklistedKernelModules = [ "nouveau" ];
 
 
@@ -35,6 +36,7 @@ in
 
 
   i18n.defaultLocale = "pt_BR.UTF-8";
+  i18n.consoleFont = "latarcyrheb-sun32";
   time.timeZone = "America/Sao_Paulo";
 
 
@@ -53,6 +55,7 @@ in
 
 
   hardware.nvidia = {
+    nvidiaPersistenced = true;
     modesetting.enable = true;
     prime = {
       intelBusId = "PCI:0:2:0";
@@ -60,8 +63,9 @@ in
       offload.enable = true;
     };
   };
-  hardware.pulseaudio.enable = false;
+  hardware.opengl.driSupport32Bit = true;
   # sound.enable = true;
+  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -93,7 +97,7 @@ in
     enable = true;
     layout = "us";
     libinput.enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" "modesetting" ];
   };
   # services.printing.enable = true;
 
@@ -159,6 +163,7 @@ in
       postgresql powerline-fonts powerline-symbols pure-prompt
       redis rustc
       shotwell spotify steam
+      tangram
       unzip unrar util-linux
       vscodium wget wike
       zlib zsh
