@@ -27,8 +27,8 @@ in
     systemd-boot.enable = true;
   };
   boot.supportedFilesystems = [ "ntfs" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
-  boot.kernelPackages = [ pkgs.linuxPackages_latest ];
   boot.blacklistedKernelModules = [ "nouveau" ];
 
 
@@ -36,7 +36,6 @@ in
 
 
   i18n.defaultLocale = "pt_BR.UTF-8";
-  i18n.consoleFont = "latarcyrheb-sun32";
   time.timeZone = "America/Sao_Paulo";
 
 
