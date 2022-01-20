@@ -27,7 +27,6 @@ in
     systemd-boot.enable = true;
   };
   boot.supportedFilesystems = [ "ntfs" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
   boot.blacklistedKernelModules = [ "nouveau" ];
 
