@@ -5,6 +5,5 @@ flatpak install flathub re.sonny.Commit --assumeyes
 flatpak install flathub com.github.gi_lom.dialect --assumeyes
 flatpak install flathub org.gustavoperedo.FontDownloader --assumeyes
 flatpak install flathub dev.geopjr.Hashbrown --assumeyes
-flatpak install flathub re.sonny.Junction --assumeyes
 flatpak install flathub org.gnome.World.Secrets --assumeyes
 flatpak install flathub com.github.liferooter.textpieces --assumeyes

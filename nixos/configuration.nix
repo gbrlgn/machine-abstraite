@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
+
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -9,6 +10,7 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec -a "$0" "$@"
   '';
+  
 in
 
 {
@@ -23,12 +25,23 @@ in
 
 
   boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+    grub = { 
+      enable = true;
+      devices = [ "nodev" ];
+      useOSProber = true;
+      efiSupport = true;
+      version = 2;
+    };
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
   };
-  boot.supportedFilesystems = [ "ntfs" ];
-  boot.extraModulePackages = [ pkgs.linuxPackages.nvidia_x11 ];
-  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.kernelParams = [ 
+    "acpi_rev_override" "mem_sleep_default=deep" "intel_iommu=igfx_off" "nvidia-drm.modeset=1" 
+  ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
 
 ###############################################################################
@@ -53,12 +66,12 @@ in
 
 
   hardware.nvidia = {
-    nvidiaPersistenced = true;
     modesetting.enable = true;
     prime = {
+      offload.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-      offload.enable = true;
+      sync.allowExternalGpu = true;
     };
   };
   hardware.opengl.driSupport32Bit = true;
@@ -75,7 +88,6 @@ in
   specialisation = {
     external-display.configuration = {
       system.nixos.tags = [ "external-display" ];
-      hardware.nvidia.prime.offload.enable = lib.mkForce false;
       hardware.nvidia.powerManagement.enable = lib.mkForce false;
     };
   };
@@ -86,7 +98,6 @@ in
 
   services.flatpak.enable = true;
   services.xserver = {
-    autorun = true;
     desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
@@ -97,7 +108,7 @@ in
     libinput.enable = true;
     videoDrivers = [ "nvidia" "modesetting" ];
   };
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
 
 ###############################################################################
@@ -156,7 +167,7 @@ in
       kubernetes
       leiningen less libreoffice lua
       metadata-cleaner mitscheme
-      newsflash nodePackages.npm ntfs3g nvidia-offload linuxPackages.nvidia_x11
+      newsflash nodePackages.npm ntfs3g nvidia-offload
       pciutils python39Packages.pip pciutils pipenv python p7zip
       postgresql powerline-fonts powerline-symbols pure-prompt
       redis rustc

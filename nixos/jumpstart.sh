@@ -1,13 +1,3 @@
-emacs
-sleep 3000
-pkill emacs
-
-bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
-
-
-###########################################################
-
-
 mkdir /home/dancer/Documentos/Git
 
 git clone https://github.com/gbrlgian/compsci /home/dancer/Documentos/Git/compsci
@@ -26,6 +16,13 @@ cd /home/dancer/Documentos/Git/private && git config credential.helper store
 ###########################################################
 
 
+bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
+rsync -a /home/dancer/Documentos/Git/machine-abstraite/emacs/.* /home/dancer
+
+
+###########################################################
+
+
 sudo -u dancer sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 mkdir -p /home/dancer/.zsh
@@ -39,7 +36,7 @@ cp /home/dancer/Documentos/Git/machine-abstraite/config/.zshrc /home/dancer
 
 cp -r /home/dancer/Documentos/Git/machine-abstraite/Wallpapers /home/dancer/Imagens
 
-mkdir -r /home/dancer/.config/autostart
+mkdir -p /home/dancer/.config/autostart
 
 cp /home/dancer/Documentos/Git/machine-abstraite/config/nvidia-powermizer.desktop /home/dancer/.config/autostart
 
@@ -48,6 +45,7 @@ cp /home/dancer/Documentos/Git/machine-abstraite/config/nvidia-powermizer.deskto
 
 
 chown -R dancer /home/dancer
+passwd dancer
 passwd -l root
 flatpak upgrade
 nix-channel --update
