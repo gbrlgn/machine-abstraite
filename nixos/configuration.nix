@@ -23,7 +23,13 @@ in
 
 ###############################################################################
 
-
+  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ 
+    "acpi_rev_override" "mem_sleep_default=deep"
+    "intel_iommu=igfx_off" "nvidia-drm.modeset=1" 
+  ];
   boot.loader = {
     grub = { 
       enable = true;
@@ -37,12 +43,6 @@ in
       efiSysMountPoint = "/boot/efi";
     };
   };
-  boot.kernelParams = [ 
-    "acpi_rev_override" "mem_sleep_default=deep" "intel_iommu=igfx_off" "nvidia-drm.modeset=1" 
-  ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.blacklistedKernelModules = [ "nouveau" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
 
 ###############################################################################
@@ -68,6 +68,7 @@ in
 
   hardware.nvidia = {
     modesetting.enable = true;
+    nvidiaPersistenced = true;
     prime = {
       offload.enable = true;
       intelBusId = "PCI:0:2:0";
@@ -169,10 +170,10 @@ in
       leiningen less libreoffice lua
       metadata-cleaner mitscheme
       newsflash nodePackages.npm ntfs3g nvidia-offload
-      pciutils python39Packages.pip pciutils pipenv python p7zip
-      postgresql powerline-fonts powerline-symbols pure-prompt
+      pciutils python39Packages.pip pciutils pipenv python 
+      p7zip postgresql powerline-fonts powerline-symbols
       redis rustc
-      shotwell spotify steam
+      shotwell spot steam
       tangram
       unzip unrar util-linux
       vscodium wget wike
