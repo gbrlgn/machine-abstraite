@@ -170,10 +170,10 @@ in
       leiningen less libreoffice lua
       metadata-cleaner mitscheme
       newsflash nodePackages.npm ntfs3g nvidia-offload
-      pciutils python39Packages.pip pciutils pipenv python 
-      p7zip postgresql powerline-fonts powerline-symbols
+      pciutils python39Packages.pip pciutils pipenv plan9port
+      python p7zip postgresql powerline-fonts powerline-symbols
       redis rustc
-      shotwell spot steam
+      shotwell spotify steam
       tangram
       unzip unrar util-linux
       vscodium wget wike
