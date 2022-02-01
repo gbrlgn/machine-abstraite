@@ -87,12 +87,6 @@ in
     pulse.enable = true;
     jack.enable = true;
   };
-  specialisation = {
-    external-display.configuration = {
-      system.nixos.tags = [ "external-display" ];
-      hardware.nvidia.powerManagement.enable = lib.mkForce false;
-    };
-  };
 
 
 ###############################################################################
@@ -170,14 +164,15 @@ in
       leiningen less libreoffice lua
       metadata-cleaner mitscheme
       newsflash nodePackages.npm ntfs3g nvidia-offload
-      pciutils python39Packages.pip pciutils pipenv plan9port
-      python p7zip postgresql powerline-fonts powerline-symbols
+      p7zip pciutils python39Packages.pip pciutils pipenv plan9port
+      postgresql powerline-fonts powerline-symbols pstree python
       redis rustc
       shotwell spotify steam
       tangram
       unzip unrar util-linux
-      vscodium wget wike
-      zlib zsh
+      vim vscodium 
+      wget wike
+      zip zlib zsh
     ];
 
 
