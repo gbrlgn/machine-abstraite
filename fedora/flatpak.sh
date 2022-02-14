@@ -1,4 +1,5 @@
 flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark --assumeyes
+flatpak install flathub org.gnome.World.Secrets --assumeyes
 flatpak install flathub io.github.celluloid_player.Celluloid --assumeyes
 flatpak install flathub com.vscodium.codium --assumeyes
 flatpak install flathub re.sonny.Commit --assumeyes
@@ -21,9 +22,6 @@ flatpak install flathub org.gnome.Music --assumeyes
 flatpak install flathub com.gitlab.newsflash --assumeyes
 flatpak install flathub org.freedesktop.Sdk.Extension.node16 --assumeyes
 flatpak install flathub org.freedesktop.Sdk.Extension.openjdk17 --assumeyes
-flatpak install flathub org.gnome.PasswordSafe --assumeyes
-flatpak install flathub org.freedesktop.Sdk.Extension.php80 --assumeyes
-flatpak install flathub org.gnome.Podcasts --assumeyes
 flatpak install flathub com.jetbrains.PyCharm-Community --assumeyes
 flatpak install flathub org.freedesktop.Sdk.Extension.rust-stable --assumeyes
 flatpak install flathub org.gnome.Shotwell --assumeyes
@@ -37,6 +35,3 @@ flatpak install flathub com.github.hugolabe.Wike --assumeyes
 flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.IntelliJ-IDEA-Community
 flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.jetbrains.PyCharm-Community
 flatpak override --env=FLATPAK_ENABLE_SDK_EXT="*" com.vscodium.codium
-
-
-flatpak upgrade
