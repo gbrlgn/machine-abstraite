@@ -11,7 +11,7 @@ echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 ###########################################################
 
 
-dnf install -y acpid akmod-nvidia binutils coreutils dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core emacs ffmpeg-devel ffmpeg-libs fontawesome-fonts glib2-devel gnome-tweaks hanazono-fonts htop kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make NetworkManager-tui p7zip pciutils powerline-fonts toolbox unrar util-linux-user vulkan-headers vulkan-tools xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.x86_64 zsh
+dnf install -y acpid akmod-nvidia binutils coreutils dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core emacs ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts glib2-devel gnome-tweaks hanazono-fonts htop kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make NetworkManager-tui p7zip pciutils powerline-fonts toolbox unrar util-linux-user vulkan-headers vulkan-tools xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-libs.x86_64 zsh
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 
@@ -35,17 +35,17 @@ sudo -u dancer git config --global user.name "Gabriel Gian"
 sudo -u dancer git config --global user.email "gabrielgian@protonmail.com"
 
 
-git clone https://github.com/gbrlgian/compsci /home/dancer/Documentos/Git/compsci
-cd /home/dancer/Documentos/Git/compsci && git config credential.helper store
+mkdir /home/dancer/Documentos/Git/compsci && cd /home/dancer/Documentos/Git/compsci
+git clone https://github.com/gbrlgian/compsci /home/dancer/Documentos/Git/compsci && git config credential.helper store
 
-git clone https://github.com/gbrlgian/books /home/dancer/Documentos/Git/books
-cd /home/dancer/Documentos/Git/books && git config credential.helper store
+mkdir /home/dancer/Documentos/Git/books && cd /home/dancer/Documentos/Git/books
+git clone https://github.com/gbrlgian/books /home/dancer/Documentos/Git/books && git config credential.helper store
 
-git clone https://github.com/gbrlgian/machine-abstraite /home/dancer/Documentos/Git/machine-abstraite
-cd /home/dancer/Documentos/Git/machine-abstraite && git config credential.helper store
+mkdir /home/dancer/Documentos/Git/machine-abstraite && cd /home/dancer/Documentos/Git/machine-abstraite
+git clone https://github.com/gbrlgian/machine-abstraite && git config credential.helper store
 
-git clone https://github.com/gbrlgian/private /home/dancer/Documentos/Git/private
-cd /home/dancer/Documentos/Git/private && git config credential.helper store
+mkdir /home/dancer/Documentos/Git/private && cd /home/dancer/Documentos/Git/private
+git clone https://github.com/gbrlgian/private /home/dancer/Documentos/Git/private && git config credential.helper store
 
 
 ###########################################################
@@ -60,14 +60,6 @@ git clone https://github.com/sindresorhus/pure.git /home/dancer/.zsh/pure
 
 cp /home/dancer/Documentos/Git/machine-abstraite/config/.zshrc /home/dancer
 
-echo "export ZSH=\"/home/dancer/.oh-my-zsh\"" > /home/dancer/.zshrc
-echo "ZSH_THEME=\"\"" >> /home/dancer/.zshrc
-echo "plugins=(git)" >> /home/dancer/.zshrc
-echo "source $ZSH/oh-my-zsh.sh" >> /home/dancer/.zshrc
-echo "fpath+=/home/dancer/.zsh/pure" >> /home/dancer/.zshrc
-echo "autoload -U promptinit; promptinit" >> /home/dancer/.zshrc
-echo "prompt pure" >> /home/dancer/.zshrc
-
 bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
 
 
@@ -76,22 +68,20 @@ bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/i
 
 cp -r /home/dancer/Documentos/Git/machine-abstraite/Wallpapers /home/dancer/Imagens
 
-mkdir /home/dancer/.config/autostart
-cp /home/dancer/Documentos/Git/machine-abstraite/config/nvidia-powermizer.desktop /home/dancer/.config/autostart
+mkdir /home/dancer/.config/autostart && cp /home/dancer/Documentos/Git/machine-abstraite/config/nvidia-powermizer.desktop /home/dancer/.config/autostart
 
 
 ###########################################################
 
 
-rm /usr/share/applications/java*
-rm /usr/share/applications/openjdk*
-rm /usr/share/applications/org.gnome.Tour.desktop
+rm /usr/share/applications/java* /usr/share/applications/openjdk* /usr/share/applications/org.gnome.Tour.desktop
 
 
 ###########################################################
 
 flatpak upgrade --assumeyes
 dnf upgrade -y
+dnf autoremove
 dnf clean all
 
 passwd -l root
