@@ -1,7 +1,7 @@
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 
-flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark --assumeyes
+flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark --assumeyes
 flatpak install flathub org.gnome.World.Secrets --assumeyes
 flatpak install flathub io.github.celluloid_player.Celluloid --assumeyes
 flatpak install flathub com.vscodium.codium --assumeyes

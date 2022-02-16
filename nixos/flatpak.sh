@@ -1,6 +1,7 @@
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 
 
-flatpak install flathub org.gtk.Gtk3theme.Adwaita-dark --assumeyes
+
+flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark --assumeyes
 flatpak install flathub re.sonny.Commit --assumeyes
 flatpak install flathub com.github.gi_lom.dialect --assumeyes
 flatpak install flathub org.gustavoperedo.FontDownloader --assumeyes

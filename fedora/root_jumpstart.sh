@@ -10,7 +10,7 @@ echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 ###########################################################
 
 
-dnf install -y acpid akmod-nvidia binutils coreutils dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core emacs ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts glib2-devel gnome-tweaks hanazono-fonts htop kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make NetworkManager-tui p7zip pciutils powerline-fonts toolbox unrar util-linux-user vulkan-headers vulkan-tools xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs zsh
+dnf install -y acpid akmod-nvidia autotools binutils coreutils dbus-devel dbus-glib-devel dbus-libs dkms dnf-plugins-core emacs ffmpeg ffmpeg-devel ffmpeg-libs fontawesome-fonts glib2-devel gnome-tweaks hanazono-fonts htop libtool kernel-devel kernel-devel-matched kernel-headers libglvnd-devel libglvnd-glx libglvnd-opengl linux-firmware make NetworkManager-tui p7zip pciutils powerline-fonts toolbox unrar util-linux-user vulkan-headers vulkan-tools xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs zsh
 
 dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 
