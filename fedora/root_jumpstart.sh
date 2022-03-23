@@ -1,10 +1,9 @@
-dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+echo "fastestmirror=True \
+deltarpm=True \
+max_parallel_downloads=10 \
+excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
 
-
-echo "fastestmirror=True" >> /etc/dnf/dnf.conf
-echo "deltarpm=True" >> /etc/dnf/dnf.conf
-echo "max_parallel_downloads=10" >> /etc/dnf/dnf.conf
-echo "excludepkgs=gnome-tour" >> /etc/dnf/dnf.conf
+dnf upgrade -y
 
 
 ###########################################################
@@ -32,7 +31,6 @@ rm /usr/share/applications/org.gnome.Tour.desktop
 ###########################################################
 
 flatpak upgrade --assumeyes
-dnf upgrade -y
 dnf autoremove
 dnf clean all
 
