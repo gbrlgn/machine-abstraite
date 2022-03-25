@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Inconfidente, an anthropophagically-made 
-# GNOME Terminal color scheme.
+# Inconfidente install script
 
 [[ -z "$PROFILE_NAME" ]] && PROFILE_NAME="Inconfidente"
-[[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="gabriel-gian"
+[[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="LIBERTAS QUAE SERA TAMEN"
 [[ -z "$DCONF" ]] && DCONF=dconf
 [[ -z "$UUIDGEN" ]] && UUIDGEN=uuidgen
 
@@ -18,6 +17,7 @@ dset() {
     "$DCONF" write "$PROFILE_KEY/$key" "$val"
 }
 
+# because dconf still doesn't have "append"
 dlist_append() {
     local key="$1"; shift
     local val="$1"; shift
@@ -32,6 +32,7 @@ dlist_append() {
     "$DCONF" write "$key" "[$entries]"
 }
 
+# Newest versions of gnome-terminal use dconf
 if which "$DCONF" > /dev/null 2>&1; then
     [[ -z "$BASE_KEY_NEW" ]] && BASE_KEY_NEW=/org/gnome/terminal/legacy/profiles:
 
@@ -49,12 +50,15 @@ if which "$DCONF" > /dev/null 2>&1; then
         DEFAULT_KEY="$BASE_KEY_NEW/:$DEFAULT_SLUG"
         PROFILE_KEY="$BASE_KEY_NEW/:$PROFILE_SLUG"
 
+        # copy existing settings from default profile
         $DCONF dump "$DEFAULT_KEY/" | $DCONF load "$PROFILE_KEY/"
 
+        # add new copy to list of profiles
         dlist_append $BASE_KEY_NEW/list "$PROFILE_SLUG"
 
+        # update profile values with theme options
         dset visible-name "'$PROFILE_NAME'"
-        dset palette "['#141211', '#664949', '#56664c', '#6d614a', '#4e5366', '#664d61', '#4d6664', '#303030', '#444444', '#664949', '#56664c', '#6d614a', '#4e5366', '#664d61', '#4d6664', '#d1cdc7']"
+        dset palette "['#303030', '#664949', '#56664c', '#6d614a', '#4e5366', '#664d61', '#4d6664', '#7f796f', '#444444', '#664949', '#56664c', '#6d614a', '#4e5366', '#664d61', '#4d6664', '#afa89e']"
         dset background-color "'#242424'"
         dset foreground-color "'#a89f93'"
         dset bold-color "'#a89f93'"
@@ -70,6 +74,7 @@ if which "$DCONF" > /dev/null 2>&1; then
     fi
 fi
 
+# Fallback for Gnome 2 and early Gnome 3
 [[ -z "$GCONFTOOL" ]] && GCONFTOOL=gconftool
 [[ -z "$BASE_KEY" ]] && BASE_KEY=/apps/gnome-terminal/profiles
 
@@ -83,6 +88,7 @@ gset() {
     "$GCONFTOOL" --set --type "$type" "$PROFILE_KEY/$key" -- "$val"
 }
 
+# Because gconftool doesn't have "append"
 glist_append() {
     local type="$1"; shift
     local key="$1"; shift
@@ -98,10 +104,11 @@ glist_append() {
     "$GCONFTOOL" --set --type list --list-type $type "$key" "[$entries]"
 }
 
+# Append the Base16 profile to the profile list
 glist_append string /apps/gnome-terminal/global/profile_list "$PROFILE_SLUG"
 
 gset string visible_name "$PROFILE_NAME"
-gset string palette "#141211:#664949:#56664c:#6d614a:#4e5366:#664d61:#4d6664:#303030:#444444:#664949:#56664c:#6d614a:#4e5366:#664d61:#4d6664:#d1cdc7"
+gset string palette "#303030:#664949:#56664c:#6d614a:#4e5366:#664d61:#4d6664:#7f796f:#444444:#664949:#56664c:#6d614a:#4e5366:#664d61:#4d6664:#afa89e"
 gset string background_color "#242424"
 gset string foreground_color "#a89f93"
 gset string bold_color "#a89f93"
@@ -113,3 +120,4 @@ unset PROFILE_NAME
 unset PROFILE_SLUG
 unset DCONF
 unset UUIDGEN
+
