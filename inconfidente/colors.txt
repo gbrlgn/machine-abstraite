@@ -23,4 +23,4 @@
 
 *bars:			#303030
 *buttons:		#444444
-*popver:		#383838
+*popover:		#383838
