@@ -11,6 +11,7 @@
 (setq ido-everywhere t)
 
 (add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 (add-to-list 'default-frame-alist
              '(font . "Go Mono-22"))
