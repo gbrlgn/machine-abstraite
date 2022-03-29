@@ -14,9 +14,9 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 (add-to-list 'default-frame-alist
-             '(font . "Go Mono-22"))
+             '(font . "Go Mono-20"))
 
 (when window-system
   (set-frame-size (selected-frame) 93 93))
 
-(load-theme 'Inconfidente-theme t)
+(load-theme 'Inconfidente t)
