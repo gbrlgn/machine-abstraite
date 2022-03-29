@@ -1,4 +1,4 @@
-(setq live-ascii-art-logo ";;
+(setq live-ascii-art-logo "
 ;;::::::::::::::.....................   ...                                
 ;;:::::::::::.........................  ..                                        
 ;;::::::::::::::.................. ..         .                                   
@@ -25,9 +25,8 @@
 ;;::::::::::....:7YY?~:...:.:~.~7^~7^:!::^:.. ..:~7JYYJ!^.                        
 ;;::::::::.........:~7JJJ?7!~^:::::^^~~!!7?JJJJ?7~^..                             
 ;;::::::::..............:^^~!77?J?7777!~~^:..                                     
-;;::::::::..........................                                              
-;;:::::::::::::::::::::::::::::::::::::::::::::::............ ..   
-;;::::::::::::::::::::::::::::::........................ ...  ...     ..  ...")
+;;::::::::..........................                                            
+;;::::::::::::::::::::::::::::::........................ ...  ...     ..    ...")
 
 (message (concat "\n\n" live-ascii-art-logo "\n\n"))
 
@@ -164,7 +163,7 @@
 
 ;;default packs
 (let* ((pack-names '("foundation-pack"
-                     "colour-pack"
+                     ;; "colour-pack"
                      "lang-pack"
                      "power-pack"
                      "git-pack"
@@ -181,8 +180,7 @@
 (defun live-version ()
   (interactive)
   (if (called-interactively-p 'interactive)
-      (message "%s" (concat "This is Emacs Live " live-version))
-    live-version))
+      live-version))
 
 ;; Load `~/.emacs-live.el`. This allows you to override variables such
 ;; as live-packs (allowing you to specify pack loading order)
