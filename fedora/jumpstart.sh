@@ -18,10 +18,11 @@ cd ../machine-abstraite && git config credential.helper store
 ###########################################################
 
 
-cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME
+cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 
 curl -sLO https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh
-./install-emacs-live.sh
+chmod +x install-emacs-live.sh
+sh install-emacs-live.sh
 rm install-emacs-live.sh
 
 cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs.d/* $HOME/.emacs.d
@@ -35,5 +36,3 @@ cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs-live.el $HOME/
 
 
 cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens
-
-mkdir $HOME/.config/autostart && cp $HOME/Documentos/Git/machine-abstraite/config/nvidia-powermizer.desktop $HOME/.config/autostart
