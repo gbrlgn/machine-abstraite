@@ -28,5 +28,5 @@ alias yd='yt-dlp --continue --no-check-certificate --format=bestvideo+bestaudio 
 alias ya='yt-dlp --continue --no-check-certificate --format=bestaudio -x --audio-format wav'
 
 # THEME PURE #
-set fish_function_path /home/dancer/.config/fish/functions/theme-pure/functions/ $fish_function_path
-source /home/dancer/.config/fish/functions/theme-pure/conf.d/pure.fish
+set fish_function_path /home/gbrlgn/.config/fish/functions/theme-pure/functions/ $fish_function_path
+source /home/gbrlgn/.config/fish/functions/theme-pure/conf.d/pure.fish
