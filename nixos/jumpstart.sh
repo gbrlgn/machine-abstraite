@@ -1,52 +1,35 @@
-mkdir /home/dancer/Documentos/Git
+mkdir $HOME/Documentos/Git
+cd $HOME/Documentos/Git
 
-git clone https://github.com/gbrlgian/compsci /home/dancer/Documentos/Git/compsci
-cd /home/dancer/Documentos/Git/compsci && git config credential.helper store
+git clone https://github.com/gbrlgian/private
+git clone https://github.com/gbrlgian/compsci
+git clone https://github.com/gbrlgian/books
+git clone https://github.com/gbrlgian/machine-abstraite
 
-git clone https://github.com/gbrlgian/books /home/dancer/Documentos/Git/books
-cd /home/dancer/Documentos/Git/books && git config credential.helper store
-
-git clone https://github.com/gbrlgian/machine-abstraite /home/dancer/Documentos/Git/machine-abstraite
-cd /home/dancer/Documentos/Git/machine-abstraite && git config credential.helper store
-
-git clone https://github.com/gbrlgian/private /home/dancer/Documentos/Git/private
-cd /home/dancer/Documentos/Git/private && git config credential.helper store
-
-
-###########################################################
-
-
-bash <(curl -fksSL https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh)
-rsync -a /home/dancer/Documentos/Git/machine-abstraite/emacs/.* /home/dancer
+cd private && git config credential.helper store
+cd ../compsci && git config credential.helper store
+cd ../books && git config credential.helper store
+cd ../machine-abstraite && git config credential.helper store
 
 
 ###########################################################
 
 
-sudo -u dancer sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 
-mkdir -p /home/dancer/.zsh
-git clone https://github.com/sindresorhus/pure.git /home/dancer/.zsh/pure
+curl -sLO https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh
+chmod +x install-emacs-live.sh
+sh install-emacs-live.sh
+rm install-emacs-live.sh
 
-cp /home/dancer/Documentos/Git/machine-abstraite/config/.zshrc /home/dancer
+cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs.d/* $HOME/.emacs.d
 
+cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.live-packs $HOME/
 
-###########################################################
-
-
-cp -r /home/dancer/Documentos/Git/machine-abstraite/Wallpapers /home/dancer/Imagens
-
-mkdir -p /home/dancer/.config/autostart
-
-cp /home/dancer/Documentos/Git/machine-abstraite/config/nvidia-powermizer.desktop /home/dancer/.config/autostart
+cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs-live.el $HOME/
 
 
 ###########################################################
 
 
-chown -R dancer /home/dancer
-passwd dancer
-passwd -l root
-flatpak upgrade
-nix-channel --update
-nixos-rebuild switch
+cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens

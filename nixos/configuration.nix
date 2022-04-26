@@ -56,7 +56,7 @@ in
 
 
   networking = {
-    hostName = "danger";
+    hostName = "syzygy";
     interfaces.enp59s0.useDHCP = true;
     interfaces.wlp60s0.useDHCP = true;
     networkmanager.enable = true;
@@ -68,7 +68,6 @@ in
 
   hardware.nvidia = {
     modesetting.enable = true;
-    nvidiaPersistenced = true;
     prime = {
       offload.enable = true;
       intelBusId = "PCI:0:2:0";
@@ -77,7 +76,6 @@ in
     };
   };
   hardware.opengl.driSupport32Bit = true;
-  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -102,7 +100,7 @@ in
     enable = true;
     layout = "us";
     libinput.enable = true;
-    videoDrivers = [ "nvidia" "modesetting" ];
+    videoDrivers = [ "modesetting" "nvidia" ];
   };
   services.printing.enable = true;
 
@@ -110,13 +108,13 @@ in
 ###############################################################################
 
 
-  users.users.dancer = {
-    name = "dancer";
+  users.users.gbrlgn = {
+    name = "gbrlgn";
     isNormalUser = true;
-    home = "/home/dancer";
-    extraGroups = [ "wheel" "networkmanager" "video"];
+    home = "/home/gbrlgn";
+    extraGroups = [ "networkmanager" "video" "wheel" ];
     initialPassword = "assemblage";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
 
@@ -130,6 +128,7 @@ in
 
 
   programs.dconf.enable = true;
+  programs.fish.enable = true;
   programs.ssh.askPassword = "";
 
 
@@ -145,34 +144,30 @@ in
       gnome-user-docs gnome-tour
     ];
 
-  environment.shells = with pkgs; [ bashInteractive zsh ];
+  environment.shells = with pkgs; [ bashInteractive fish ];
   environment.systemPackages = with pkgs;
     [
       aspellDicts.pt_BR
       binutils
-      cargo celluloid clisp clojure coreutils curl
-      dbus docker
-      elixir emacs
+      celluloid oreutils curl
+      dbus
+      emacs
       ffmpeg firefox firmwareLinuxNonfree flatpak
-      fractal fragments font-awesome
-      gaphor gcc ghc git gimp glib
-      gnome-podcasts gnome.geary gnome.gnome-tweaks go go-tools
+      fragments font-awesome
+      gcc git gimp glib
+      gnome.gnome-tweaks
       htop
       imagemagick inkscape
-      jdk jetbrains.idea-community jetbrains.pycharm-community
-      kubernetes
-      leiningen less libreoffice lua
-      metadata-cleaner mitscheme
-      newsflash nodePackages.npm ntfs3g nvidia-offload
-      p7zip pciutils python39Packages.pip pciutils pipenv plan9port
-      postgresql powerline-fonts powerline-symbols pstree python
-      redis rustc
-      shotwell spotify steam
-      tangram
+      jetbrains.idea-community jetbrains.pycharm-community
+      less libreoffice
+      ntfs3g nvidia-offload
+      p7zip pciutils pciutils
+      powerline-fonts powerline-symbols pstree
+      shotwell spotify
       unzip unrar util-linux
-      vim vscodium 
-      wget wike
-      zip zlib zsh
+      vscodium 
+      wget
+      zip zlib
     ];
 
 
