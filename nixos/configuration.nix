@@ -151,23 +151,24 @@ in
       binutils
       celluloid oreutils curl
       dbus
-      emacs
-      ffmpeg firefox firmwareLinuxNonfree flatpak
+      emacs exa
+      ffmpeg firefox firmwareLinuxNonfree fish flatpak
       fragments font-awesome
       gcc git gimp glib
-      gnome.gnome-tweaks
+      gnome.gnome-tweaks go-font
       htop
       imagemagick inkscape
       jetbrains.idea-community jetbrains.pycharm-community
       less libreoffice
-      ntfs3g nvidia-offload
+      make mesa
+      nerdfonts ntfs3g nvidia-offload
       p7zip pciutils pciutils
       powerline-fonts powerline-symbols pstree
       shotwell spotify
       unzip unrar util-linux
-      vscodium 
+      vscodium vulkan-headers vulkan-tools
       wget
-      zip zlib
+      zlib
     ];
 
 
