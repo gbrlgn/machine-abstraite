@@ -149,7 +149,7 @@ in
     [
       aspellDicts.pt_BR
       binutils
-      celluloid oreutils curl
+      celluloid coreutils curl
       dbus
       emacs exa
       ffmpeg firefox firmwareLinuxNonfree fish flatpak
@@ -160,7 +160,7 @@ in
       imagemagick inkscape
       jetbrains.idea-community jetbrains.pycharm-community
       less libreoffice
-      make mesa
+      mesa 
       nerdfonts ntfs3g nvidia-offload
       p7zip pciutils pciutils
       powerline-fonts powerline-symbols pstree
@@ -175,7 +175,7 @@ in
 ###############################################################################
 
 
-  home-manager.users.dancer = {
+  home-manager.users.gbrlgn = {
     programs = {
       home-manager.enable = true;
       git = {
