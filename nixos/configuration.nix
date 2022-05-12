@@ -91,6 +91,7 @@ in
 
 
   services.flatpak.enable = true;
+  services.snap.enable = true;
   services.xserver = {
     desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
@@ -100,7 +101,7 @@ in
     enable = true;
     layout = "us";
     libinput.enable = true;
-    videoDrivers = [ "modesetting" "nvidia" ];
+    videoDrivers = [ "nvidia" ];
   };
   services.printing.enable = true;
 
@@ -152,21 +153,19 @@ in
       celluloid coreutils curl
       dbus
       emacs exa
-      ffmpeg firefox firmwareLinuxNonfree fish flatpak
-      fragments font-awesome
-      gcc git gimp glib
+      ffmpeg firefox firmwareLinuxNonfree fish
+      font-awesome
+      gcc git glib
       gnome.gnome-tweaks go-font
       htop
-      imagemagick inkscape
-      jetbrains.idea-community jetbrains.pycharm-community
-      less libreoffice
+      imagemagick
+      less
       mesa 
       nerdfonts ntfs3g nvidia-offload
       p7zip pciutils pciutils
       powerline-fonts powerline-symbols pstree
-      shotwell spotify
-      unzip unrar util-linux
-      vscodium vulkan-headers vulkan-tools
+      unzip util-linux
+      vulkan-headers vulkan-tools
       wget
       zlib
     ];
