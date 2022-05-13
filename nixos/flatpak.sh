@@ -17,10 +17,10 @@ flatpak install flathub org.gimp.GIMP --assumeyes
 flatpak install flathub dev.geopjr.Collision --assumeyes
 flatpak install flathub org.inkscape.Inkscape --assumeyes
 flatpak install flathub fr.romainvigier.MetadataCleaner --assumeyes
-flatpak install flathub org.gnome.Music --assumeyes
 flatpak install flathub org.gabmus.gfeeds --assumeyes
 flatpak install flathub org.gnome.Shotwell --assumeyes
 flatpak install flathub com.spotify.Client --assumeyes
+flatpak install flathub org.onlyoffice.desktopeditors --assumeyes
 flatpak install flathub re.sonny.Tangram --assumeyes
 flatpak install flathub com.github.liferooter.textpieces --assumeyes
 flatpak install flathub com.github.hugolabe.Wike --assumeyes
