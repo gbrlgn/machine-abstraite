@@ -91,7 +91,6 @@ in
 
 
   services.flatpak.enable = true;
-  services.snap.enable = true;
   services.xserver = {
     desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
@@ -159,13 +158,15 @@ in
       gnome.gnome-tweaks go-font
       htop
       imagemagick
+      jetbrains.idea-community jetbrains.pycharm-community
       less
       mesa 
       nerdfonts ntfs3g nvidia-offload
+      onlyoffice-bin
       p7zip pciutils pciutils
       powerline-fonts powerline-symbols pstree
       unzip util-linux
-      vulkan-headers vulkan-tools
+      vscodium vulkan-headers vulkan-tools
       wget
       zlib
     ];
