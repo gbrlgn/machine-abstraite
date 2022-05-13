@@ -66,6 +66,13 @@ in
 ###############################################################################
 
 
+  nix.gc.automatic = true;
+  xdg.portal.enable = true;
+
+
+###############################################################################
+
+
   hardware.nvidia = {
     modesetting.enable = true;
     prime = {
@@ -74,6 +81,9 @@ in
       nvidiaBusId = "PCI:1:0:0";
       sync.allowExternalGpu = true;
     };
+    powerManagement.enable = true;
+    nvidiaPersistenced = true;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = false;
