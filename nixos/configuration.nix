@@ -172,7 +172,6 @@ in
       less
       mesa 
       nerdfonts ntfs3g nvidia-offload
-      onlyoffice-bin
       p7zip pciutils pciutils
       powerline-fonts powerline-symbols pstree
       unzip util-linux
