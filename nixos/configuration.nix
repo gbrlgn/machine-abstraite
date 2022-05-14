@@ -162,19 +162,21 @@ in
     [
       aspellDicts.pt_BR
       binutils
-      celluloid coreutils curl
+      celluloid clojure coreutils curl
       dbus
-      emacs exa
+      elixir emacs exa
       ffmpeg firefox firmwareLinuxNonfree fish
-      gcc git glib
+      gcc ghc git glib go
       gnome.geary gnome.gnome-tweaks
       htop
       imagemagick
-      jetbrains.idea-community jetbrains.pycharm-community
+      jdk jetbrains.idea-community jetbrains.pycharm-community
+      kotlin
       less
       mesa 
-      nerdfonts ntfs3g nvidia-offload
-      p7zip pciutils pstree
+      nerdfonts nodePackages.npm ntfs3g nvidia-offload
+      p7zip pciutils pstree pythonFull
+      rustc
       unzip util-linux
       vscodium vulkan-headers vulkan-tools
       wget
