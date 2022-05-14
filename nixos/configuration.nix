@@ -23,12 +23,11 @@ in
 
 ###############################################################################
 
-  boot.blacklistedKernelModules = [ "nouveau" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ 
     "acpi_rev_override" "mem_sleep_default=deep"
-    "intel_iommu=igfx_off" "nvidia-drm.modeset=1" 
+    "nvidia-drm.modeset=1" 
   ];
   boot.loader = {
     grub = { 
@@ -48,6 +47,17 @@ in
 ###############################################################################
 
 
+  fonts.fonts = with pkgs; [
+    corefonts    
+    fira-code
+    fira-code-symbols
+    go-font
+    ibm-plex
+    nerdfonts
+    powerline-fonts
+    powerline-symbols
+    rPackages.fontawesome
+  ];
   i18n.defaultLocale = "pt_BR.UTF-8";
   time.timeZone = "America/Sao_Paulo";
 
@@ -66,13 +76,6 @@ in
 ###############################################################################
 
 
-  nix.gc.automatic = true;
-  xdg.portal.enable = true;
-
-
-###############################################################################
-
-
   hardware.nvidia = {
     modesetting.enable = true;
     prime = {
@@ -81,9 +84,7 @@ in
       nvidiaBusId = "PCI:1:0:0";
       sync.allowExternalGpu = true;
     };
-    powerManagement.enable = true;
     nvidiaPersistenced = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = false;
@@ -132,6 +133,8 @@ in
 
 
   nixpkgs.config.allowUnfree = true;
+  nix.gc.automatic = true;
+  xdg.portal.enable = true;
 
 
 ###############################################################################
@@ -163,17 +166,15 @@ in
       dbus
       emacs exa
       ffmpeg firefox firmwareLinuxNonfree fish
-      font-awesome
       gcc git glib
-      gnome.gnome-tweaks go-font
+      gnome.geary gnome.gnome-tweaks
       htop
       imagemagick
       jetbrains.idea-community jetbrains.pycharm-community
       less
       mesa 
       nerdfonts ntfs3g nvidia-offload
-      p7zip pciutils pciutils
-      powerline-fonts powerline-symbols pstree
+      p7zip pciutils pstree
       unzip util-linux
       vscodium vulkan-headers vulkan-tools
       wget
