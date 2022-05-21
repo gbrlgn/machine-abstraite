@@ -1,10 +1,10 @@
 mkdir $HOME/Documentos/Git
 cd $HOME/Documentos/Git
 
-git clone https://github.com/gbrlgian/private
-git clone https://github.com/gbrlgian/compsci
-git clone https://github.com/gbrlgian/books
-git clone https://github.com/gbrlgian/machine-abstraite
+git clone https://github.com/gbrlgn/private
+git clone https://github.com/gbrlgn/compsci
+git clone https://github.com/gbrlgn/books
+git clone https://github.com/gbrlgn/machine-abstraite
 
 cd private && git config credential.helper store
 cd ../compsci && git config credential.helper store

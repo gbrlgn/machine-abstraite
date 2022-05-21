@@ -106,12 +106,11 @@ in
     desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    displayManager.gdm.nvidiaWayland = true;
     displayManager.gdm.wayland = true;
     enable = true;
     layout = "us";
     libinput.enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" "modesetting" ];
   };
   services.printing.enable = true;
 
@@ -151,32 +150,34 @@ in
   environment.gnome.excludePackages = with pkgs;
     [
       epiphany gnome.gnome-system-monitor gnome.gnome-contacts
-      gnome.gnome-weather gnome.gnome-keyring gnome.gnome-photos
-      gnome.gnome-clocks gnome.cheese gnome.eog gnome.seahorse
-      gnome.totem gnome.yelp gnome.yelp-xsl gnome-connections
-      gnome-user-docs gnome-tour
+      gnome.gnome-weather gnome.gnome-keyring gnome.gnome-clocks
+      gnome.cheese gnome.eog gnome.seahorse gnome.totem gnome.yelp
+      gnome.yelp-xsl gnome-connections gnome-user-docs gnome-photos
+      gnome-tour
     ];
 
   environment.shells = with pkgs; [ bashInteractive fish ];
   environment.systemPackages = with pkgs;
     [
       aspellDicts.pt_BR
+      aws
       binutils
       celluloid clojure coreutils curl
-      dbus
+      dbus docker-compose
       elixir emacs exa
       ffmpeg firefox firmwareLinuxNonfree fish
       gcc ghc git glib go
       gnome.geary gnome.gnome-tweaks
       htop
-      imagemagick
       jdk jetbrains.idea-community jetbrains.pycharm-community
-      kotlin
+      kotlin kubectl kubernetes kubernetes-helm
       less
       mesa 
       nerdfonts nodePackages.npm ntfs3g nvidia-offload
-      p7zip pciutils pstree pythonFull
+      orjail
+      p7zip pciutils pstree pipenv pythonFull python39Packages.pip
       rustc
+      terraform terraform-providers.aws terraform-providers.kubernetes
       unzip util-linux
       vscodium vulkan-headers vulkan-tools
       wget
@@ -208,7 +209,7 @@ in
 ###############################################################################
 
 
-  system.stateVersion = "21.11";
+  system.stateVersion = "unstable";
 
 
 ###############################################################################
