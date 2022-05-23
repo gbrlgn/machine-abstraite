@@ -177,7 +177,7 @@ in
       orjail
       p7zip pciutils pstree pipenv pythonFull python39Packages.pip
       rustc
-      terraform terraform-providers.aws terraform-providers.kubernetes
+      terraform terraform-providers.aws terraform-providers.kubernetes tor
       unzip util-linux
       vscodium vulkan-headers vulkan-tools
       wget
