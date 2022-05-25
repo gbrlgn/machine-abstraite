@@ -132,6 +132,9 @@ in
 
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+  (import (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
+];
   nix.gc.automatic = true;
   xdg.portal.enable = true;
 
@@ -153,7 +156,7 @@ in
       gnome.gnome-weather gnome.gnome-keyring gnome.gnome-clocks
       gnome.cheese gnome.eog gnome.seahorse gnome.totem gnome.yelp
       gnome.yelp-xsl gnome-connections gnome-user-docs gnome-photos
-      gnome-tour
+      gnome-tour kgx
     ];
 
   environment.shells = with pkgs; [ bashInteractive fish ];
@@ -162,10 +165,10 @@ in
       aspellDicts.pt_BR
       aws
       binutils
-      celluloid clojure coreutils curl
+      celluloid clang clojure coreutils curl
       dbus docker-compose
-      elixir emacs exa
-      ffmpeg firefox firmwareLinuxNonfree fish
+      elixir emacsNativeComp exa
+      fd ffmpeg firefox firmwareLinuxNonfree fish
       gcc ghc git glib go
       gnome.geary gnome.gnome-tweaks
       htop
@@ -176,7 +179,7 @@ in
       nerdfonts nodePackages.npm ntfs3g nvidia-offload
       orjail
       p7zip pciutils pstree pipenv pythonFull python39Packages.pip
-      rustc
+      ripgrep rustc
       terraform terraform-providers.aws terraform-providers.kubernetes tor
       unzip util-linux
       vscodium vulkan-headers vulkan-tools
