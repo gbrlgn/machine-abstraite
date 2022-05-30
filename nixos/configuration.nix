@@ -113,6 +113,8 @@ in
     videoDrivers = [ "nvidia" "modesetting" ];
   };
   services.printing.enable = true;
+  
+  virtualisation.docker.enable = true;
 
 
 ###############################################################################
@@ -122,7 +124,7 @@ in
     name = "gbrlgn";
     isNormalUser = true;
     home = "/home/gbrlgn";
-    extraGroups = [ "networkmanager" "video" "wheel" ];
+    extraGroups = [ "networkmanager" "video" "wheel" "docker" ];
     initialPassword = "assemblage";
     shell = pkgs.fish;
   };
@@ -164,9 +166,9 @@ in
     [
       aspellDicts.pt_BR
       aws
-      binutils
+      binutils bc
       celluloid clang clojure coreutils curl
-      dbus docker-compose
+      dbus docker docker-client docker-compose
       elixir emacsNativeComp exa
       fd ffmpeg firefox firmwareLinuxNonfree fish
       gcc ghc git glib go
@@ -174,13 +176,14 @@ in
       htop
       jdk jetbrains.idea-community jetbrains.pycharm-community
       kotlin kubectl kubernetes kubernetes-helm
-      less
+      leiningen less
       mesa 
       nerdfonts nodePackages.npm ntfs3g nvidia-offload
       orjail
       p7zip pciutils pstree pipenv pythonFull python39Packages.pip
       ripgrep rustc
-      terraform terraform-providers.aws terraform-providers.kubernetes tor
+      terraform terraform-providers.aws terraform-providers.kubernetes
+      texlive.combined.scheme-full tor
       unzip util-linux
       vscodium vulkan-headers vulkan-tools
       wget
