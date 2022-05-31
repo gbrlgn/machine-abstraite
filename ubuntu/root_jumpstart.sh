@@ -1,7 +1,7 @@
 #!/bin/sh
 apt update && apt upgrade
 
-apt install -y acpid awscli binutils celluloid clojure dkms docker-compose elixir exa ffmpeg fish fonts-firacode fonts-ibm-plex gcc golang htop linux-firmware make mesa-vulkan-drivers make npm nvidia-driver-510 openjdk-18-jdk p7zip pciutils powerline qt5-style-plugins rustc shotwell ubuntu-restricted-extras vulkan-headers vulkan-tools vulkan-utils
+apt install -y acpid awscli binutils celluloid clojure dkms docker-compose elixir exa ffmpeg fish fonts-firacode fonts-ibm-plex gcc golang htop linux-firmware make mesa-vulkan-drivers make npm nvidia-driver-510 openjdk-18-jdk p7zip pciutils powerline qt5-style-plugins rustc shotwell ubuntu-restricted-extras vulkan-tools
 
 
 apt remove -y gnome-photos gnome-system-monitor gnome-clocks gnome-system-monitor gnome-weather gnome-contacts yelp yelp-xsl eog cheese seahorse ubuntu-docs ubuntu-advantage-tools
