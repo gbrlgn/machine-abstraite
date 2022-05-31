@@ -1,15 +1,16 @@
 #!/bin/sh
 apt update && apt upgrade
 
-apt install -y awscli binutils pciutils make exa fish p7zip ffmpeg npm htop gnome-music celluloid shotwell linux-firmware gcc make dkms acpid nvidia-driver-510 ubuntu-restricted-extras qt5-style-plugins vulkan-tools openjdk-18-jdk clojure powerline terraform golang rustc elixir fonts-ibm-plex fonts-firacode 
+apt install -y acpid awscli binutils celluloid clojure dkms docker-compose elixir exa ffmpeg fish fonts-firacode fonts-ibm-plex gcc golang htop linux-firmware make mesa-vulkan-drivers make npm nvidia-driver-510 openjdk-18-jdk p7zip pciutils powerline qt5-style-plugins rustc shotwell ubuntu-restricted-extras vulkan-headers vulkan-tools vulkan-utils
 
 
-apt remove -y gnome-photos gnome-calendar gnome-system-monitor gnome-clocks gnome-system-monitor gnome-weather gnome-contacts yelp yelp-xsl eog cheese seahorse ubuntu-docs ubuntu-advantage-tools
+apt remove -y gnome-photos gnome-system-monitor gnome-clocks gnome-system-monitor gnome-weather gnome-contacts yelp yelp-xsl eog cheese seahorse ubuntu-docs ubuntu-advantage-tools
 
 
-snap install chromium gimp inkscape spotify onlyoffice-desktopeditors slack teams-insiders
+snap install chromium gimp inkscape onlyoffice-desktopeditors spotify  slack teams-insiders
 snap install codium --classic
 snap install intellij-idea-community --classic
+snap install pycharm-community --classic
 
 
 ###############################################################################
