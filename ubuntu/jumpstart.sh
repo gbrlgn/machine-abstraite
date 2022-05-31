@@ -24,6 +24,3 @@ cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.live-packs $HOME/
 
 cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens
-
-
-sh -c "echo 'export QT_QPA_PLATFORMTHEME=gtk3' >> /etc/environment"

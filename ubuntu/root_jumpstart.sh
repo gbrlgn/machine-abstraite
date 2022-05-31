@@ -19,6 +19,7 @@ snap install pycharm-community --classic
 echo "syzygy" > /etc/hostname
 usermod -s /bin/fish gbrlgn
 
+sh -c "echo 'export QT_QPA_PLATFORMTHEME=gtk3' >> /etc/environment"
 
 ###############################################################################
 
