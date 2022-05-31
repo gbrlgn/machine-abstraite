@@ -1,20 +1,20 @@
 (setq live-ascii-art-logo "
 
-;;                                                                            
-;;                                                    :5  ^P                    
-;;                                                   7@&^B@@                    
-;;                                                  B@@@&7B@                    
-;;                                                ~@B.&&  G@                    
-;;                                               5@?  @#  G@                    
-;;                   ::::::::::::::::::::::::::^&&:   @#  G@                    
-;;                   55PPPP5G@@&BGG#&@@P5PPPPP5B@?    @#  G@                    
-;;                         .&#^      ~&B        !@B.  @#  G@                    
-;;                         &&         .@B        .B@7 &B  G@                    
-;;                         @&          @#          !@#@@J P@                    
-;;                         ^@B.      :#&.            G@&P&@@                    
-;;                          .Y#BPYYPB#J               !5 .J#                    
-;;                             .:^^:.                                           
-;;
+	;;                                                                            
+	;;                                                    :5  ^P                    
+	;;                                                   7@&^B@@                    
+	;;                                                  B@@@&7B@                    
+	;;                                                ~@B.&&  G@                    
+	;;                                               5@?  @#  G@                    
+	;;                   ::::::::::::::::::::::::::^&&:   @#  G@                    
+	;;                   55PPPP5G@@&BGG#&@@P5PPPPP5B@?    @#  G@                    
+	;;                         .&#^      ~&B        !@B.  @#  G@                    
+	;;                         &&         .@B        .B@7 &B  G@                    
+	;;                         @&          @#          !@#@@J P@                    
+	;;                         ^@B.      :#&.            G@&P&@@                    
+	;;                          .Y#BPYYPB#J               !5 .J#                    
+	;;                             .:^^:.                                           
+	;;
 
 
 ")
@@ -215,12 +215,3 @@
 
 (message "\n\n Start deterritorializing... \n\n")
 (put 'downcase-region 'disabled nil)
-
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-(package-refresh-contents)
-
-(require 'rust-mode)
-(require 'go-mode)

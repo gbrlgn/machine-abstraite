@@ -1,3 +1,4 @@
+#!/bin/sh
 git config --global user.name "Gabriel Gian"
 git config --global user.email "gabrielgian@protonmail.com"
 
@@ -15,7 +16,7 @@ cd ../books && git config credential.helper store
 cd ../machine-abstraite && git config credential.helper store
 
 
-###########################################################
+###############################################################################
 
 
 cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
@@ -35,4 +36,4 @@ cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs-live.el $HOME/
 cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens
 
 
-sh -c "echo 'export QT_QPA_PLATFORMTHEME=gtk2' >> /etc/environment"
+sh -c "echo 'export QT_QPA_PLATFORMTHEME=gtk3' >> /etc/environment"
