@@ -29,3 +29,5 @@ $HOME/.emacs.d/bin/doom install
 cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 
 cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens
+
+cp -r $HOME/Documentos/Git/machine-abstraite/Modelos $HOME
