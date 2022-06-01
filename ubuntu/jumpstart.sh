@@ -19,8 +19,13 @@ cd ../machine-abstraite && git config credential.helper store
 ###############################################################################
 
 
-cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
+git clone https://github.com/hlissner/doom-emacs $HOME/.emacs.d
+$HOME/.emacs.d/bin/doom install
 
-cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.live-packs $HOME/
+
+###############################################################################
+
+
+cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 
 cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens
