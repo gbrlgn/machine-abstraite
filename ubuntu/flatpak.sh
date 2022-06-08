@@ -15,6 +15,8 @@ flatpak install flathub de.haeckerfelix.Fragments --assumeyes
 flatpak install flathub org.gaphor.Gaphor --assumeyes
 flatpak install flathub org.gnome.Geary --assumeyes
 flatpak install flathub dev.geopjr.Collision --assumeyes
+flatpak install flathub org.gimp.GIMP --assumeyes
+flatpak install flathub org.inkscape.Inkscape --assumeyes
 flatpak install flathub re.sonny.Junction --assumeyes
 flatpak install flathub fr.romainvigier.MetadataCleaner --assumeyes
 flatpak install flathub org.gabmus.gfeeds --assumeyes

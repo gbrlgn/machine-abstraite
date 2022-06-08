@@ -7,7 +7,7 @@ apt install -y acpid awscli binutils cargo celluloid clojure curl dkms elixir fd
 apt remove -y gnome-photos gnome-system-monitor gnome-clocks gnome-system-monitor gnome-weather gnome-contacts yelp yelp-xsl eog cheese seahorse ubuntu-docs ubuntu-advantage-tools
 
 
-snap install chromium gimp inkscape onlyoffice-desktopeditors spotify  slack teams-insiders
+snap install chromium onlyoffice-desktopeditors spotify  slack teams-insiders
 snap install emacs --classic
 snap install codium --classic
 snap install intellij-idea-community --classic
