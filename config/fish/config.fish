@@ -4,7 +4,7 @@ export EDITOR=emacs
 export LANG=pt_BR.UTF-8
 export LC_CTYPE=pt_BR.UTF-8
 source $HOME/.config/fish/shortcuts.fish
-set -gx PATH $HOME/.local/bin /usr/local/bin $PATH
+set -gx PATH $HOME/.local/bin /usr/local/bin $HOME/.cargo/bin $PATH
 
 switch (uname)
 case "*Darwin"
