@@ -82,3 +82,6 @@
 
 (setq fancy-splash-image
         (concat doom-private-dir "splash/" "waste.svg"))
+
+(add-hook 'text-mode-hook #'auto-fill-mode)
+(setq-default fill-column 80)
