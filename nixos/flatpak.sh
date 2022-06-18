@@ -8,6 +8,7 @@ flatpak install flathub io.bassi.Amberol --assumeyes
 flatpak install flathub com.usebottles.bottles --assumeyes
 flatpak install flathub io.github.celluloid_player.Celluloid --assumeyes
 flatpak install flathub re.sonny.Commit --assumeyes
+flatpak install flathub com.belmoussaoui.Decoder
 flatpak install flathub com.github.gi_lom.dialect --assumeyes
 flatpak install flathub org.gabmus.gfeeds --assumeyes
 flatpak install flathub org.gustavoperedo.FontDownloader --assumeyes
