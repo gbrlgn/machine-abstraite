@@ -1,13 +1,13 @@
 #!/bin/sh
 apt update && apt upgrade
 
-apt install -y acpid awscli binutils cargo celluloid clojure curl dkms elixir fd-find ffmpeg fish fonts-firacode fonts-ibm-plex gcc golang htop kotlin linux-firmware make mesa-vulkan-drivers make npm nvidia-driver-510 openjdk-18-jdk p7zip pciutils pip powerline qt5-style-plugins ripgrep rust-all shotwell ubuntu-restricted-extras vulkan-tools
+apt install -y acpid awscli binutils cargo clojure curl dkms elixir fd-find ffmpeg flatpak fish fonts-firacode fonts-ibm-plex gcc golang htop kotlin linux-firmware make mesa-vulkan-drivers make npm nvidia-driver-510 openjdk-18-jdk p7zip pciutils pip powerline qt5-style-plugins ripgrep rust-all shotwell ubuntu-restricted-extras vulkan-tools
 
 
-apt remove -y gnome-photos gnome-system-monitor gnome-clocks gnome-system-monitor gnome-weather gnome-contacts yelp yelp-xsl eog cheese seahorse ubuntu-docs ubuntu-advantage-tools
+apt remove -y gnome-photos gnome-system-monitor gnome-clocks gnome-system-monitor gnome-weather gnome-contacts yelp yelp-xsl eog cheese seahorse shotwell ubuntu-docs ubuntu-advantage-tools
 
 
-snap install chromium onlyoffice-desktopeditors spotify  slack teams-insiders
+snap install chromium dbeaver-ce onlyoffice-desktopeditors spotify slack teams-insiders
 snap install emacs --classic
 snap install codium --classic
 snap install intellij-idea-community --classic
