@@ -25,7 +25,7 @@ $HOME/.emacs.d/bin/doom install
 
 ###############################################################################
 
-cp -r $HOME/Documentos/Git/machine-abstraite/emacs/* $HOME
+cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.doom.d $HOME
 
 cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 
