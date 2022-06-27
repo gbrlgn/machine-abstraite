@@ -154,11 +154,11 @@ in
 
   environment.gnome.excludePackages = with pkgs;
     [
-      epiphany gnome.gnome-system-monitor gnome.gnome-contacts
-      gnome.gnome-weather gnome.gnome-keyring gnome.gnome-clocks
-      gnome.cheese gnome.eog gnome.seahorse gnome.totem gnome.yelp
-      gnome.yelp-xsl gnome-connections gnome-user-docs gnome-photos
-      gnome-tour kgx
+      epiphany gnome.gnome-clocks gnome.gnome-contacts gnome.gnome-keyring
+      gnome.gnome-music gnome.gnome-system-monitor gnome.gnome-weather  
+      gnome.cheese gnome.eog gnome.geary gnome.seahorse gnome.totem gnome.yelp 
+      gnome.yelp-xsl gnome-connections gnome-user-docs gnome-photos gnome-tour 
+      kgx
     ];
 
   environment.shells = with pkgs; [ bashInteractive fish ];
@@ -168,18 +168,18 @@ in
       apt aws
       binutils bc
       celluloid clang clojure containerd coreutils curl
-      dbus docker docker-client docker-compose
+      dbus debianutils docker docker-client docker-compose dpkg
       elixir emacsNativeComp exa
       fd ffmpeg firefox firmwareLinuxNonfree fish
       gcc ghc git glib go
-      gnome.geary gnome.gnome-tweaks
+      gnome.gnome-tweaks
       htop
       jdk jetbrains.idea-community jetbrains.pycharm-community
       kotlin kubectl kubernetes kubernetes-helm
       leiningen less
-      make mesa 
+      gnumake mesa 
       nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
-      onlyoffice-desktopeditors orjail
+      orjail
       p7zip pciutils pstree pipenv pythonFull python39Packages.pip
       ripgrep rustc
       terraform terraform-providers.aws terraform-providers.kubernetes
@@ -195,6 +195,7 @@ in
 
 
   home-manager.users.gbrlgn = {
+    home.stateVersion = "22.05";
     programs = {
       home-manager.enable = true;
       git = {
