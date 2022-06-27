@@ -165,9 +165,9 @@ in
   environment.systemPackages = with pkgs;
     [
       aspellDicts.pt_BR
-      aws
+      apt aws
       binutils bc
-      celluloid clang clojure coreutils curl
+      celluloid clang clojure containerd coreutils curl
       dbus docker docker-client docker-compose
       elixir emacsNativeComp exa
       fd ffmpeg firefox firmwareLinuxNonfree fish
@@ -177,9 +177,9 @@ in
       jdk jetbrains.idea-community jetbrains.pycharm-community
       kotlin kubectl kubernetes kubernetes-helm
       leiningen less
-      mesa 
-      nerdfonts nodePackages.npm ntfs3g nvidia-offload
-      orjail
+      make mesa 
+      nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
+      onlyoffice-desktopeditors orjail
       p7zip pciutils pstree pipenv pythonFull python39Packages.pip
       ripgrep rustc
       terraform terraform-providers.aws terraform-providers.kubernetes
@@ -215,7 +215,7 @@ in
 ###############################################################################
 
 
-  system.stateVersion = "unstable";
+  system.stateVersion = "22.05";
 
 
 ###############################################################################
