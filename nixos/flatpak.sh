@@ -1,31 +1,36 @@
 #!/bin/sh
+
+
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 
-flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark --assumeyes
-flatpak install flathub org.gnome.World.Secrets --assumeyes
-flatpak install flathub io.bassi.Amberol --assumeyes
-flatpak install flathub com.usebottles.bottles --assumeyes
-flatpak install flathub io.github.celluloid_player.Celluloid --assumeyes
-flatpak install flathub re.sonny.Commit --assumeyes
-flatpak install flathub com.belmoussaoui.Decoder --assumeyes
-flatpak install flathub com.github.gi_lom.dialect --assumeyes
-flatpak install flathub org.gabmus.gfeeds --assumeyes
-flatpak install flathub org.gustavoperedo.FontDownloader --assumeyes
-flatpak install flathub org.gnome.Fractal --assumeyes
-flatpak install flathub de.haeckerfelix.Fragments --assumeyes
-flatpak install flathub org.gaphor.Gaphor --assumeyes
-flatpak install flathub org.gnome.Geary --assumeyes
-flatpak install flathub dev.geopjr.Collision --assumeyes
-flatpak install flathub org.gimp.GIMP --assumeyes
-flatpak install flathub org.inkscape.Inkscape --assumeyes
-flatpak install flathub re.sonny.Junction --assumeyes
-flatpak install flathub fr.romainvigier.MetadataCleaner --assumeyes
-flatpak install flathub com.obsproject.Studio --assumeyes
-flatpak install flathub org.onlyoffice.desktopeditors --assumeyes
-flatpak install flathub com.github.johnfactotum.QuickLookup --assumeyes
-flatpak install flathub com.github.flxzt.rnote --assumeyes
-flatpak install flathub org.gnome.Shotwell --assumeyes
-flatpak install flathub com.spotify.Client --assumeyes
-flatpak install flathub com.github.liferooter.textpieces --assumeyes
-flatpak install flathub com.github.hugolabe.Wike --assumeyes
+flatpak install flathub org.gtk.Gtk3theme.adw-gtk3-dark \ 
+com.belmoussaoui.Authenticator \
+org.gnome.World.Secrets \
+io.bassi.Amberol \
+com.usebottles.bottles \
+io.github.celluloid_player.Celluloid \
+re.sonny.Commit \
+com.belmoussaoui.Decoder \
+com.github.gi_lom.dialect \
+org.gabmus.gfeeds \
+com.github.tchx84.Flatseal \
+org.gustavoperedo.FontDownloader \
+org.gnome.Fractal \
+de.haeckerfelix.Fragments \
+org.gaphor.Gaphor \
+org.gnome.Geary \
+dev.geopjr.Collision \
+org.gimp.GIMP \
+org.inkscape.Inkscape \
+re.sonny.Junction \
+fr.romainvigier.MetadataCleaner \
+com.obsproject.Studio \
+org.onlyoffice.desktopeditors \
+com.github.johnfactotum.QuickLookup \
+com.github.flxzt.rnote \
+org.gnome.Shotwell \
+com.spotify.Client \
+com.github.liferooter.textpieces \
+org.gabmus.whatip \
+com.github.hugolabe.Wike --assumeyes
