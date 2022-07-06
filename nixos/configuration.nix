@@ -165,10 +165,10 @@ in
   environment.systemPackages = with pkgs;
     [
       aspellDicts.pt_BR
-      apt aws
+      aws
       binutils bc
       celluloid clang clojure containerd coreutils curl
-      dbus debianutils docker docker-client docker-compose dpkg
+      dbus distrobox docker docker-client docker-compose dpkg
       elixir emacsNativeComp exa
       fd ffmpeg firefox firmwareLinuxNonfree fish
       gcc ghc git glib go
