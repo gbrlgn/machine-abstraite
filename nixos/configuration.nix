@@ -3,13 +3,6 @@
 let
 
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec -a "$0" "$@"
-  '';
   
 in
 
@@ -85,7 +78,9 @@ in
       sync.allowExternalGpu = true;
     };
     nvidiaPersistenced = true;
+    powerManagement.enable = true;
   };
+  hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -103,10 +98,10 @@ in
 
   services.flatpak.enable = true;
   services.xserver = {
-    desktopManager.xterm.enable = false;
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
     displayManager.gdm.wayland = true;
+    desktopManager.xterm.enable = false;
     enable = true;
     layout = "us";
     libinput.enable = true;
@@ -168,7 +163,7 @@ in
       aws
       binutils bc
       celluloid clang clojure containerd coreutils curl
-      dbus distrobox docker docker-client docker-compose dpkg
+      dbus direnv distrobox docker docker-client docker-compose dpkg
       elixir emacsNativeComp exa
       fd ffmpeg firefox firmwareLinuxNonfree fish
       gcc ghc git glib go
@@ -178,7 +173,7 @@ in
       kotlin kubectl kubernetes kubernetes-helm
       leiningen less
       gnumake mesa 
-      nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
+      nerdfonts nerdctl nodePackages.npm ntfs3g
       orjail
       p7zip pciutils pstree pipenv pythonFull python39Packages.pip
       ripgrep rustc
@@ -188,6 +183,13 @@ in
       vscodium vulkan-headers vulkan-tools
       wget
       zlib
+      (writeShellScriptBin "nvidia-offload" ''
+      	export __NV_PRIME_RENDER_OFFLOAD=1
+      	export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+      	export __GLX_VENDOR_LIBRARY_NAME=nvidia
+      	export __VK_LAYER_NV_optimus=NVIDIA_only
+      	exec -a "$0" "$@"
+      '')
     ];
 
 
