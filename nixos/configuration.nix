@@ -3,6 +3,13 @@
 let
 
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export __VK_LAYER_NV_optimus=NVIDIA_only
+    exec -a "$0" "$@"
+  '';
   
 in
 
@@ -16,23 +23,26 @@ in
 
 ###############################################################################
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ 
-    "acpi_rev_override" "mem_sleep_default=deep"
-    "nvidia-drm.modeset=1" 
-  ];
-  boot.loader = {
-    grub = { 
-      enable = true;
-      devices = [ "nodev" ];
-      useOSProber = true;
-      efiSupport = true;
-      version = 2;
-    };
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
+  boot = {
+    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ 
+      "acpi_rev_override" "mem_sleep_default=deep"
+      "nvidia-drm.modeset=1" "nvidia.NVreg_CheckPCIConfigSpace=0"
+      "nvidia.NVreg_UsePageAttributeTable=1"
+    ];
+    loader = {
+      grub = { 
+        enable = true;
+        devices = [ "nodev" ];
+        useOSProber = true;
+        efiSupport = true;
+        version = 2;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
     };
   };
 
@@ -40,17 +50,18 @@ in
 ###############################################################################
 
 
-  fonts.fonts = with pkgs; [
-    corefonts    
-    fira-code
-    fira-code-symbols
-    go-font
-    ibm-plex
-    nerdfonts
-    powerline-fonts
-    powerline-symbols
-    rPackages.fontawesome
-  ];
+  fonts.fonts = with pkgs; 
+    [
+      corefonts    
+      fira-code
+      fira-code-symbols
+      go-font
+      ibm-plex
+      nerdfonts
+      powerline-fonts
+      powerline-symbols
+      rPackages.fontawesome
+    ];
   i18n.defaultLocale = "pt_BR.UTF-8";
   time.timeZone = "America/Sao_Paulo";
 
@@ -71,17 +82,23 @@ in
 
   hardware.nvidia = {
     modesetting.enable = true;
+    nvidiaPersistenced = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
     prime = {
       offload.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-      sync.allowExternalGpu = true;
     };
-    nvidiaPersistenced = true;
-    powerManagement.enable = true;
   };
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -105,7 +122,8 @@ in
     enable = true;
     layout = "us";
     libinput.enable = true;
-    videoDrivers = [ "nvidia" "modesetting" ];
+    useGlamor = true;
+    videoDrivers = [ "nvidia" ];
   };
   services.printing.enable = true;
   
@@ -130,8 +148,9 @@ in
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
-  (import (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
-];
+    (import 
+      (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
+  ];
   nix.gc.automatic = true;
   xdg.portal.enable = true;
 
@@ -162,35 +181,33 @@ in
       aspellDicts.pt_BR
       aws
       binutils bc
-      celluloid clang clojure containerd coreutils curl
+      celluloid clang clojure containerd coreutils
+      cudatoolkit curl
       dbus direnv distrobox docker docker-client docker-compose dpkg
       elixir emacsNativeComp exa
       fd ffmpeg firefox firmwareLinuxNonfree fish
-      gcc ghc git glib go
-      gnome.gnome-tweaks
+      gcc ghc git glib glxinfo gnumake go gnome.gnome-tweaks
       htop
       jdk jetbrains.idea-community jetbrains.pycharm-community
       kotlin kubectl kubernetes kubernetes-helm
       leiningen less
-      gnumake mesa 
-      nerdfonts nerdctl nodePackages.npm ntfs3g
+      mesa 
+      nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
       orjail
-      p7zip pciutils pstree pipenv pythonFull python39Packages.pip
+      p7zip pciutils pipenv pstree pythonFull python39Packages.pip
       ripgrep rustc
       terraform terraform-providers.aws terraform-providers.kubernetes
       texlive.combined.scheme-full tor
       unzip util-linux
-      vscodium vulkan-headers vulkan-tools
+      vdpauinfo vscodium vulkan-headers vulkan-tools
       wget
       zlib
-      (writeShellScriptBin "nvidia-offload" ''
-      	export __NV_PRIME_RENDER_OFFLOAD=1
-      	export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-      	export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      	export __VK_LAYER_NV_optimus=NVIDIA_only
-      	exec -a "$0" "$@"
-      '')
     ];
+  
+  environment.variables = {
+    __GL_MaxFramesAllowed = "0";
+    __GL_LOG_MAX_ANISO = "4";
+  };
 
 
 ###############################################################################
