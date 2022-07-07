@@ -152,7 +152,10 @@ in
       (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
   ];
   nix.gc.automatic = true;
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    gtkUsePortal = true;
+  };
 
 
 ###############################################################################
@@ -183,9 +186,9 @@ in
       binutils bc
       celluloid clang clojure containerd coreutils
       cudatoolkit curl
-      dbus direnv distrobox docker docker-client docker-compose dpkg
+      dbus direnv distrobox docker docker-client docker-compose
       elixir emacsNativeComp exa
-      fd ffmpeg firefox firmwareLinuxNonfree fish
+      fd ffmpeg firefox-wayland firmwareLinuxNonfree fish
       gcc ghc git glib glxinfo gnumake go gnome.gnome-tweaks
       htop
       jdk jetbrains.idea-community jetbrains.pycharm-community
@@ -207,6 +210,7 @@ in
   environment.variables = {
     __GL_MaxFramesAllowed = "0";
     __GL_LOG_MAX_ANISO = "4";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
 
