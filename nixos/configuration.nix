@@ -152,10 +152,7 @@ in
       (builtins.fetchTarball https://github.com/nix-community/emacs-overlay/archive/master.tar.gz))
   ];
   nix.gc.automatic = true;
-  xdg.portal = {
-    enable = true;
-    gtkUsePortal = true;
-  };
+  xdg.portal.enable = true;
 
 
 ###############################################################################
@@ -184,8 +181,7 @@ in
       aspellDicts.pt_BR
       aws
       binutils bc
-      celluloid clang clojure containerd coreutils
-      cudatoolkit curl
+      celluloid clang clojure containerd coreutils curl
       dbus direnv distrobox docker docker-client docker-compose
       elixir emacsNativeComp exa
       fd ffmpeg firefox-wayland firmwareLinuxNonfree fish
