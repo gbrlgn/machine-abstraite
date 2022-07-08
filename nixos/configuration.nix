@@ -114,6 +114,8 @@ in
 
 
   services.flatpak.enable = true;
+  services.gnome3.gnome-keyring.enable = true;
+  services.gnome3.gnome-online-accounts.enable = true;
   services.xserver = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
@@ -138,14 +140,7 @@ in
     name = "gbrlgn";
     isNormalUser = true;
     home = "/home/gbrlgn";
-    extraGroups = [ "networkmanager
-
-
-
-
-
-
-" "video" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "video" "wheel" "docker" ];
     initialPassword = "assemblage";
     shell = pkgs.fish;
   };
@@ -187,13 +182,14 @@ in
   environment.systemPackages = with pkgs;
     [
       aspellDicts.pt_BR
-      aws
+      amberol aws
       binutils bc
-      cargo  celluloid clang clojure containerd coreutils curl
+      cargo celluloid clang clojure containerd coreutils curl
       dbus direnv distrobox docker docker-client docker-compose
       elixir emacsNativeComp exa
       fd ffmpeg firefox-wayland firmwareLinuxNonfree fish
-      gcc ghc git glib glxinfo gnumake go gnome.gnome-tweaks
+      gcc ghc git glib glxinfo gnumake go
+      gnome.geary gnome.gnome-tweaks
       htop
       jdk jetbrains.idea-community jetbrains.pycharm-community
       kotlin kubectl kubernetes kubernetes-helm
