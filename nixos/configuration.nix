@@ -126,7 +126,8 @@ in
     videoDrivers = [ "nvidia" ];
   };
   services.printing.enable = true;
-  
+
+  virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
 
 
@@ -137,7 +138,14 @@ in
     name = "gbrlgn";
     isNormalUser = true;
     home = "/home/gbrlgn";
-    extraGroups = [ "networkmanager" "video" "wheel" "docker" ];
+    extraGroups = [ "networkmanager
+
+
+
+
+
+
+" "video" "wheel" "docker" ];
     initialPassword = "assemblage";
     shell = pkgs.fish;
   };
@@ -181,7 +189,7 @@ in
       aspellDicts.pt_BR
       aws
       binutils bc
-      celluloid clang clojure containerd coreutils curl
+      cargo  celluloid clang clojure containerd coreutils curl
       dbus direnv distrobox docker docker-client docker-compose
       elixir emacsNativeComp exa
       fd ffmpeg firefox-wayland firmwareLinuxNonfree fish
@@ -189,9 +197,9 @@ in
       htop
       jdk jetbrains.idea-community jetbrains.pycharm-community
       kotlin kubectl kubernetes kubernetes-helm
-      leiningen less
+      leiningen less libportal
       mesa 
-      nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
+      nerdctl nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
       orjail
       p7zip pciutils pipenv pstree pythonFull python39Packages.pip
       ripgrep rustc
@@ -200,6 +208,7 @@ in
       unzip util-linux
       vdpauinfo vscodium vulkan-headers vulkan-tools
       wget
+      xdg-dbus-proxy
       zlib
     ];
   
@@ -235,7 +244,7 @@ in
 ###############################################################################
 
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "unstable";
 
 
 ###############################################################################
