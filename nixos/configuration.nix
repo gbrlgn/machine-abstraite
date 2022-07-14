@@ -114,8 +114,10 @@ in
 
 
   services.flatpak.enable = true;
-  services.gnome3.gnome-keyring.enable = true;
-  services.gnome3.gnome-online-accounts.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-online-accounts.enable = true;
+  services.gnome.tracker.enable = true;
+  services.gnome.tracker-miners.enable = true;
   services.xserver = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
@@ -140,7 +142,7 @@ in
     name = "gbrlgn";
     isNormalUser = true;
     home = "/home/gbrlgn";
-    extraGroups = [ "networkmanager" "video" "wheel" "docker" ];
+    extraGroups = [ "docker" "flatpak" "networkmanager" "video" "wheel" ];
     initialPassword = "assemblage";
     shell = pkgs.fish;
   };
@@ -183,7 +185,7 @@ in
     [
       aspellDicts.pt_BR
       amberol aws
-      binutils bc
+      babashka binutils bc
       cargo celluloid clang clojure containerd coreutils curl
       dbus direnv distrobox docker docker-client docker-compose
       elixir emacsNativeComp exa
@@ -198,11 +200,11 @@ in
       nerdctl nerdfonts nerdctl nodePackages.npm ntfs3g nvidia-offload
       orjail
       p7zip pciutils pipenv pstree pythonFull python39Packages.pip
-      ripgrep rustc
+      retroarch ripgrep rustc
       terraform terraform-providers.aws terraform-providers.kubernetes
-      texlive.combined.scheme-full tor
+      texlive.combined.scheme-full
+      tor tracker tracker-miners
       unzip util-linux
-      vdpauinfo vscodium vulkan-headers vulkan-tools
       wget
       xdg-dbus-proxy
       zlib
