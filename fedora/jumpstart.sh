@@ -1,3 +1,6 @@
+#!/bin/sh
+
+
 git config --global user.name "Gabriel Gian"
 git config --global user.email "gabrielgian@protonmail.com"
 
@@ -20,19 +23,22 @@ cd ../machine-abstraite && git config credential.helper store
 
 cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
 
-curl -sLO https://raw.github.com/overtone/emacs-live/master/installer/install-emacs-live.sh
-chmod +x install-emacs-live.sh
-sh install-emacs-live.sh
-rm install-emacs-live.sh
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+$HOME/.emacs.d/bin/doom install
+
+cp -r $HOME/Documentos/Git/machine-abstraite/emacs/* $HOME/.emacs.d
 
 cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs.d/* $HOME/.emacs.d
-
-cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.live-packs $HOME/
-
-cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.emacs-live.el $HOME/
 
 
 ###########################################################
 
 
+cp -r $HOME/Documentos/Git/machine-abstraite/emacs/.doom.d $HOME
+$HOME/.emacs.d/bin/doom sync
+
+cp -r $HOME/Documentos/Git/machine-abstraite/config/fish $HOME/.config
+
 cp -r $HOME/Documentos/Git/machine-abstraite/Wallpapers $HOME/Imagens
+
+cp -r $HOME/Documentos/Git/machine-abstraite/Modelos $HOME
