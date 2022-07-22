@@ -10,6 +10,7 @@ org.gnome.World.Secrets \
 io.bassi.Amberol \
 com.usebottles.bottles \
 io.github.celluloid_player.Celluloid \
+org.gnome.World.Citations \
 re.sonny.Commit \
 com.belmoussaoui.Decoder \
 com.github.gi_lom.dialect \

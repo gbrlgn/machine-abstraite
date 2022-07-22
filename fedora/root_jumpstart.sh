@@ -51,7 +51,8 @@ dnf remove -y cheese cockpit eog gnome-abrt gnome-clocks gnome-connections gnome
 
 ###########################################################
 
-
+echo "max_parallel_downloads=10\
+fastestmirror=True" >> /etc/dnf/dnf.conf
 echo "syzygy" > /etc/hostname
 usermod -s /bin/fish gbrlgn
 rm /usr/share/applications/org.gnome.Tour.desktop
