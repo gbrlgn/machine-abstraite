@@ -1,0 +1,702 @@
+;;; inconfidente-theme.el --- Libertas Quae Sera Tamen
+
+;; Copyright (c) 2016-present Sven Greb <development@svengreb.de> (https://www.svengreb.de)
+
+;; Title: Inconfidente Theme
+;; Project: inconfidente
+;; Version: 0.1.0
+;; URL: https://github.com/gbrlgn/machine-abstraite
+;; Author: Gabriel Gian <gabrielgian@protonmail.com>
+;; Package-Requires: ((emacs "24"))
+;; License: MIT
+
+;;; Commentary:
+
+;; Inconfidente is a theme built to run in GUI and terminal-mode
+;; with support for many third-party syntax and UI packages.
+
+;;; References:
+;; Awesome Emacs
+;;   https://github.com/emacs-tw/awesome-emacs
+;; GNU ELPA
+;;   https://elpa.gnu.org
+;; GNU Emacs
+;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Custom-Themes.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Creating-Custom-Themes.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Faces.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Standard-Faces.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Face-Customization.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Faces-for-Font-Lock.html
+;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Display-Feature-Testing.html
+;; marmalade repo
+;;   https://marmalade-repo.org
+;; MELPA
+;;   https://melpa.org
+;;   https://stable.melpa.org
+
+;;; Code:
+
+(unless (>= emacs-major-version 24)
+  (error "Inconfidente theme requires Emacs 24 or later"))
+
+(deftheme inconfidente "Libertas Quae Sera Tamen.")
+
+(defgroup inconfidente nil
+  "Inconfidente theme customizations.
+  The theme has to be reloaded after changing anything in this group."
+  :group 'faces)
+
+;;;; Color Constants
+(let ((class '((class color) (min-colors 89)))
+  (inconfidente-bg0 "#131212")
+  (inconfidente-bg "#191818")
+  (inconfidente-bg2 "#201F1F")
+  (inconfidente-bg3 "#292828")
+  (inconfidente-gray "#333131")
+  (inconfidente-gray2 "#363535")
+  (inconfidente-white "#635649")
+  (inconfidente-white2 "#8A7D70")
+  (inconfidente-white3 "#BEB1A4")
+  (inconfidente-white4 "#F2E5D8")
+  (inconfidente-red "#8A5454")
+  (inconfidente-green "#6F8A54")
+  (inconfidente-yellow "#8A6F54")
+  (inconfidente-blue "#546F8A")
+  (inconfidente-magenta "#8A546F")
+  (inconfidente-cyan "#548A8A")
+  (inconfidente-annotation "#8A6F54")
+  (inconfidente-attribute "#548A8A")
+  (inconfidente-class "#548A8A")
+  (inconfidente-comment "#424141")
+  (inconfidente-escape "#8A6F54")
+  (inconfidente-method "#548A8A")
+  (inconfidente-keyword "#546F8A")
+  (inconfidente-numeric "#8A546F")
+  (inconfidente-operator "#546F8A")
+  (inconfidente-preprocessor "#546F8A")
+  (inconfidente-punctuation "#7F796F")
+  (inconfidente-regexp "#8A6F54")
+  (inconfidente-string "#6F8A54")
+  (inconfidente-tag "#546F8A")
+  (inconfidente-variable "#548A8A")
+  (inconfidente-region-highlight-foreground nil)
+  (inconfidente-region-highlight-background "#272626")
+  (inconfidente-region-hightlight-backgound2 "#2A2929"))
+
+;;;; +------------+
+;;;; + Core Faces +
+;;;; +------------+
+  (custom-theme-set-faces
+    'inconfidente
+    ;; +--- Base ---+
+    `(bold ((,class (:weight bold))))
+    `(bold-italic ((,class (:weight bold :slant italic))))
+    `(default ((,class (:foreground ,inconfidente-white2 :background ,inconfidente-bg))))
+    `(error ((,class (:foreground ,inconfidente-red :weight bold))))
+    `(escape-glyph ((,class (:foreground ,inconfidente-yellow))))
+    `(font-lock-builtin-face ((,class (:foreground ,inconfidente-blue))))
+    `(font-lock-comment-face ((,class (:foreground ,inconfidente-comment :slant italic))))
+    `(font-lock-comment-delimiter-face ((,class (:foreground ,inconfidente-comment))))
+    `(font-lock-constant-face ((,class (:foreground ,inconfidente-magenta))))
+    `(font-lock-doc-face ((,class (:foreground ,inconfidente-comment))))
+    `(font-lock-function-name-face ((,class (:foreground ,inconfidente-cyan))))
+    `(font-lock-keyword-face ((,class (:foreground ,inconfidente-red))))
+    `(font-lock-negation-char-face ((,class (:foreground ,inconfidente-red))))
+    `(font-lock-preprocessor-face ((,class (:foreground ,inconfidente-blue :weight bold))))
+    `(font-lock-reference-face ((,class (:foreground ,inconfidente-blue))))
+    `(font-lock-regexp-grouping-backslash ((,class (:foreground ,inconfidente-yellow))))
+    `(font-lock-regexp-grouping-construct ((,class (:foreground ,inconfidente-yellow))))
+    `(font-lock-string-face ((,class (:foreground ,inconfidente-green))))
+    `(font-lock-type-face ((,class (:foreground ,inconfidente-cyan))))
+    `(font-lock-variable-name-face ((,class (:foreground ,inconfidente-blue))))
+    `(font-lock-warning-face ((,class (:foreground ,inconfidente-yellow))))
+    `(italic ((,class (:slant italic))))
+    `(shadow ((,class (:foreground ,inconfidente-gray))))
+    `(underline ((,class (:underline t))))
+    `(warning ((,class (:foreground ,inconfidente-yellow :weight bold))))
+
+    ;; +--- Syntax ---+
+    ;; > C
+    `(c-annotation-face ((,class (:foreground ,inconfidente-annotation))))
+
+    ;; > diff
+    `(diff-added ((,class (:foreground ,inconfidente-green))))
+    `(diff-changed ((,class (:foreground ,inconfidente-yellow))))
+    `(diff-context ((,class (:inherit default))))
+    `(diff-file-header ((,class (:foreground ,inconfidente-cyan))))
+    `(diff-function ((,class (:foreground ,inconfidente-cyan))))
+    `(diff-header ((,class (:foreground ,inconfidente-blue :weight bold))))
+    `(diff-hunk-header ((,class (:foreground ,inconfidente-blue :background ,inconfidente-bg))))
+    `(diff-indicator-added ((,class (:foreground ,inconfidente-green))))
+    `(diff-indicator-changed ((,class (:foreground ,inconfidente-yellow))))
+    `(diff-indicator-removed ((,class (:foreground ,inconfidente-red))))
+    `(diff-nonexistent ((,class (:foreground ,inconfidente-red))))
+    `(diff-refine-added ((,class (:foreground ,inconfidente-green))))
+    `(diff-refine-changed ((,class (:foreground ,inconfidente-yellow))))
+    `(diff-refine-removed ((,class (:foreground ,inconfidente-red))))
+    `(diff-removed ((,class (:foreground ,inconfidente-red))))
+
+    ;; +--- UI ---+
+    `(border ((,class (:foreground ,inconfidente-white))))
+    `(buffer-menu-buffer ((,class (:foreground ,inconfidente-white2 :weight bold))))
+    `(button ((,class (:background ,inconfidente-bg :foreground ,inconfidente-cyan :box (:line-width 2 :color ,inconfidente-white :style sunken-button)))))
+    `(completions-annotations ((,class (:foreground ,inconfidente-blue))))
+    `(completions-common-part ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(completions-first-difference ((,class (:foreground ,inconfidente-red))))
+    `(custom-button ((,class (:background ,inconfidente-bg :foreground ,inconfidente-cyan :box (:line-width 2 :color ,inconfidente-white :style sunken-button)))))
+    `(custom-button-mouse ((,class (:background ,inconfidente-white :foreground ,inconfidente-bg :box (:line-width 2 :color ,inconfidente-white :style sunken-button)))))
+    `(custom-button-pressed ((,class (:background ,inconfidente-white3 :foreground ,inconfidente-bg :box (:line-width 2 :color ,inconfidente-white :style sunken-button)))))
+    `(custom-button-pressed-unraised ((,class (:background ,inconfidente-white :foreground ,inconfidente-bg :box (:line-width 2 :color ,inconfidente-white :style sunken-button)))))
+    `(custom-button-unraised ((,class (:background ,inconfidente-bg :foreground ,inconfidente-cyan :box (:line-width 2 :color ,inconfidente-white :style sunken-button)))))
+    `(custom-changed ((,class (:foreground ,inconfidente-yellow))))
+    `(custom-comment ((,class (:foreground ,inconfidente-comment))))
+    `(custom-comment-tag ((,class (:foreground ,inconfidente-cyan))))
+    `(custom-documentation ((,class (:foreground ,inconfidente-white))))
+    `(custom-group-tag ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(custom-group-tag-1 ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(custom-invalid ((,class (:foreground ,inconfidente-red))))
+    `(custom-modified ((,class (:foreground ,inconfidente-yellow))))
+    `(custom-rogue ((,class (:foreground ,inconfidente-yellow :background ,inconfidente-bg3))))
+    `(custom-saved ((,class (:foreground ,inconfidente-green))))
+    `(custom-set ((,class (:foreground ,inconfidente-cyan))))
+    `(custom-state ((,class (:foreground ,inconfidente-green))))
+    `(custom-themed ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-bg3))))
+    `(cursor ((,class (:background ,inconfidente-white3))))
+    `(fringe ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg))))
+    `(file-name-shadow ((,class (:inherit shadow))))
+    `(header-line ((,class (:foreground ,inconfidente-white3 :background ,inconfidente-bg))))
+    `(help-argument-name ((,class (:foreground ,inconfidente-cyan))))
+    `(highlight ((,class (:foreground ,nil :background ,inconfidente-bg3))))
+    `(hl-line ((,class (:background ,inconfidente-bg0))))
+    `(info-menu-star ((,class (:foreground ,inconfidente-blue))))
+    `(isearch ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(isearch-fail ((,class (:foreground ,inconfidente-red))))
+    `(link ((,class (:underline t))))
+    `(link-visited ((,class (:underline t))))
+    `(linum ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(linum-relative-current-face ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(match ((,class (:inherit isearch))))
+    `(message-cited-text ((,class (:foreground ,inconfidente-white))))
+    `(message-header-cc ((,class (:foreground ,inconfidente-blue))))
+    `(message-header-name ((,class (:foreground ,inconfidente-cyan))))
+    `(message-header-newsgroup ((,class (:foreground ,inconfidente-green))))
+    `(message-header-other ((,class (:foreground ,inconfidente-white))))
+    `(message-header-subject ((,class (:foreground ,inconfidente-cyan))))
+    `(message-header-to ((,class (:foreground ,inconfidente-blue))))
+    `(message-header-xheader ((,class (:foreground ,inconfidente-yellow))))
+    `(message-mml ((,class (:foreground ,inconfidente-blue))))
+    `(message-separator ((,class (:inherit shadow))))
+    `(minibuffer-prompt ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(mm-command-output ((,class (:foreground ,inconfidente-cyan))))
+    `(mode-line ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-gray))))
+    `(mode-line-buffer-id ((,class (:weight bold))))
+    `(mode-line-highlight ((,class (:inherit highlight))))
+    `(mode-line-inactive ((,class (:foreground ,inconfidente-white :background ,inconfidente-region-hightlight-backgound2))))
+    `(next-error ((,class (:inherit error))))
+    `(nobreak-space ((,class (:foreground ,inconfidente-gray))))
+    `(outline-1 ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(outline-2 ((,class (:inherit outline-1))))
+    `(outline-3 ((,class (:inherit outline-1))))
+    `(outline-4 ((,class (:inherit outline-1))))
+    `(outline-5 ((,class (:inherit outline-1))))
+    `(outline-6 ((,class (:inherit outline-1))))
+    `(outline-7 ((,class (:inherit outline-1))))
+    `(outline-8 ((,class (:inherit outline-1))))
+    `(package-description ((,class (:foreground ,inconfidente-white))))
+    `(package-help-section-name ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(package-name ((,class (:foreground ,inconfidente-cyan))))
+    `(package-status-available ((,class (:foreground ,inconfidente-cyan))))
+    `(package-status-avail-obso ((,class (:foreground ,inconfidente-cyan :slant italic))))
+    `(package-status-built-in ((,class (:foreground ,inconfidente-blue))))
+    `(package-status-dependency ((,class (:foreground ,inconfidente-cyan :slant italic))))
+    `(package-status-disabled ((,class (:foreground ,inconfidente-gray))))
+    `(package-status-external ((,class (:foreground ,inconfidente-yellow :slant italic))))
+    `(package-status-held ((,class (:foreground ,inconfidente-white :weight bold))))
+    `(package-status-new ((,class (:foreground ,inconfidente-green))))
+    `(package-status-incompat ((,class (:foreground ,inconfidente-red))))
+    `(package-status-installed ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(package-status-unsigned ((,class (:underline ,inconfidente-yellow))))
+    `(query-replace ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-bg3))))
+    `(region ((,class (:foreground ,inconfidente-region-highlight-foreground :background ,inconfidente-region-highlight-background))))
+    `(scroll-bar ((,class (:background ,inconfidente-gray))))
+    `(secondary-selection ((,class (:background ,inconfidente-bg3))))
+
+    ;; `show-paren-match-face` and `show-paren-mismatch-face` are deprecated since Emacs version 22.1 and were
+    ;; removed in Emacs 25.
+    ;; https://github.com/inconfidentetheme/emacs/issues/75
+    ;; http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=c430f7e23fc2c22f251ace4254e37dea1452dfc3
+    ;; https://github.com/emacs-mirror/emacs/commit/c430f7e23fc2c22f251ace4254e37dea1452dfc3
+    `(show-paren-match-face ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(show-paren-mismatch-face ((,class (:background ,inconfidente-red))))
+
+    `(show-paren-match ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(show-paren-mismatch ((,class (:background ,inconfidente-red))))
+    `(success ((,class (:foreground ,inconfidente-green))))
+    `(term ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg))))
+    `(term-color-black ((,class (:foreground ,inconfidente-bg2 :background ,inconfidente-bg2))))
+    `(term-color-white ((,class (:foreground ,inconfidente-white2 :background ,inconfidente-white2))))
+    `(term-color-cyan ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-cyan))))
+    `(term-color-blue ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-cyan))))
+    `(term-color-red ((,class (:foreground ,inconfidente-red :background ,inconfidente-red))))
+    `(term-color-yellow ((,class (:foreground ,inconfidente-yellow :background ,inconfidente-yellow))))
+    `(term-color-green ((,class (:foreground ,inconfidente-green :background ,inconfidente-green))))
+    `(term-color-magenta ((,class (:foreground ,inconfidente-magenta :background ,inconfidente-magenta))))
+    `(tool-bar ((,class (:foreground ,inconfidente-white :background ,inconfidente-gray))))
+    `(tooltip ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white2))))
+    `(trailing-whitespace ((,class (:foreground ,inconfidente-red))))
+    `(tty-menu-disabled-face ((,class (:foreground ,inconfidente-bg2))))
+    `(tty-menu-enabled-face ((,class (:background ,inconfidente-bg3 foreground ,inconfidente-white))))
+    `(tty-menu-selected-face ((,class (:foreground ,inconfidente-cyan :underline t))))
+    `(undo-tree-visualizer-current-face ((,class (:foreground ,inconfidente-cyan))))
+    `(undo-tree-visualizer-default-face ((,class (:foreground ,inconfidente-white))))
+    `(undo-tree-visualizer-unmodified-face ((,class (:foreground ,inconfidente-white))))
+    `(undo-tree-visualizer-register-face ((,class (:foreground ,inconfidente-blue))))
+    `(vc-conflict-state ((,class (:foreground ,inconfidente-yellow))))
+    `(vc-edited-state ((,class (:foreground ,inconfidente-yellow))))
+    `(vc-locally-added-state ((,class (:underline ,inconfidente-green))))
+    `(vc-locked-state ((,class (:foreground ,inconfidente-blue))))
+    `(vc-missing-state ((,class (:foreground ,inconfidente-red))))
+    `(vc-needs-update-state ((,class (:foreground ,inconfidente-yellow))))
+    `(vc-removed-state ((,class (:foreground ,inconfidente-red))))
+    `(vc-state-base ((,class (:foreground ,inconfidente-white))))
+    `(vc-up-to-date-state ((,class (:foreground ,inconfidente-cyan))))
+    `(vertical-border ((,class (:foreground ,inconfidente-bg3))))
+    `(which-func ((,class (:foreground ,inconfidente-cyan))))
+    `(whitespace-big-indent ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-empty ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-hspace ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-indentation ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-line ((,class (:background ,inconfidente-bg))))
+    `(whitespace-newline ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-space ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-space-after-tab ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-space-before-tab ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-tab ((,class (:foreground ,inconfidente-gray :background ,inconfidente-bg))))
+    `(whitespace-trailing ((,class (:inherit trailing-whitespace))))
+    `(widget-button-pressed ((,class (:foreground ,inconfidente-blue :background ,inconfidente-bg2))))
+    `(widget-documentation ((,class (:foreground ,inconfidente-white))))
+    `(widget-field ((,class (:background ,inconfidente-bg3 :foreground ,inconfidente-white))))
+    `(widget-single-line-field ((,class (:background ,inconfidente-bg3 :foreground ,inconfidente-white))))
+    `(window-divider ((,class (:background ,inconfidente-gray))))
+    `(window-divider-first-pixel ((,class (:background ,inconfidente-gray))))
+    `(window-divider-last-pixel ((,class (:background ,inconfidente-gray))))
+
+    ;;;; +-----------------+
+    ;;;; + Package Support +
+    ;;;; +-----------------+
+    ;; +--- Syntax ---+
+    ;; > Auctex
+    `(font-latex-bold-face ((,class (:inherit bold))))
+    `(font-latex-italic-face ((,class (:inherit italic))))
+    `(font-latex-math-face ((,class (:foreground ,inconfidente-cyan))))
+    `(font-latex-sectioning-0-face ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(font-latex-sectioning-1-face ((,class (:inherit font-latex-sectioning-0-face))))
+    `(font-latex-sectioning-2-face ((,class (:inherit font-latex-sectioning-0-face))))
+    `(font-latex-sectioning-3-face ((,class (:inherit font-latex-sectioning-0-face))))
+    `(font-latex-sectioning-4-face ((,class (:inherit font-latex-sectioning-0-face))))
+    `(font-latex-sectioning-5-face ((,class (:inherit font-latex-sectioning-0-face))))
+    `(font-latex-script-char-face ((,class (:inherit font-lock-warning-face))))
+    `(font-latex-string-face ((,class (:inherit font-lock-string-face))))
+    `(font-latex-warning-face ((,class (:inherit font-lock-warning-face))))
+
+    ;; > Elixir
+    `(elixir-attribute-face ((,class (:foreground ,inconfidente-annotation))))
+    `(elixir-atom-face ((,class (:foreground ,inconfidente-white :weight bold))))
+
+    ;; > Enhanced Ruby
+    `(enh-ruby-heredoc-delimiter-face ((,class (:foreground ,inconfidente-green))))
+    `(enh-ruby-op-face ((,class (:foreground ,inconfidente-blue))))
+    `(enh-ruby-regexp-delimiter-face ((,class (:foreground ,inconfidente-yellow))))
+    `(enh-ruby-regexp-face ((,class (:foreground ,inconfidente-yellow))))
+    `(enh-ruby-string-delimiter-face ((,class (:foreground ,inconfidente-green))))
+    `(erm-syn-errline ((,class (:foreground ,inconfidente-red :underline t))))
+    `(erm-syn-warnline ((,class (:foreground ,inconfidente-yellow :underline t))))
+
+    ;; > Java Development Environment for Emacs
+    `(jdee-db-active-breakpoint-face ((,class (:background ,inconfidente-bg3 :weight bold))))
+    `(jdee-bug-breakpoint-cursor ((,class (:background ,inconfidente-bg3))))
+    `(jdee-db-requested-breakpoint-face ((,class (:foreground ,inconfidente-yellow :background ,inconfidente-bg3 :weight bold))))
+    `(jdee-db-spec-breakpoint-face ((,class (:foreground ,inconfidente-green :background ,inconfidente-bg3 :weight bold))))
+    `(jdee-font-lock-api-face ((,class (:foreground ,inconfidente-white))))
+    `(jdee-font-lock-code-face ((,class (:slant italic))))
+    `(jdee-font-lock-constant-face ((,class (:foreground ,inconfidente-keyword))))
+    `(jdee-font-lock-constructor-face ((,class (:foreground ,inconfidente-method))))
+    `(jdee-font-lock-doc-tag-face ((,class (:foreground ,inconfidente-cyan))))
+    `(jdee-font-lock-link-face ((,class (:underline t))))
+    `(jdee-font-lock-modifier-face ((,class (:foreground ,inconfidente-keyword))))
+    `(jdee-font-lock-number-face ((,class (:foreground ,inconfidente-numeric))))
+    `(jdee-font-lock-operator-fac ((,class (:foreground ,inconfidente-operator))))
+    `(jdee-font-lock-package-face ((,class (:foreground ,inconfidente-class))))
+    `(jdee-font-lock-pre-face ((,class (:foreground ,inconfidente-comment :slant italic))))
+    `(jdee-font-lock-private-face ((,class (:foreground ,inconfidente-keyword))))
+    `(jdee-font-lock-public-face ((,class (:foreground ,inconfidente-keyword))))
+    `(jdee-font-lock-variable-face ((,class (:foreground ,inconfidente-variable))))
+
+    ;; > JavaScript 2
+    `(js2-function-call ((,class (:foreground ,inconfidente-cyan))))
+    `(js2-private-function-call ((,class (:foreground ,inconfidente-cyan))))
+    `(js2-jsdoc-html-tag-delimiter ((,class (:foreground ,inconfidente-white3))))
+    `(js2-jsdoc-html-tag-name ((,class (:foreground ,inconfidente-blue))))
+    `(js2-external-variable ((,class (:foreground ,inconfidente-white))))
+    `(js2-function-param ((,class (:foreground ,inconfidente-white))))
+    `(js2-jsdoc-value ((,class (:foreground ,inconfidente-comment))))
+    `(js2-jsdoc-tag ((,class (:foreground ,inconfidente-cyan))))
+    `(js2-jsdoc-type ((,class (:foreground ,inconfidente-cyan))))
+    `(js2-private-member ((,class (:foreground ,inconfidente-white))))
+    `(js2-object-property ((,class (:foreground ,inconfidente-white))))
+    `(js2-error ((,class (:foreground ,inconfidente-red))))
+    `(js2-warning ((,class (:foreground ,inconfidente-yellow))))
+    `(js2-instance-member ((,class (:foreground ,inconfidente-white))))
+
+    ;; > JavaScript 3
+    `(js3-error-face ((,class (:foreground ,inconfidente-red))))
+    `(js3-external-variable-face ((,class (:foreground ,inconfidente-white))))
+    `(js3-function-param-face ((,class (:foreground ,inconfidente-white))))
+    `(js3-instance-member-face ((,class (:foreground ,inconfidente-white))))
+    `(js3-jsdoc-html-tag-delimiter-face ((,class (:foreground ,inconfidente-white3))))
+    `(js3-jsdoc-html-tag-name-face ((,class (:foreground ,inconfidente-blue))))
+    `(js3-jsdoc-tag-face ((,class (:foreground ,inconfidente-blue))))
+    `(js3-jsdoc-type-face ((,class (:foreground ,inconfidente-cyan))))
+    `(js3-jsdoc-value-face ((,class (:foreground ,inconfidente-white))))
+    `(js3-magic-paren-face ((,class (:inherit show-paren-match-face))))
+    `(js3-private-function-call-face ((,class (:foreground ,inconfidente-cyan))))
+    `(js3-private-member-face ((,class (:foreground ,inconfidente-white))))
+    `(js3-warning-face ((,class (:foreground ,inconfidente-yellow))))
+
+    ;; > highlight-indent-guides
+    `(highlight-indent-guides-odd-face ((,class (:background ,inconfidente-gray))))
+    `(highlight-indent-guides-even-face ((,class (:background ,inconfidente-gray))))
+    `(highlight-indent-guides-character-face ((,class (:foreground ,inconfidente-white :bold t))))
+
+    ;; > LSP
+    `(lsp-headerline-breadcrumb-path-face ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-path-error-face ((,class (:underline (:style wave :color ,inconfidente-red) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-path-hint-face ((,class (:underline (:style wave :color ,inconfidente-green) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-path-info-face ((,class (:underline (:style wave :color ,inconfidente-blue) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-path-warning-face ((,class (:underline (:style wave :color ,inconfidente-yellow) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-separator-face ((,class (:foreground ,inconfidente-blue :background ,inconfidente-bg :height 0.8))))
+    `(lsp-headerline-breadcrumb-symbols-face ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-symbols-error-face ((,class (:underline (:style wave :color ,inconfidente-red) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-symbols-hint-face ((,class (:underline (:style wave :color ,inconfidente-green) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-symbols-info-face ((,class (:underline (:style wave :color ,inconfidente-blue) :background ,inconfidente-bg))))
+    `(lsp-headerline-breadcrumb-symbols-warning-face ((,class (:underline (:style wave :color ,inconfidente-yellow) :background ,inconfidente-bg))))
+    `(lsp-ui-doc-background ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg2))))
+    `(lsp-ui-doc-header ((,class (:foreground ,inconfidente-bg :background ,inconfidente-blue))))
+    `(lsp-ui-doc-url ((,class (:foreground ,inconfidente-cyan :background nil))))
+    `(lsp-ui-peek-filename ((,class (:foreground ,inconfidente-yellow :background ,inconfidente-bg))))
+    `(lsp-ui-peek-footer ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white))))
+    `(lsp-ui-peek-header ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white))))
+    `(lsp-ui-peek-highlight ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white :box (:line-width -1 :color ,inconfidente-red)))))
+    `(lsp-ui-peek-selection ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white))))
+    `(lsp-ui-peek-sideline-code-action ((,class (:foreground ,inconfidente-yellow :background ,inconfidente-bg))))
+    `(lsp-ui-peek-sideline-current-symbol ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg :box (:line-width -1 :color ,inconfidente-white)))))
+
+    ;; > Markdown
+    `(markdown-blockquote-face ((,class (:foreground ,inconfidente-comment))))
+    `(markdown-bold-face ((,class (:inherit bold))))
+    `(markdown-header-face-1 ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-header-face-2 ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-header-face-3 ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-header-face-4 ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-header-face-5 ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-header-face-6 ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-inline-code-face ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-italic-face ((,class (:inherit italic))))
+    `(markdown-link-face ((,class (:foreground ,inconfidente-cyan))))
+    `(markdown-markup-face ((,class (:foreground ,inconfidente-blue))))
+    `(markdown-reference-face ((,class (:inherit markdown-link-face))))
+    `(markdown-url-face ((,class (:foreground ,inconfidente-white :underline t))))
+
+    ;; > Rainbow Delimeters
+    `(rainbow-delimiters-depth-1-face ((,class :foreground ,inconfidente-cyan)))
+    `(rainbow-delimiters-depth-2-face ((,class :foreground ,inconfidente-cyan)))
+    `(rainbow-delimiters-depth-3-face ((,class :foreground ,inconfidente-blue)))
+    `(rainbow-delimiters-depth-4-face ((,class :foreground ,inconfidente-blue)))
+    `(rainbow-delimiters-depth-5-face ((,class :foreground ,inconfidente-yellow)))
+    `(rainbow-delimiters-depth-6-face ((,class :foreground ,inconfidente-yellow)))
+    `(rainbow-delimiters-depth-7-face ((,class :foreground ,inconfidente-green)))
+    `(rainbow-delimiters-depth-8-face ((,class :foreground ,inconfidente-magenta)))
+    `(rainbow-delimiters-unmatched-face ((,class :foreground ,inconfidente-red)))
+
+    ;; > Web Mode
+    `(web-mode-attr-tag-custom-face ((,class (:foreground ,inconfidente-attribute))))
+    `(web-mode-builtin-face ((,class (:foreground ,inconfidente-keyword))))
+    `(web-mode-comment-face ((,class (:foreground ,inconfidente-comment))))
+    `(web-mode-comment-keyword-face ((,class (:foreground ,inconfidente-comment))))
+    `(web-mode-constant-face ((,class (:foreground ,inconfidente-variable))))
+    `(web-mode-css-at-rule-face ((,class (:foreground ,inconfidente-annotation))))
+    `(web-mode-css-function-face ((,class (:foreground ,inconfidente-method))))
+    `(web-mode-css-property-name-face ((,class (:foreground ,inconfidente-keyword))))
+    `(web-mode-css-pseudo-class-face ((,class (:foreground ,inconfidente-class))))
+    `(web-mode-css-selector-face ((,class (:foreground ,inconfidente-keyword))))
+    `(web-mode-css-string-face ((,class (:foreground ,inconfidente-string))))
+    `(web-mode-doctype-face ((,class (:foreground ,inconfidente-preprocessor))))
+    `(web-mode-function-call-face ((,class (:foreground ,inconfidente-method))))
+    `(web-mode-function-name-face ((,class (:foreground ,inconfidente-method))))
+    `(web-mode-html-attr-name-face ((,class (:foreground ,inconfidente-attribute))))
+    `(web-mode-html-attr-equal-face ((,class (:foreground ,inconfidente-punctuation))))
+    `(web-mode-html-attr-value-face ((,class (:foreground ,inconfidente-string))))
+    `(web-mode-html-entity-face ((,class (:foreground ,inconfidente-keyword))))
+    `(web-mode-html-tag-bracket-face ((,class (:foreground ,inconfidente-punctuation))))
+    `(web-mode-html-tag-custom-face ((,class (:foreground ,inconfidente-tag))))
+    `(web-mode-html-tag-face ((,class (:foreground ,inconfidente-tag))))
+    `(web-mode-html-tag-namespaced-face ((,class (:foreground ,inconfidente-keyword))))
+    `(web-mode-json-key-face ((,class (:foreground ,inconfidente-class))))
+    `(web-mode-json-string-face ((,class (:foreground ,inconfidente-string))))
+    `(web-mode-keyword-face ((,class (:foreground ,inconfidente-keyword))))
+    `(web-mode-preprocessor-face ((,class (:foreground ,inconfidente-preprocessor))))
+    `(web-mode-string-face ((,class (:foreground ,inconfidente-string))))
+    `(web-mode-symbol-face ((,class (:foreground ,inconfidente-variable))))
+    `(web-mode-type-face ((,class (:foreground ,inconfidente-class))))
+    `(web-mode-warning-face ((,class (:inherit ,font-lock-warning-face))))
+    `(web-mode-variable-name-face ((,class (:foreground ,inconfidente-variable))))
+
+    ;; +--- UI ---+
+    ;; > Anzu
+    `(anzu-mode-line ((,class (:foreground, inconfidente-cyan))))
+    `(anzu-mode-line-no-match ((,class (:foreground, inconfidente-red))))
+
+    ;; > Avy
+    `(avy-lead-face ((,class (:background ,inconfidente-red :foreground ,inconfidente-white2))))
+    `(avy-lead-face-0 ((,class (:background ,inconfidente-blue :foreground ,inconfidente-white2))))
+    `(avy-lead-face-1 ((,class (:background ,inconfidente-gray :foreground ,inconfidente-white2))))
+    `(avy-lead-face-2 ((,class (:background ,inconfidente-magenta :foreground ,inconfidente-white2))))
+
+    ;; > Company
+    `(company-echo-common ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white))))
+    `(company-preview ((,class (:foreground ,inconfidente-white :background ,inconfidente-blue))))
+    `(company-preview-common ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(company-preview-search ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(company-scrollbar-bg ((,class (:foreground ,inconfidente-bg2 :background ,inconfidente-bg2))))
+    `(company-scrollbar-fg ((,class (:foreground ,inconfidente-bg3 :background ,inconfidente-bg3))))
+    `(company-template-field ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(company-tooltip ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg3))))
+    `(company-tooltip-annotation ((,class (:foreground ,inconfidente-yellow))))
+    `(company-tooltip-annotation-selection ((,class (:foreground ,inconfidente-yellow :weight bold))))
+    `(company-tooltip-common ((,class (:foreground ,inconfidente-cyan))))
+    `(company-tooltip-common-selection ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-gray))))
+    `(company-tooltip-mouse ((,class (:inherit highlight))))
+    `(company-tooltip-selection ((,class (:background ,inconfidente-gray :weight bold))))
+
+    ;; > diff-hl
+   `(diff-hl-change ((,class (:background ,inconfidente-yellow))))
+   `(diff-hl-insert ((,class (:background ,inconfidente-green))))
+   `(diff-hl-delete ((,class (:background ,inconfidente-red))))
+
+    ;; > Evil
+    `(evil-ex-info ((,class (:foreground ,inconfidente-cyan))))
+    `(evil-ex-substitute-replacement ((,class (:foreground ,inconfidente-blue))))
+    `(evil-ex-substitute-matches ((,class (:inherit isearch))))
+
+    ;; > Flycheck
+    `(flycheck-error ((,class (:underline (:style wave :color ,inconfidente-red)))))
+    `(flycheck-fringe-error ((,class (:foreground ,inconfidente-red :weight bold))))
+    `(flycheck-fringe-info ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(flycheck-fringe-warning ((,class (:foreground ,inconfidente-yellow :weight bold))))
+    `(flycheck-info ((,class (:underline (:style wave :color ,inconfidente-cyan)))))
+    `(flycheck-warning ((,class (:underline (:style wave :color ,inconfidente-yellow)))))
+
+    ;; > Git Gutter
+    `(git-gutter:modified ((,class (:foreground ,inconfidente-yellow))))
+    `(git-gutter:added ((,class (:foreground ,inconfidente-green))))
+    `(git-gutter:deleted ((,class (:foreground ,inconfidente-red))))
+
+    ;; > Git Gutter Plus
+    `(git-gutter+-modified ((,class (:foreground ,inconfidente-yellow))))
+    `(git-gutter+-added ((,class (:foreground ,inconfidente-green))))
+    `(git-gutter+-deleted ((,class (:foreground ,inconfidente-red))))
+
+    ;; > Helm
+    `(helm-bookmark-addressbook ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-bookmark-directory ((,class (:foreground ,inconfidente-blue))))
+    `(helm-bookmark-file ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-bookmark-gnus ((,class (:foreground ,inconfidente-blue))))
+    `(helm-bookmark-info ((,class (:foreground ,inconfidente-green))))
+    `(helm-bookmark-man ((,class (:foreground ,inconfidente-white))))
+    `(helm-bookmark-w3m ((,class (:foreground ,inconfidente-blue))))
+    `(helm-buffer-directory ((,class (:foreground ,inconfidente-blue))))
+    `(helm-buffer-file ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-buffer-not-saved ((,class (:foreground ,inconfidente-yellow))))
+    `(helm-buffer-process ((,class (:foreground ,inconfidente-blue))))
+    `(helm-candidate-number ((,class (:foreground ,inconfidente-white :weight bold))))
+    `(helm-candidate-number-suspended ((,class (:foreground ,inconfidente-white))))
+    `(helm-ff-directory ((,class (:foreground ,inconfidente-blue :weight bold))))
+    `(helm-ff-dirs ((,class (:foreground ,inconfidente-blue))))
+    `(helm-ff-dotted-director ((,class (:foreground ,inconfidente-blue :underline t))))
+    `(helm-ff-dotted-symlink-director ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(helm-ff-executable ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-ff-file ((,class (:foreground ,inconfidente-white))))
+    `(helm-ff-invalid-symlink ((,class (:foreground ,inconfidente-red :weight bold))))
+    `(helm-ff-prefix ((,class (:foreground ,inconfidente-bg :background ,inconfidente-blue))))
+    `(helm-ff-symlink ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-grep-cmd-line ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg))))
+    `(helm-grep-file ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-grep-finish ((,class (:foreground ,inconfidente-white2))))
+    `(helm-grep-lineno ((,class (:foreground ,inconfidente-white))))
+    `(helm-grep-match ((,class (:inherit isearch))))
+    `(helm-grep-running ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-header ((,class (:foreground ,inconfidente-blue :background ,inconfidente-bg3))))
+    `(helm-header-line-left-margin ((,class (:foreground ,inconfidente-blue :background ,inconfidente-bg3))))
+    `(helm-history-deleted ((,class (:foreground ,inconfidente-red))))
+    `(helm-history-remote ((,class (:foreground ,inconfidente-white))))
+    `(helm-lisp-completion-info ((,class (:foreground ,inconfidente-white :weight bold))))
+    `(helm-lisp-show-completion ((,class (:inherit isearch))))
+    `(helm-locate-finish ((,class (:foreground ,inconfidente-green))))
+    `(helm-match ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-match-item ((,class (:inherit isearch))))
+    `(helm-moccur-buffer ((,class (:foreground ,inconfidente-cyan))))
+    `(helm-resume-need-update ((,class (:foreground ,inconfidente-bg :background ,inconfidente-yellow))))
+    `(helm-selection ((,class (:inherit highlight))))
+    `(helm-selection-line ((,class (:background ,inconfidente-bg3))))
+    `(helm-source-header ((,class (:height 1.44 :foreground ,inconfidente-cyan :background ,inconfidente-bg3))))
+    `(helm-swoop-line-number-face ((,class (:foreground ,inconfidente-white :background ,inconfidente-bg))))
+    `(helm-swoop-target-word-face ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(helm-swoop-target-line-face ((,class (:background ,inconfidente-yellow :foreground ,inconfidente-gray))))
+    `(helm-swoop-target-line-block-face ((,class (:background ,inconfidente-yellow :foreground ,inconfidente-gray))))
+    `(helm-separator ((,class (:background ,inconfidente-bg3))))
+    `(helm-visible-mark ((,class (:background ,inconfidente-bg3))))
+
+    ;; > Magit
+    `(magit-branch ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(magit-diff-context-highlight ((,class (:background ,inconfidente-bg3))))
+    `(magit-diff-file-header ((,class (:foreground ,inconfidente-cyan :box (:color ,inconfidente-cyan)))))
+    `(magit-diffstat-added ((,class (:foreground ,inconfidente-green))))
+    `(magit-diffstat-removed ((,class (:foreground ,inconfidente-red))))
+    `(magit-hash ((,class (:foreground ,inconfidente-cyan))))
+    `(magit-hunk-heading ((,class (:foreground ,inconfidente-blue))))
+    `(magit-hunk-heading-highlight ((,class (:foreground ,inconfidente-blue :background ,inconfidente-bg3))))
+    `(magit-item-highlight ((,class (:foreground ,inconfidente-cyan :background ,inconfidente-bg3))))
+    `(magit-log-author ((,class (:foreground ,inconfidente-cyan))))
+    `(magit-process-ng ((,class (:foreground ,inconfidente-yellow :weight bold))))
+    `(magit-process-ok ((,class (:foreground ,inconfidente-green :weight bold))))
+    `(magit-section-heading ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(magit-section-highlight ((,class (:background ,inconfidente-bg3))))
+
+    ;; > MU4E
+    `(mu4e-header-marks-face ((,class (:foreground ,inconfidente-blue))))
+    `(mu4e-title-face ((,class (:foreground ,inconfidente-cyan))))
+    `(mu4e-header-key-face ((,class (:foreground ,inconfidente-cyan))))
+    `(mu4e-highlight-face ((,class (:highlight))))
+    `(mu4e-flagged-face ((,class (:foreground ,inconfidente-yellow))))
+    `(mu4e-unread-face ((,class (:foreground ,inconfidente-yellow :weight bold))))
+    `(mu4e-link-face ((,class (:underline t))))
+
+    ;; > Powerline
+    `(powerline-active1 ((,class (:foreground ,inconfidente-white2 :background ,inconfidente-bg2))))
+    `(powerline-active2 ((,class (:foreground ,inconfidente-white :background ,inconfidente-gray))))
+    `(powerline-inactive1 ((,class (:background ,inconfidente-bg3))))
+    `(powerline-inactive2 ((,class (:background ,inconfidente-bg3))))
+
+    ;; > Powerline Evil
+    `(powerline-evil-base-face ((,class (:foreground ,inconfidente-white))))
+    `(powerline-evil-normal-face ((,class (:background ,inconfidente-cyan))))
+    `(powerline-evil-insert-face ((,class (:foreground ,inconfidente-bg :background ,inconfidente-white))))
+    `(powerline-evil-visual-face ((,class (:foreground ,inconfidente-bg :background ,inconfidente-cyan))))
+    `(powerline-evil-replace-face ((,class (:foreground ,inconfidente-bg :background ,inconfidente-blue))))
+
+    ;; > NeoTree
+    `(neo-banner-face ((,class (:foreground ,inconfidente-blue))))
+    `(neo-dir-link-face ((,class (:foreground ,inconfidente-blue))))
+    `(neo-expand-btn-face ((,class (:foreground ,inconfidente-white3 :bold t))))
+    `(neo-file-link-face ((,class (:foreground ,inconfidente-white))))
+    `(neo-root-dir-face ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(neo-vc-added-face ((,class (:foreground ,inconfidente-green))))
+    `(neo-vc-conflict-face ((,class (:foreground ,inconfidente-red))))
+    `(neo-vc-default-face ((,class (:foreground ,inconfidente-white))))
+    `(neo-vc-edited-face ((,class (:foreground ,inconfidente-yellow))))
+    `(neo-vc-ignored-face ((,class (:foreground ,inconfidente-gray))))
+    `(neo-vc-missing-face ((,class (:foreground ,inconfidente-yellow))))
+    `(neo-vc-needs-merge-face ((,class (:background ,inconfidente-yellow :foreground ,inconfidente-white))))
+    `(neo-vc-needs-update-face ((,class (:background ,inconfidente-blue :foreground ,inconfidente-white))))
+    `(neo-vc-removed-face ((,class (:foreground ,inconfidente-red :strike-through nil))))
+    `(neo-vc-up-to-date-face ((,class (:foreground ,inconfidente-white))))
+    `(neo-vc-user-face ((,class (:foreground ,inconfidente-white))))
+
+    ;; > Cider
+    `(cider-result-overlay-face ((t (:background unspecified))))
+
+    ;; > Org
+    `(org-level-1 ((,class (:foreground ,inconfidente-cyan :weight extra-bold))))
+    `(org-level-2 ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(org-level-3 ((,class (:foreground ,inconfidente-blue :weight semi-bold))))
+    `(org-level-4 ((,class (:foreground ,inconfidente-blue :weight normal))))
+    `(org-level-5 ((,class (:inherit org-level-4))))
+    `(org-level-6 ((,class (:inherit org-level-4))))
+    `(org-level-7 ((,class (:inherit org-level-4))))
+    `(org-level-8 ((,class (:inherit org-level-4))))
+    `(org-agenda-structure ((,class (:foreground ,inconfidente-blue))))
+    `(org-agenda-date ((,class (:foreground ,inconfidente-cyan :underline nil))))
+    `(org-agenda-done ((,class (:foreground ,inconfidente-green))))
+    `(org-agenda-dimmed-todo-face ((,class (:background ,inconfidente-yellow))))
+    `(org-block ((,class (:foreground ,inconfidente-white2))))
+    `(org-block-background ((,class (:background ,inconfidente-bg))))
+    `(org-block-begin-line ((,class (:foreground ,inconfidente-cyan))))
+    `(org-block-end-line ((,class (:foreground ,inconfidente-cyan))))
+    `(org-checkbox ((,class (:foreground ,inconfidente-blue))))
+    `(org-checkbox-statistics-done ((,class (:foreground ,inconfidente-green))))
+    `(org-checkbox-statistics-todo ((,class (:foreground ,inconfidente-yellow))))
+    `(org-code ((,class (:foreground ,inconfidente-cyan))))
+    `(org-column ((,class (:background ,inconfidente-bg3))))
+    `(org-column-title ((,class (:inherit org-column :weight bold :underline t))))
+    `(org-date ((,class (:foreground ,inconfidente-cyan))))
+    `(org-document-info ((,class (:foreground ,inconfidente-white))))
+    `(org-document-info-keyword ((,class (:foreground ,inconfidente-gray :weight bold))))
+    `(org-document-title ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(org-done ((,class (:foreground ,inconfidente-green :weight bold))))
+    `(org-ellipsis ((,class (:foreground ,inconfidente-gray))))
+    `(org-footnote ((,class (:foreground ,inconfidente-cyan))))
+    `(org-formula ((,class (:foreground ,inconfidente-blue))))
+    `(org-hide ((,class (:foreground ,inconfidente-bg :background ,inconfidente-bg))))
+    `(org-link ((,class (:underline t))))
+    `(org-scheduled ((,class (:foreground ,inconfidente-green))))
+    `(org-scheduled-previously ((,class (:foreground ,inconfidente-yellow))))
+    `(org-scheduled-today ((,class (:foreground ,inconfidente-cyan))))
+    `(org-special-keyword ((,class (:foreground ,inconfidente-blue))))
+    `(org-table ((,class (:foreground ,inconfidente-blue))))
+    `(org-todo ((,class (:foreground ,inconfidente-yellow :weight bold))))
+    `(org-upcoming-deadline ((,class (:foreground ,inconfidente-yellow))))
+    `(org-warning ((,class (:foreground ,inconfidente-yellow :weight bold))))
+    `(font-latex-bold-face ((,class (:inherit bold))))
+    `(font-latex-italic-face ((,class (:slant italic))))
+    `(font-latex-string-face ((,class (:foreground ,inconfidente-green))))
+    `(font-latex-match-reference-keywords ((,class (:foreground ,inconfidente-blue))))
+    `(font-latex-match-variable-keywords ((,class (:foreground ,inconfidente-white2))))
+    `(ido-only-match ((,class (:foreground ,inconfidente-cyan))))
+    `(org-sexp-date ((,class (:foreground ,inconfidente-cyan))))
+    `(ido-first-match ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(ido-subdir ((,class (:foreground ,inconfidente-blue))))
+    `(org-quote ((,class (:inherit org-block :slant italic))))
+    `(org-verse ((,class (:inherit org-block :slant italic))))
+    `(org-agenda-date-weekend ((,class (:foreground ,inconfidente-blue))))
+    `(org-agenda-date-today ((,class (:foreground ,inconfidente-cyan :weight bold))))
+    `(org-agenda-done ((,class (:foreground ,inconfidente-green))))
+    `(org-verbatim ((,class (:foreground ,inconfidente-cyan))))
+
+    ;; > ivy-mode
+    `(ivy-current-match ((,class (:foreground ,inconfidente-region-highlight-foreground :background ,inconfidente-bg0))))
+    `(ivy-minibuffer-match-face-1 ((,class (:inherit default))))
+    `(ivy-minibuffer-match-face-2 ((,class (:background ,inconfidente-cyan :foreground ,inconfidente-bg))))
+    `(ivy-minibuffer-match-face-3 ((,class (:background ,inconfidente-cyan :foreground ,inconfidente-bg))))
+    `(ivy-minibuffer-match-face-4 ((,class (:background ,inconfidente-blue :foreground ,inconfidente-bg))))
+    `(ivy-remote ((,class (:foreground ,inconfidente-green))))
+    `(ivy-posframe ((,class (:background ,inconfidente-bg2))))
+    `(ivy-posframe-border ((,class (:background ,inconfidente-bg2))))
+    `(ivy-remote ((,class (:foreground ,inconfidente-green))))
+
+    ;; > perspective
+    `(persp-selected-face ((,class (:foreground ,inconfidente-cyan :weight bold))))))
+
+;;;###autoload
+(when (and (boundp 'custom-theme-load-path) load-file-name)
+  (add-to-list 'custom-theme-load-path
+    (file-name-as-directory (file-name-directory load-file-name))))
+
+(provide-theme 'inconfidente)
+
+;; Local Variables:
+;; no-byte-compile: t
+;; indent-tabs-mode: nil
+;; End:
+
+;;; inconfidente-theme.el ends here
