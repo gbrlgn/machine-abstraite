@@ -81,6 +81,7 @@ in
       python311Packages.pip
       python311Packages.pygit2
       python311Packages.python-lsp-server
+      rio
       rustup
       shotwell
       spotify

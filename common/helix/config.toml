@@ -2,6 +2,7 @@ theme = "inconfidente"
 
 [editor]
 auto-format = true
+auto-info = true
 auto-pairs = true
 bufferline = "multiple"
 cursorline = true
@@ -23,11 +24,14 @@ hidden = true
 
 [editor.indent-guides]
 render = true
+skip-levels = 0
 
 [editor.lsp]
 display-messages = true
+display-inlay-hints = true
 
 [editor.soft-wrap]
+enable = true
 wrap-at-text-width = true
 wrap-indicator = ""
 
@@ -36,6 +40,9 @@ mode.normal = "∀"
 mode.insert = "↪"
 mode.select = "↠"
 separator = "⋮"
+left = [ "mode", "spinner", "file-name", "file-type", "total-line-numbers", "file-encoding" ]
+center = []
+right = [ "selections", "primary-selection-length", "position", "position-percentage", "spacer", "diagnostics", "workspace-diagnostics", "version-control" ]
 
 [keys.normal]
 esc = [ "collapse_selection", "keep_primary_selection" ]
@@ -45,3 +52,9 @@ C-n = [ "move_line_down", "scroll_down" ]
 [keys.normal.space]
 w = ":write"
 q = ":quit"
+x = ":buffer-close"
+"." = "file_picker_in_current_buffer_directory"
+n = "signature_help"
+
+[keys.select.space]
+"|" = ":pipe-to"
