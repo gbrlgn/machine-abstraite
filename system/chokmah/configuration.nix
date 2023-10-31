@@ -201,7 +201,6 @@ in
       gnome.gnome-tweaks
       gnome.gnome-logs
       inetutils
-      infracost
       jq
       kdash
       kubectl
