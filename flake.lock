@@ -41,11 +41,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1698690895,
-        "narHash": "sha256-mJRdhWRFThGu6lpUJpHBD9TNcUW25/zWuB0oA6u/iDU=",
+        "lastModified": 1698817255,
+        "narHash": "sha256-/Pt9Vk+8qMRRGdlAMVGfyEvuKKWTDC7CAqjmb1/FtHY=",
         "owner": "eza-community",
         "repo": "eza",
-        "rev": "9ba9c65561a4895c5a8597cb02b4100d7667ae8c",
+        "rev": "925a4ca155cfce5eeaa218db970331f073e7c956",
         "type": "github"
       },
       "original": {
@@ -134,11 +134,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1698739023,
-        "narHash": "sha256-oHyIIOZrOQgLV+xepTCkxjN3XoWgcZMspqakpPdFbTs=",
+        "lastModified": 1698790188,
+        "narHash": "sha256-sAp4RIto3fDjb/HJ4NR3HlHo3J8R7tK4/qSGYkhudUA=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "53bb62b318d3b898ac10f28f35df5dcb47da6bb3",
+        "rev": "a069b928973aad99b85dffb9d5ade7dae4b58c43",
         "type": "github"
       },
       "original": {
@@ -154,11 +154,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698670511,
-        "narHash": "sha256-jQIu3UhBMPHXzVkHQO1O2gg8SVo5lqAVoC6mOaLQcLQ=",
+        "lastModified": 1698795315,
+        "narHash": "sha256-fF5ScAWLMHXOuqsbLSG137kS1D+gr9JPtm4H2c4yBbU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8e5416b478e465985eec274bc3a018024435c106",
+        "rev": "9bc7d84b8213255ecd5eb6299afdb77c36ece71d",
         "type": "github"
       },
       "original": {
