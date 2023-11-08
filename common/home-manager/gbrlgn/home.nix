@@ -153,7 +153,7 @@ in
 
       "org/gnome/desktop/background" =
         { picture-uri = "file:///home/gbrlgn/Imagens/Wallpapers/stoppages.jpg";
-          picture-uri-dark = "file:///home/gbrlgn/Imagens/Wallpapers/members.jpg";
+          picture-uri-dark = "file:///home/gbrlgn/Imagens/Wallpapers/takeyourtime.jpg";
         };
     };
 
