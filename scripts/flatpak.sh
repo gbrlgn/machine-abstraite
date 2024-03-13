@@ -10,6 +10,7 @@ flatpak install flathub \
 	com.belmoussaoui.Authenticator \
 	org.gnome.World.Secrets \
 	io.bassi.Amberol \
+	org.gnome.gitlab.somas.Apostrophe \
 	com.usebottles.bottles \
 	io.github.celluloid_player.Celluloid \
 	org.gnome.World.Citations \
@@ -42,6 +43,7 @@ flatpak install flathub \
 	com.github.flxzt.rnote \
 	org.gnome.Shotwell \
 	com.github.liferooter.textpieces \
+	io.github.flattool.Warehouse \
 	app.drey.Warp \
 	org.gabmus.whatip \
 	com.github.hugolabe.Wike --assumeyes
