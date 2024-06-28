@@ -33,7 +33,7 @@ in
 
   fonts.packages = with pkgs;
     [ corefonts
-      emacsPackages.fontawesome
+      texlivePackages.fontawesome5
       fira-code
       fira-code-symbols
       go-font
@@ -161,7 +161,7 @@ in
     { __GL_MaxFramesAllowed = "0";
       __GL_LOG_MAX_ANISO = "4";
       MOZ_ENABLE_WAYLAND = "1";
-      EDITOR = "emacs";
+      EDITOR = "hx";
     };
 
   environment.systemPackages = with pkgs;
@@ -178,8 +178,8 @@ in
       blackbox-terminal
       bottom
       cmake
-      containerd
       coreutils
+      cri-tools
       curl
       dbus
       dig
@@ -194,24 +194,23 @@ in
       fish
       (lib.hiPrio gcc)
       git
+      gitui
       glibc
       gnumake
       gnome.adwaita-icon-theme
       gnome.gdm
       gnome.gnome-tweaks
       gnome.gnome-logs
+      helix
       inetutils
       jq
-      kdash
       kubectl
       kubernetes-helm
       less
       mesa
-      nerdctl
       netcat
       nettools
       ntfs3g
-      openlens
       openssl
       orjail
       p7zip
@@ -229,7 +228,6 @@ in
       terraform-providers.helm
       terraform-providers.kubernetes
       tmux
-      tor
       tree
       unzip
       usbutils
@@ -241,5 +239,5 @@ in
       yq
     ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

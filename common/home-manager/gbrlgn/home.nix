@@ -1,4 +1,4 @@
-{ flakes, pkgs, lib, ... }:
+{ lib, pkgs, ... }:
 
 let
   username = "gbrlgn";
@@ -12,7 +12,7 @@ in
 
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 
   home.sessionVariables =
     { EDITOR = "hx";
@@ -21,70 +21,36 @@ in
 
   home.packages = with pkgs;
 
-    let
-      helix = flakes.helix.packages.${system}.default;
-      home-manager = flakes.home-manager.packages.${system}.default;
-    in
-
-    [ amberol
-      buf-language-server
-      cabal-install
-      celluloid
-      clojure
-      clojure-lsp
+    [ buf-language-server
       corefonts
       delve
-      dhall
       direnv
       distrobox
-      elixir
-      elixir-ls
       ffmpeg
-      fira-code
-      fira-code-symbols
-      fragments
-      ghc
-      gitui
       glib
       glxinfo
       go
-      go-font
       gopls
       gnome.geary
-      gnome.nautilus-python
-      haskell-language-server
-      helix
       home-manager
-      ibm-plex
-      jdk
-      jdt-language-server
-      leiningen
       libportal
-      libreoffice-fresh
       libtool
       lldb
       lua5_4_compat
       lua54Packages.luarocks
       lua-language-server
       marksman
-      nerdfonts
       nil
       nodePackages_latest.npm
       nodePackages_latest.vscode-json-languageserver
       nodePackages_latest.typescript-language-server
       nodePackages_latest.yaml-language-server
-      onlyoffice-bin
       pipenv
-      powerline-fonts
-      powerline-symbols
       python311Full
       python311Packages.pip
       python311Packages.pygit2
       python311Packages.python-lsp-server
-      rio
       rustup
-      shotwell
-      spotify
       starship
       taplo
       tectonic
@@ -109,18 +75,15 @@ in
           extraConfig =
             { credential.helper =
                 "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
-              core.editor = "flatpak run --file-forwarding re.sonny.Commit @@";
+              core.editor = "hx";
             };
         };
 
       helix =
         { enable = true;
           defaultEditor = true;
-          package =  flakes.helix.packages.${system}.default;        
         };
     };
-
-  services.emacs.enable = true;
 
   xdg.mime.enable = true;
 
@@ -147,11 +110,7 @@ in
     };
 
   dconf.settings =
-    { "org/gnome/desktop/interface" =
-        { color-scheme = "prefer-dark";
-        };
-
-      "org/gnome/desktop/background" =
+    { "org/gnome/desktop/background" =
         { picture-uri = "file:///home/gbrlgn/Imagens/Wallpapers/stoppages.jpg";
           picture-uri-dark = "file:///home/gbrlgn/Imagens/Wallpapers/members.jpg";
         };

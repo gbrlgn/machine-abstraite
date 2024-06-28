@@ -34,7 +34,7 @@ in
 
   fonts.packages = with pkgs;
     [ corefonts
-      emacsPackages.fontawesome
+      texlivePackages.fontawesome5
       fira-code
       fira-code-symbols
       go-font
@@ -56,7 +56,7 @@ in
   hardware.nvidia =
     { modesetting.enable = true;
       nvidiaSettings = true;
-      open = false;
+      open = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       powerManagement.enable = true;
     };
@@ -170,7 +170,7 @@ in
     { __GL_MaxFramesAllowed = "0";
       __GL_LOG_MAX_ANISO = "4";
       MOZ_ENABLE_WAYLAND = "1";
-      EDITOR = "emacs";
+      EDITOR = "hx";
     };
 
   environment.systemPackages = with pkgs;
@@ -186,8 +186,8 @@ in
       blackbox-terminal
       bottom
       cmake
-      containerd
       coreutils
+      crictl
       curl
       dbus
       dig
@@ -201,12 +201,14 @@ in
       fish
       (lib.hiPrio gcc)
       git
+      gitui
       glibc
       gnumake
       gnome.adwaita-icon-theme
       gnome.gdm
       gnome.gnome-tweaks
       gnome.gnome-logs
+      helix
       inetutils
       jq
       kdash
@@ -228,7 +230,6 @@ in
       ripgrep
       socat
       tmux
-      tor
       tree
       unzip
       usbutils
