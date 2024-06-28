@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-sh ./flatpak.sh &
+sh ./flatpak.sh $1 &
 
 cd $HOME/Documentos/Git
 
