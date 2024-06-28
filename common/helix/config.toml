@@ -1,4 +1,4 @@
-theme = "inconfidente"
+theme = "inconfidente-dark"
 
 [editor]
 auto-format = true
