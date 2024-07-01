@@ -1,4 +1,4 @@
-{ config, flakes, lib, pkgs ... }:
+{ config, flakes, lib, pkgs, ... }:
 
 let
   system = "x86_64-linux";
