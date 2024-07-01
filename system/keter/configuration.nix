@@ -1,11 +1,10 @@
-{ flakes, config, pkgs, lib, ... }:
+{ config, flakes, lib, pkgs ... }:
 
 let
   system = "x86_64-linux";
 in
 
-{
-  imports = [ ./hardware-configuration.nix ];
+{ imports = [ ./hardware-configuration.nix ];
 
   boot =
     { kernelPackages = pkgs.linuxPackages_latest;
@@ -243,5 +242,5 @@ in
       yq
     ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

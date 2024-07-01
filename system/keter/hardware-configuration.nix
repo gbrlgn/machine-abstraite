@@ -2,8 +2,7 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = 
     [ "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
@@ -18,33 +17,40 @@
       "nodiscard"
     ];
 
-  fileSystems."/" =
-    { label = "nixos";
-      fsType = "btrfs";
-      options = [ "subvol=root" ] ++ btrfsCommonOpts;
-    };
+  fileSystems =
 
-  fileSystems."/home" =
-    { label = "nixos";
-      fsType = "btrfs";
-      options = [ "subvol=home" ] ++ btrfsCommonOpts;
-    };
+    let
+      btrfsCommonOpts = config.settings.fileSystems.btrfs.commonOptions;
+    in
 
-  fileSystems."/nix" =
-    { label = "nixos";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ] ++ btrfsCommonOpts;
-    };
+    { "/" =
+        { label = "nixos";
+          fsType = "btrfs";
+          options = [ "subvol=root" ] ++ btrfsCommonOpts;
+        };
 
-  fileSystems."/swap" =
-    { label = "nixos";
-      fsType = "btrfs";
-      options = [ "subvol=swap" ] ++ btrfsCommonOpts;
-    };
+      "/home" =
+        { label = "nixos";
+          fsType = "btrfs";
+          options = [ "subvol=home" ] ++ btrfsCommonOpts;
+        };
 
-  fileSystems."/boot/efi" =
-    { label = "boot";
-      fsType = "vfat";
+      "/nix" =
+        { label = "nixos";
+          fsType = "btrfs";
+          options = [ "subvol=nix" ] ++ btrfsCommonOpts;
+        };
+
+      "/swap" =
+        { label = "nixos";
+          fsType = "btrfs";
+          options = [ "subvol=swap" ] ++ btrfsCommonOpts;
+        };
+
+      "/boot/efi" =
+        { label = "boot";
+          fsType = "vfat";
+        };
     };
 
   swapDevices =
