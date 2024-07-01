@@ -10,17 +10,15 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  settings.fileSystems.btrfs.commonOptions = 
-    [ "defaults"
-      "compress=zstd"
-      "noatime"
-      "nodiscard"
-    ];
-
   fileSystems =
 
     let
-      btrfsCommonOpts = config.settings.fileSystems.btrfs.commonOptions;
+      btrfsCommonOpts =
+        [ "defaults"
+          "compress=zstd"
+          "noatime"
+          "nodiscard"
+        ];
     in
 
     { "/" =
