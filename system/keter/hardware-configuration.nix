@@ -11,32 +11,39 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  settings.fileSystems.btrfs.commonOptions = 
+    [ "defaults"
+      "compress=zstd"
+      "noatime"
+      "nodiscard"
+    ];
+
   fileSystems."/" =
-    { device = "/dev/disk/by-label/nixos";
+    { label = "nixos";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" "noatime" ];
+      options = [ "subvol=root" ] ++ btrfsCommonOpts;
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-label/nixos";
+    { label = "nixos";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" "noatime" ];
+      options = [ "subvol=home" ] ++ btrfsCommonOpts;
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-label/nixos";
+    { label = "nixos";
       fsType = "btrfs";
-      options = [ "subvol=@nix" "compress=zstd" "noatime" ];
+      options = [ "subvol=nix" ] ++ btrfsCommonOpts;
     };
 
   fileSystems."/swap" =
-    { device = "/dev/disk/by-label/nixos";
+    { label = "nixos";
       fsType = "btrfs";
-      options = [ "subvol=@swap" "compress=zstd" "noatime" ];
+      options = [ "subvol=swap" ] ++ btrfsCommonOpts;
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-label/boot";
+    { label = "boot";
       fsType = "vfat";
     };
 
