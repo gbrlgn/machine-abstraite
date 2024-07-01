@@ -62,9 +62,7 @@ in
     };
 
   hardware.opengl =
-    { driSupport = true;
-      driSupport32Bit = true;
-      enable = true;
+    { enable = true;
 
       extraPackages = with pkgs;
         [ vaapiVdpau
