@@ -188,7 +188,7 @@ in
       bottom
       cmake
       coreutils
-      crictl
+      cri-tools
       curl
       dbus
       dig
