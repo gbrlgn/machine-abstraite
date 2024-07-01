@@ -100,10 +100,12 @@ in
 
       ".config/helix/config.toml".source =
         ../../helix/config.toml;
+      ".config/helix/languages.toml".source =
+        ../../helix/languages.toml;
       ".config/helix/runtime/themes/inconfidente.toml".source =
-        ../../inconfidente/inconfidente.toml;
+        ../../inconfidente/inconfidente-dark.toml;
       ".local/share/blackbox/schemes/inconfidente-tilix.json".source =
-        ../../inconfidente/inconfidente-tilix.json;
+        ../../inconfidente/inconfidente-dark-tilix.json;
       ".local/share/applications/Ubuntu.desktop".source =
         ../../xdg/local/share/applications/Ubuntu.desktop;
       ".local/share/icons/distrobox".source = ../../xdg/icons/distrobox;

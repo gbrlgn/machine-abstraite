@@ -52,7 +52,7 @@ in
       networkmanager.enable = true;
     };
 
-  hardware.opengl =
+  hardware.graphics =
     { enable = true;
 
       extraPackages = with pkgs;
@@ -90,10 +90,13 @@ in
       desktopManager.xterm.enable = false;
       enable = true;
       excludePackages = [ pkgs.xterm ];
-      layout = "us";
-      libinput.enable = true;
       videoDrivers = [ "intel" ];
+      xkb = {
+        layout = "us";
+      };
     };
+
+  services.libinput.enable = true;
 
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
@@ -184,6 +187,7 @@ in
       docker
       docker-compose
       drawio
+      efm-langserver
       eza
       fd
       flatpak

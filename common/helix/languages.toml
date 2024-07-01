@@ -6,11 +6,3 @@ name = "dockerfile"
 language-servers = [
   { name = "efm", only-features = [ "diagnostics" ] }
 ]
-
-[[language]]
-name = "json"
-language-servers = [ "efm" ]
-
-[[language]]
-name = "yaml"
-language-servers = [ "efm", "yaml-language-server" ]

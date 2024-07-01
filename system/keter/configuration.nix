@@ -61,7 +61,7 @@ in
       powerManagement.enable = true;
     };
 
-  hardware.opengl =
+  hardware.graphics =
     { enable = true;
 
       extraPackages = with pkgs;
@@ -99,10 +99,13 @@ in
       displayManager.gdm.wayland = true;
       enable = true;
       excludePackages = [ pkgs.xterm ];
-      layout = "us";
-      libinput.enable = true;
       videoDrivers = [ "nvidia" ];
+      xkb = {
+        layout = "us";
+      };
     };
+
+  services.libinput.enable = true;
 
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
@@ -191,6 +194,7 @@ in
       dig
       docker
       docker-compose
+      efm-langserver
       eza
       fd
       flatpak
