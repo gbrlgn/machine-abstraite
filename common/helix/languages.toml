@@ -1,0 +1,8 @@
+[language-server.efm]
+command = "efm-langserver"
+
+[[language]]
+name = "dockerfile"
+language-servers = [
+  { name = "efm", only-features = [ "diagnostics" ] }
+]

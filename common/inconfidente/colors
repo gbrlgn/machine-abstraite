@@ -1,0 +1,25 @@
+background: #191818
+foreground: #8A7D70
+
+black:      #191817
+black2:     #201F1F
+black3:     #292828
+gray:       #333131
+gray2:      #363535
+gray3:      #392737
+gray4:      #272626
+gray5:      #2A2929
+gray6:      #424141
+
+white:      #635649
+white2:     #8A7D70
+white3:     #BEB1A4
+white4:     #F2E5D8
+
+red:        #8A5454
+green:      #6F8A54
+yellow:     #8A6F54
+orange:     #8A6054
+blue:       #546F8A
+magenta:    #8A546F
+cyan:       #548A8A
