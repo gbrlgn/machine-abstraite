@@ -1,4 +1,4 @@
-{ config, flakes, lib, pkgs, ... }:
+{ flakes, lib, pkgs, ... }:
 
 let
   imports = [ ./hardware-configuration.nix ];
@@ -6,9 +6,7 @@ let
   version = "24.05";
 in
 
-{ 
-
-  boot =
+{ boot =
     { kernelPackages = pkgs.linuxPackages_latest;
 
       loader =
@@ -101,6 +99,7 @@ in
           mesa
           netcat
           nettools
+          node
           ntfs3g
           openssl
           orjail
