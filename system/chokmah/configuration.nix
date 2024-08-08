@@ -110,6 +110,7 @@ in
           pstree
           pulumi
           ripgrep
+          serverless
           slack
           socat
           terraform
