@@ -99,7 +99,7 @@ in
           mesa
           netcat
           nettools
-          node
+          nodejs
           ntfs3g
           openssl
           orjail
