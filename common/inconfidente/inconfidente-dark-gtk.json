@@ -1,0 +1,108 @@
+{
+    "name": "Inconfidente",
+    "variables": {
+        "accent_color": "#546f8a",
+        "accent_bg_color": "#546f8a",
+        "accent_fg_color": "#f2e5d8",
+        "destructive_color": "#8a5454",
+        "destructive_bg_color": "#8a5454",
+        "destructive_fg_color": "#f2e5d8",
+        "success_color": "#6f8a54",
+        "success_bg_color": "#6f8a54",
+        "success_fg_color": "#f2e5d8",
+        "warning_color": "#8a6f54",
+        "warning_bg_color": "#8a6f54",
+        "warning_fg_color": "rgba(0, 0, 0, 0.8)",
+        "error_color": "#8a5454",
+        "error_bg_color": "#8a5454",
+        "error_fg_color": "#f2e5d8",
+        "window_bg_color": "#201f1f",
+        "window_fg_color": "#f2e5d8",
+        "view_bg_color": "#191818",
+        "view_fg_color": "#f2e5d8",
+        "headerbar_bg_color": "#292828",
+        "headerbar_fg_color": "#f2e5d8",
+        "headerbar_border_color": "#8a7d70",
+        "headerbar_backdrop_color": "#201f1f",
+        "headerbar_shade_color": "rgba(0, 0, 0, 0.36)",
+        "card_bg_color": "#333131",
+        "card_fg_color": "#f2e5d8",
+        "card_shade_color": "rgba(0, 0, 0, 0.36)",
+        "dialog_bg_color": "#302f2f",
+        "dialog_fg_color": "#f2e5d8",
+        "popover_bg_color": "#302f2f",
+        "popover_fg_color": "#f2e5d8",
+        "shade_color": "rgba(0, 0, 0, 0.36)",
+        "scrollbar_outline_color": "rgba(0, 0, 0, 0.5)"
+    },
+    "palette": {
+        "blue_": {
+            "1": "rgb(84,111,138)",
+            "2": "rgb(84,111,138)",
+            "3": "rgb(84,111,138)",
+            "4": "rgb(84,111,138)",
+            "5": "rgb(84,111,138)"
+        },
+        "green_": {
+            "1": "rgb(111,138,84)",
+            "2": "rgb(111,138,84)",
+            "3": "rgb(111,138,84)",
+            "4": "rgb(111,138,84)",
+            "5": "rgb(111,138,84)"
+        },
+        "yellow_": {
+            "1": "rgb(138,111,84)",
+            "2": "rgb(138,111,84)",
+            "3": "rgb(138,111,84)",
+            "4": "rgb(138,111,84)",
+            "5": "rgb(138,111,84)"
+        },
+        "orange_": {
+            "1": "rgb(138,96,84)",
+            "2": "rgb(138,96,84)",
+            "3": "rgb(138,96,84)",
+            "4": "rgb(138,96,84)",
+            "5": "rgb(138,96,84)"
+        },
+        "red_": {
+            "1": "rgb(138,84,84)",
+            "2": "rgb(138,84,84)",
+            "3": "rgb(138,84,84)",
+            "4": "rgb(138,84,84)",
+            "5": "rgb(138,84,84)"
+        },
+        "purple_": {
+            "1": "rgb(138,84,111)",
+            "2": "rgb(138,84,111)",
+            "3": "rgb(138,84,111)",
+            "4": "rgb(138,84,111)",
+            "5": "rgb(138,84,111)"
+        },
+        "brown_": {
+            "1": "rgb(66,65,65)",
+            "2": "rgb(41,40,40)",
+            "3": "rgb(32,31,31)",
+            "4": "rgb(25,24,24)",
+            "5": "rgb(19,18,18)"
+        },
+        "light_": {
+            "1": "rgb(242,229,216)",
+            "2": "rgb(190,177,164)",
+            "3": "rgb(138,125,112)",
+            "4": "rgb(99,86,73)",
+            "5": "rgb(66,65,65)"
+        },
+        "dark_": {
+            "1": "rgb(66,65,65)",
+            "2": "rgb(41,40,40)",
+            "3": "rgb(32,31,31)",
+            "4": "rgb(25,24,24)",
+            "5": "rgb(19,18,18)"
+        }
+    },
+    "custom_css": {
+        "gtk4": "",
+        "gtk3": ""
+    },
+    "plugins": {}
+}
