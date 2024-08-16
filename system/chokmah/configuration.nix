@@ -111,6 +111,12 @@ in
           pstree
           pulumi
           pulumiPackages.pulumi-language-python
+          python312Packages.pulumi-aws
+          python312Packages.pulumi-aws-native
+          python312Packages.pulumi-random
+          python312Packages.regex
+          python312Packages.boto3
+          python312Packages.python-dateutil
           ripgrep
           serverless
           slack
