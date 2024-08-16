@@ -110,6 +110,7 @@ in
           pipewire
           pstree
           pulumi
+          pulumiPackages.pulumi-language-python
           ripgrep
           serverless
           slack
