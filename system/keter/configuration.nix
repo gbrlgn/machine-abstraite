@@ -206,8 +206,8 @@ in
 
   programs =
     { dconf.enable = true;
-      ssh.askPassword = "";
       fish.enable = true;
+      ssh.askPassword = "";
     };
 
   security =

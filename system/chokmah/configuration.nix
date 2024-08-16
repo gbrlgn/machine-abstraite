@@ -131,6 +131,7 @@ in
           unzip
           usbutils
           util-linux
+          virtualenv
           websocat
           wget
           wireplumber
@@ -204,8 +205,9 @@ in
 
   programs =
     { dconf.enable = true;
-      ssh.askPassword = "";
       fish.enable = true;
+      nix-ld.enable = true;
+      ssh.askPassword = "";
     };
 
   security =
