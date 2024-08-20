@@ -23,6 +23,10 @@
 
   inputs =
     { nixpkgs.url = "nixpkgs/nixos-unstable";
+      eza =
+        { url = "github:eza-community/eza";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
 
       home-manager =
         { url = "home-manager";
@@ -34,8 +38,8 @@
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-      eza =
-        { url = "github:eza-community/eza";
+      nixos-cosmic =
+        { url = "github:lilyinstarlight/nixos-cosmic";
           inputs.nixpkgs.follows = "nixpkgs";
         };
     };
@@ -51,10 +55,17 @@
           { modules =
               [ ./system/keter/configuration.nix
                 home-manager.nixosModules.home-manager
+                nixos-cosmic.nixosModules.default
                 { home-manager.useGlobalPkgs = true;
                   home-manager.extraSpecialArgs = { flakes = inputs; };
                   home-manager.users.${username}.imports =
                     [ ./common/home-manager/gbrlgn/home.nix ];
+
+                  nix.settings =
+                    { substituters = [ "https://cosmic.cachix.org/" ];
+                      trusted-public-keys =
+                        [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+                    };
                 }
               ];
 

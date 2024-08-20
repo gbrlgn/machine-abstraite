@@ -12,6 +12,7 @@ in
       
       kernelModules = [ "nvidia" ];
       kernelPackages = pkgs.linuxPackages_latest;
+      kernelParams = [ "nvidia_drm.fbdev=1" ];
 
       loader =
         { grub =
@@ -217,14 +218,16 @@ in
 
   services =
     { dbus.enable = true;
+      desktopManager.cosmic.enable = true;
+      displayManager.cosmic-greeter.enable = true;
       flatpak.enable = true;
 
-      gnome =
-        { gnome-keyring.enable = true;
-          gnome-online-accounts.enable = true;
-          tracker.enable = true;
-          tracker-miners.enable = true;
-        };
+      # gnome =
+      #   { gnome-keyring.enable = true;
+      #     gnome-online-accounts.enable = true;
+      #     tracker.enable = true;
+      #     tracker-miners.enable = true;
+      #   };
 
       libinput.enable = true;
 

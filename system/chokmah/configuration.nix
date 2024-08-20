@@ -111,12 +111,13 @@ in
           pstree
           pulumi
           pulumiPackages.pulumi-language-python
+          python312Packages.boto3
+          python312Packages.grpclib
           python312Packages.pulumi-aws
           python312Packages.pulumi-aws-native
           python312Packages.pulumi-random
-          python312Packages.regex
-          python312Packages.boto3
           python312Packages.python-dateutil
+          python312Packages.regex
           ripgrep
           serverless
           slack
@@ -142,8 +143,8 @@ in
       variables =
         { __GL_MaxFramesAllowed = "0";
           __GL_LOG_MAX_ANISO = "4";
-          MOZ_ENABLE_WAYLAND = "1";
           EDITOR = "hx";
+          MOZ_ENABLE_WAYLAND = "1";
         };
     };
 
