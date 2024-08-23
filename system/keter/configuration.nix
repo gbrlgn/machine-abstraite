@@ -122,7 +122,7 @@ in
           wget
           wireplumber
           wl-clipboard-x11
-          yq
+          yq-go
         ];
 
       variables =
