@@ -35,16 +35,16 @@ in
     { gnome.excludePackages = with pkgs;
         [ cheese
           eog
-          gnome.gnome-clocks
-          gnome.gnome-contacts
-          gnome.gnome-music
-          gnome.gnome-weather
+          gnome-clocks
           gnome-connections
+          gnome-contacts
           gnome-keyring
+          gnome-music
           gnome-photos
+          gnome-system-monitor
           gnome-tour
           gnome-user-docs
-          gnome-system-monitor
+          gnome-weather
           seahorse
           totem
           yelp
