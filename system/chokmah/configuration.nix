@@ -30,16 +30,16 @@ in
     { gnome.excludePackages = with pkgs;
         [ cheese
           eog
-          gnome.gnome-clocks
-          gnome.gnome-contacts
-          gnome.gnome-music
-          gnome.gnome-weather
+          gnome-clocks
+          gnome-contacts
           gnome-connections
           gnome-keyring
+          gnome-music
           gnome-photos
+          gnome-system-monitor
           gnome-tour
           gnome-user-docs
-          gnome-system-monitor
+          gnome-weather
           seahorse
           totem
           yelp
@@ -106,11 +106,15 @@ in
           orjail
           p7zip
           pciutils
+          pdm
           pkg-config
           pipewire
           pstree
           pulumi
           pulumiPackages.pulumi-language-python
+          python310
+          python311
+          python312
           python312Packages.boto3
           python312Packages.grpclib
           python312Packages.pulumi-aws
