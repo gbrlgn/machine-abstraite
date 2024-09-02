@@ -122,6 +122,7 @@ in
           python312Packages.pulumi-random
           python312Packages.python-dateutil
           python312Packages.regex
+          python312Packages.virtualenv
           ripgrep
           serverless
           slack
@@ -136,7 +137,6 @@ in
           unzip
           usbutils
           util-linux
-          virtualenv
           websocat
           wget
           wireplumber
