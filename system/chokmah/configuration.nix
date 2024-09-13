@@ -72,6 +72,7 @@ in
           dig
           docker
           docker-compose
+          dojo
           drawio
           efm-langserver
           eza
@@ -89,6 +90,7 @@ in
           gnome.gdm
           gnome.gnome-logs
           gnome-tweaks
+          grpcurl
           gum
           helix
           inetutils
