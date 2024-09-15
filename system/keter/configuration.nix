@@ -53,6 +53,7 @@ in
           kgx
         ];
 
+      localBinInPath = true;
       shells = with pkgs; [ bashInteractive fish ];
 
       systemPackages = with pkgs;
@@ -85,12 +86,12 @@ in
           firmwareLinuxNonfree
           fish
           (lib.hiPrio gcc)
+          gdm
           git
           gitui
           glibc
           gnumake
-          gnome.gdm
-          gnome.gnome-logs
+          gnome-logs
           gnome-tweaks
           helix
           inetutils

@@ -48,6 +48,7 @@ in
           kgx
         ];
 
+      localBinInPath = true;
       shells = with pkgs; [ bashInteractive fish ];
 
       systemPackages = with pkgs;
@@ -56,7 +57,8 @@ in
           eza = flakes.eza.packages.${system}.default;
         in
 
-        [ aspellDicts.pt_BR
+        [ adwaita-icon-theme
+          aspellDicts.pt_BR
           awscli
           bat
           bash
@@ -72,7 +74,6 @@ in
           dig
           docker
           docker-compose
-          dojo
           drawio
           efm-langserver
           eza
@@ -82,13 +83,12 @@ in
           firmwareLinuxNonfree
           fish
           (lib.hiPrio gcc)
+          gdm
           git
           gitui
           glibc
           gnumake
-          gnome.adwaita-icon-theme
-          gnome.gdm
-          gnome.gnome-logs
+          gnome-logs
           gnome-tweaks
           grpcurl
           gum
