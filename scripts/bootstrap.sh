@@ -7,7 +7,7 @@ then
 	exit 1
 fi
 
-FLASH_PATH=/run/media/$(hostname)/gbrlgn
+FLASH_PATH=/run/media/$(whoami)/gbrlgn
 
 cp $FLASH_PATH/.ssh/$(hostname)* $HOME/.ssh && \
   chmod 600 $HOME/.ssh/$(hostname)
