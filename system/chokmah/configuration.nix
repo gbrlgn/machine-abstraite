@@ -260,6 +260,9 @@ in
 
   systemd =
     { services.NetworkManager-wait-online.enable = false;
+      targets = {
+        multi-user.wants = [ "pritunl-client.service" ];
+      };
       network.wait-online.anyInterface = true;
     };
 
