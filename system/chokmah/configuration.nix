@@ -111,6 +111,7 @@ in
           pdm
           pkg-config
           pipewire
+          pritunl-client
           pstree
           pulumi
           pulumiPackages.pulumi-language-python
