@@ -140,6 +140,7 @@ in
           unzip
           usbutils
           util-linux
+          virtualbox
           websocat
           wget
           wireplumber
