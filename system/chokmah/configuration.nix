@@ -140,7 +140,6 @@ in
           unzip
           usbutils
           util-linux
-          virtualbox
           websocat
           wget
           wireplumber
@@ -270,18 +269,25 @@ in
 
   time.timeZone = "America/Sao_Paulo";
 
-  users.users.gbrlgn =
-    { home = "/home/gbrlgn";
-      extraGroups = [ "docker" "flatpak" "networkmanager" "video" "wheel" ];
-      initialPassword = "assemblage";
-      isNormalUser = true;
-      name = "gbrlgn";
-      shell = pkgs.fish;
-    };
+  users =
+   { users.gbrlgn =
+      { home = "/home/gbrlgn";
+        extraGroups = [ "docker" "flatpak" "networkmanager" "video" "wheel" ];
+        initialPassword = "assemblage";
+        isNormalUser = true;
+        name = "gbrlgn";
+        shell = pkgs.fish;
+      };
+
+    extraGroups.vboxusers.members = [ "gbrlgn" ];
+  };
 
   virtualisation =
     { containerd.enable = true;
       docker.enable = true;
+      virtualbox.host = 
+        { enable = true;
+        };
     };
 
   xdg.portal =
