@@ -135,6 +135,7 @@ in
           terraform-providers.aws
           terraform-providers.helm
           terraform-providers.kubernetes
+          terragrunt
           tmux
           tree
           unzip
