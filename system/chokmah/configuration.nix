@@ -59,7 +59,7 @@ in
 
         [ adwaita-icon-theme
           aspellDicts.pt_BR
-          awscli
+          awscli2
           bat
           bash
           bc
