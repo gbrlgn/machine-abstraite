@@ -113,17 +113,11 @@ in
           pipewire
           pritunl-client
           pstree
-          pulumi
-          pulumiPackages.pulumi-language-python
           python310
           python311
           python312
           python312Packages.boto3
           python312Packages.grpclib
-          python312Packages.pulumi-aws
-          python312Packages.pulumi-aws-native
-          python312Packages.pulumi-random
-          python312Packages.python-dateutil
           python312Packages.regex
           python312Packages.virtualenv
           ripgrep
