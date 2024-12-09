@@ -125,6 +125,7 @@ in
           serverless
           slack
           socat
+          tcpdump
           terraform
           terraform-ls
           terraform-providers.aws
