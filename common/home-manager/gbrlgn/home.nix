@@ -75,7 +75,7 @@ in
 
       packages = with pkgs;
 
-        [ buf-language-server
+        [ buf
           corefonts
           delve
           direnv

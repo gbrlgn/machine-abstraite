@@ -90,6 +90,7 @@ in
           gnumake
           gnome-logs
           gnome-tweaks
+          granted
           grpcurl
           gum
           helix
@@ -160,7 +161,10 @@ in
           fira-code-symbols
           go-font
           ibm-plex
-          nerdfonts
+          nerd-fonts.fira-code
+          nerd-fonts.fira-mono
+          nerd-fonts.go-mono
+          nerd-fonts.symbols-only
           powerline-fonts
           powerline-symbols
         ];
