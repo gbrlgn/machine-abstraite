@@ -228,8 +228,8 @@ in
       flatpak.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gnome-online-accounts.enable = true;
-      gnome.tracker.enable = true;
-      gnome.tracker-miners.enable = true;
+      gnome.tinysparql.enable = true;
+      gnome.localsearch.enable = true;
       libinput.enable = true;
 
       pipewire =

@@ -225,14 +225,6 @@ in
       desktopManager.cosmic.enable = true;
       displayManager.cosmic-greeter.enable = true;
       flatpak.enable = true;
-
-      # gnome =
-      #   { gnome-keyring.enable = true;
-      #     gnome-online-accounts.enable = true;
-      #     tracker.enable = true;
-      #     tracker-miners.enable = true;
-      #   };
-
       libinput.enable = true;
 
       pipewire =
