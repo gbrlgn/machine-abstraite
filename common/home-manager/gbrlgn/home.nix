@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   username = "gbrlgn";
@@ -61,6 +61,8 @@ in
             ../../helix/config.toml;
           ".config/helix/languages.toml".source =
             ../../helix/languages.toml;
+          ".config/fish/assume.fish".source =
+            ../../common/xdg/config/fish/assume.fish;
           ".config/helix/runtime/themes/inconfidente-dark.toml".source =
             ../../inconfidente/inconfidente-dark.toml;
           ".local/share/blackbox/schemes/inconfidente-tilix.json".source =
