@@ -1,9 +1,10 @@
-{ lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
-  system = pkgs.stdenv.hostPlatform.system;
   username = "gbrlgn";
-  version = "24.05";
+  version = "24.11";
+
+  fishConfDir = "${config.xdg.configHome}/.config/fish";
 in
 
 { dconf.settings =
@@ -129,8 +130,6 @@ in
 
       fish =
         { enable = true;
-          interactiveShellInit =
-            builtins.readFile ../../xdg/config/fish/config.fish;
         };
 
       git =
@@ -148,6 +147,16 @@ in
         { enable = true;
           defaultEditor = true;
         };
+    };
+
+  xdg.configFile.".config/fish/config.fish.tmp" = 
+    { source =
+        ../../common/xdg/config/fish/config.fish;
+      onChange =
+        '' rm -f ${fishConfDir}/config.fish
+           cp ${fishConfDir}/config.fish.tmp ${fishConfDir}/config.fish
+           chmod u+rw ${fishConfDir}/config.fish
+        '';
     };
 
   xdg.mime.enable = true;
