@@ -127,6 +127,7 @@ in
           socat
           tcpdump
           terraform
+          terraform-docs
           terraform-ls
           terraform-providers.aws
           terraform-providers.helm
