@@ -102,6 +102,7 @@ in
           mesa
           netcat
           nettools
+          nmap
           nodejs
           ntfs3g
           openssl
@@ -114,8 +115,6 @@ in
           pipewire
           pritunl-client
           pstree
-          python310
-          python311
           python312
           python312Packages.boto3
           python312Packages.grpclib
@@ -142,6 +141,7 @@ in
           wget
           wireplumber
           wl-clipboard-x11
+          yarn
           yq-go
         ];
 
@@ -164,9 +164,7 @@ in
           go-font
           ibm-plex
           nerd-fonts.fira-code
-          nerd-fonts.fira-mono
           nerd-fonts.go-mono
-          nerd-fonts.symbols-only
           powerline-fonts
           powerline-symbols
         ];
@@ -181,8 +179,6 @@ in
               libvdpau-va-gl
             ];
         };
-
-      pulseaudio.enable = false;
     };
 
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -242,6 +238,7 @@ in
         };
 
       printing.enable = false;
+      pulseaudio.enable = false;
 
       xserver =
         { desktopManager.gnome.enable = true;
@@ -250,7 +247,7 @@ in
           desktopManager.xterm.enable = false;
           enable = true;
           excludePackages = [ pkgs.xterm ];
-          videoDrivers = [ "intel" ];
+          videoDrivers = [ "modesetting" ];
           xkb = {
             layout = "us";
           };
