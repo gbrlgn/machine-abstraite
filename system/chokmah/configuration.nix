@@ -283,15 +283,6 @@ in
   virtualisation =
     { containerd.enable = true;
       docker.enable = true;
-      virtualbox = 
-        { host = 
-            { enable = true;
-            };
-          guest = 
-            { enable = true;
-              dragAndDrop = true;
-            };
-        };
     };
 
   xdg.portal =
