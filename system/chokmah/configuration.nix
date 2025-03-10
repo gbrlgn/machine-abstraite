@@ -60,6 +60,7 @@ in
         [ adwaita-icon-theme
           aspellDicts.pt_BR
           awscli2
+          aws-sam-cli
           bat
           bash
           bc
