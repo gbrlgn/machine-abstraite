@@ -81,10 +81,10 @@ in
           efm-langserver
           eza
           fd
-          flatpak
           firefox-wayland
           firmwareLinuxNonfree
           fish
+          flatpak
           (lib.hiPrio gcc)
           gdm
           git
