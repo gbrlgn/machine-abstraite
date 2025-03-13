@@ -145,6 +145,7 @@ in
           wl-clipboard-x11
           yarn
           yq-go
+          zip
         ];
 
       variables =
