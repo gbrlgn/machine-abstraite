@@ -126,7 +126,9 @@ in
   nixpkgs.config.allowUnfree = true;
 
   programs =
-    { home-manager.enable = true;
+    { home-manager =
+        { enable = true;
+        };
 
       fish =
         { enable = true;

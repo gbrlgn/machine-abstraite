@@ -56,7 +56,7 @@
               [ ./system/keter/configuration.nix
                 home-manager.nixosModules.home-manager
                 nixos-cosmic.nixosModules.default
-                { home-manager.useGlobalPkgs = true;
+                { home-manager.useGlobalPkgs = false;
                   home-manager.extraSpecialArgs = { flakes = inputs; };
                   home-manager.users.${username}.imports =
                     [ ./common/home-manager/gbrlgn/home.nix ];
@@ -76,7 +76,7 @@
           { modules =
               [ ./system/chokmah/configuration.nix
                 home-manager.nixosModules.home-manager
-                { home-manager.useGlobalPkgs = true;
+                { home-manager.useGlobalPkgs = false;
                   home-manager.extraSpecialArgs = { flakes = inputs; };
                   home-manager.users.${username}.imports =
                     [ ./common/home-manager/gbrlgn/home.nix ];
