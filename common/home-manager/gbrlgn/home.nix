@@ -111,6 +111,7 @@ in
           tectonic
           texlab
           xdg-dbus-proxy
+          yt-dlp
           zlib
         ];
 
