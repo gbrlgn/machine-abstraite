@@ -6,6 +6,7 @@ auto-info = true
 auto-pairs = true
 bufferline = "multiple"
 cursorline = true
+insert-final-newline= false
 line-number = "relative"
 mouse = true
 rulers = [ 90 ]
