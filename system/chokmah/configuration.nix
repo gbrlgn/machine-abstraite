@@ -52,11 +52,6 @@ in
       shells = with pkgs; [ bashInteractive fish ];
 
       systemPackages = with pkgs;
-
-        let
-          eza = flakes.eza.packages.${system}.default;
-        in
-
         [ adwaita-icon-theme
           aspellDicts.pt_BR
           awscli2
@@ -65,7 +60,6 @@ in
           bash
           bc
           (lib.lowPrio binutils)
-          blackbox-terminal
           bottom
           cmake
           coreutils
@@ -117,6 +111,7 @@ in
           pipewire
           pritunl-client
           pstree
+          ptyxis
           python312
           python312Packages.boto3
           python312Packages.grpclib
@@ -225,6 +220,15 @@ in
 
   services =
     { dbus.enable = true;
+      desktopManager.gnome.enable = true;
+
+      displayManager =
+        { gdm =
+          { enable = true;
+            wayland = true;
+          };
+        };
+
       flatpak.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gnome-online-accounts.enable = true;
@@ -244,10 +248,7 @@ in
       pulseaudio.enable = false;
 
       xserver =
-        { desktopManager.gnome.enable = true;
-          displayManager.gdm.enable = true;
-          displayManager.gdm.wayland = true;
-          desktopManager.xterm.enable = false;
+        { desktopManager.xterm.enable = false;
           enable = true;
           excludePackages = [ pkgs.xterm ];
           videoDrivers = [ "modesetting" ];

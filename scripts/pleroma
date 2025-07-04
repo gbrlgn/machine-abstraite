@@ -1,9 +1,11 @@
 org.gnome.gitlab.somas.Apostrophe
+io.beekeeperstudio.Studio
 com.usebottles.bottles
 org.gnome.World.Citations
 com.github.gi_lom.dialect
 org.gnome.Fractal
 org.gabmus.gfeeds
+com.quexten.Goldwarden
 fr.romainvigier.MetadataCleaner
 org.libretro.RetroArch
 com.github.flxzt.rnote

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vaultwarden
+GenericName=Vaultwarden server
+Comment=Vaultwarden server
+Category=Password;System;Utility
+Exec=docker run --detach --name vaultwarden --env DOMAIN="http://localhost" --volume /home/gbrlgn/.bitwarden/:/data/ --restart unless-stopped --publish 5813:80 vaultwarden/server:latest
+Icon=/home/gbrlgn/.local/share/icons/distrobox/vaultwarden.svg
+Keywords=password;
+NoDisplay=false
+Type=Application

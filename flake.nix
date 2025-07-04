@@ -23,18 +23,9 @@
 
   inputs =
     { nixpkgs.url = "nixpkgs/nixos-unstable";
-      eza =
-        { url = "github:eza-community/eza";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
 
       home-manager =
         { url = "home-manager";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-      helix =
-        { url = "github:helix-editor/helix";
           inputs.nixpkgs.follows = "nixpkgs";
         };
 

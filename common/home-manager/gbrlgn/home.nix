@@ -57,19 +57,21 @@ in
               recursive = true;
             };
 
+          ".config/bat/config".source =
+            ../../xdg/config/bat/config;
+          ".config/fish/assume.fish".source =
+            ../../xdg/config/fish/assume.fish;
           ".config/helix/config.toml".source =
             ../../helix/config.toml;
           ".config/helix/languages.toml".source =
             ../../helix/languages.toml;
-          ".config/fish/assume.fish".source =
-            ../../xdg/config/fish/assume.fish;
           ".config/helix/runtime/themes/inconfidente-dark.toml".source =
             ../../inconfidente/inconfidente-dark.toml;
           ".local/share/blackbox/schemes/inconfidente-tilix.json".source =
             ../../inconfidente/inconfidente-dark-tilix.json;
-          ".local/share/applications/Ubuntu.desktop".source =
-            ../../xdg/local/share/applications/Ubuntu.desktop;
-          ".local/share/icons/distrobox".source = ../../xdg/icons/distrobox;
+          ".local/share/applications/Vaultwarden.desktop".source =
+            ../../xdg/local/share/applications/Vaultwarden.desktop;
+          ".local/share/icons/vaultwarden".source = ../../xdg/icons/vaultwarden;
         };
 
       homeDirectory = "/home/${username}";
@@ -82,6 +84,7 @@ in
           direnv
           distrobox
           ffmpeg
+          fzf
           geary
           glib
           glxinfo
@@ -117,7 +120,7 @@ in
 
       sessionVariables =
         { EDITOR = "hx";
-          TERMINAL = "blackbox";
+          TERMINAL = "ptyxis";
         };
 
       stateVersion = version;
