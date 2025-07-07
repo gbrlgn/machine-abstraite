@@ -1,0 +1,33 @@
+{
+  "name": "Inconfidente",
+  "comment": "Libertas Quae Sera Tamen",
+  "foreground-color": "#8A7D70",
+  "background-color": "#191818",
+  "use-theme-colors": false,
+  "use-highlight-color": true,
+  "highlight-foreground-color": "#BEB1A4",
+  "highlight-background-color": "#272626",
+  "use-cursor-color": true,
+  "cursor-foreground-color": "#191818",
+  "cursor-background-color": "#F2E5D8",
+  "use-badge-color": true,
+  "badge-color": "#548A8A",
+  "palette": [
+    "#191818",
+    "#8A5454",
+    "#6F8A54",
+    "#8A6F54",
+    "#546F8A",
+    "#8A546F",
+    "#548A8A",
+    "#635649",
+    "#333131",
+    "#8A5454",
+    "#6F8A54",
+    "#8A6F54",
+    "#546F8A",
+    "#8A546F",
+    "#548A8A",
+    "#BEB1A4"
+  ]
+}

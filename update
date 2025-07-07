@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+nix flake update
+sudo ./scripts/update.sh local

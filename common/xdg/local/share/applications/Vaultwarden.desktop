@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Vaultwarden
+GenericName=Vaultwarden server
+Comment=Vaultwarden server
+Category=Password;System;Utility
+Exec=sh -c 'docker start vaultwarden || docker run -d --name vaultwarden -e DOMAIN="https://192.168.0.15" -e ROCKET_TLS='{certs="/ssl/certificate.crt",key="/ssl/private.key"}' -v /home/gbrlgn/.vaultwarden/:/data/ -v /home/gbrlgn/Documentos/Git/private/ssl/:/ssl/ --restart unless-stopped -p 443:80 vaultwarden/server:latest'
+Icon=/home/gbrlgn/.local/share/icons/vaultwarden/vaultwarden.svg
+Keywords=password;
+NoDisplay=false
+Type=Application

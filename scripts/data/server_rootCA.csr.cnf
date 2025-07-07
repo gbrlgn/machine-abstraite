@@ -1,0 +1,14 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+
+[dn]
+C=BR
+ST=Minas Gerais
+L=Minas Gerais
+O=gbrlgn
+OU=Vaultwarden
+emailAddress=gabrielgian@live.com
+CN=192.168.0.15

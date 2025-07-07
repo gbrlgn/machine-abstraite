@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+sudo ./scripts/clean.sh; ./scripts/clean.sh

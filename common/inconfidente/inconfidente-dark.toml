@@ -1,0 +1,156 @@
+# Inconfidente Dark for Helix (https://helix-editor.com)
+# https://docs.helix-editor.com/themes.html
+
+## SYNTAX HIGHLIGHTING
+
+# Constants
+"constant" = "inconfidente-queijo"
+"constant.builtin" = "inconfidente-ceu"
+"constant.builtin.boolean" = "inconfidente-ceu"
+"constant.builtin.character" = "inconfidente-violeta"
+"constant.character.escape" = "inconfidente-ouro"
+"constant.macro" = "inconfidente-sol"
+"constant.numeric" = "inconfidente-ceu"
+"constructor" = "inconfidente-cascata"
+
+# Diagnostics
+"diagnostic" = { underline = { color = "inconfidente-ouro", style = "curl" } }
+"diagnostic.error" = { underline = { color = "inconfidente-sangue", style = "curl" } }
+"error" = "inconfidente-sangue"
+"diagnostic.hint" = { underline = { color = "inconfidente-violeta", style = "curl" } }
+"hint" = "inconfidente-violeta"
+"diagnostic.info" = { underline = { color = "inconfidente-cascata", style = "curl" } }
+"info" = "inconfidente-cascata"
+"diagnostic.warning" = { underline = { color = "inconfidente-ouro", style = "curl" } }
+"warning" = "inconfidente-ouro"
+
+# Diffs
+"diff.delta" = "inconfidente-ouro"
+"diff.minus" = "inconfidente-sangue"
+"diff.plus" = "inconfidente-canastra"
+
+# Functions
+"function" = "inconfidente-violeta"
+"function.builtin" = "inconfidente-ceu"
+"function.method" = "inconfidente-sangue"
+"function.macro" = "inconfidente-altaneira"
+"function.special" = "inconfidente-cascata"
+
+# Git
+"git.delta.moved" = "inconfidente-altaneira"
+
+# Keywords
+"keyword" = "inconfidente-sangue"
+"keyword.control.conditional" = "inconfidente-ceu"
+"keyword.control.exception" = "inconfidente-sangue"
+"keyword.control.repeat" = "inconfidente-ceu"
+"keyword.directive" = "inconfidente-ouro"
+"keyword.function" = "inconfidente-cascata"
+"keyword.operator" = "inconfidente-sol"
+"keyword.return" = "inconfidente-violeta"
+"keyword.storage.modifier" = "inconfidente-cascata"
+"keyword.storage.type" = "inconfidente-ceu"
+
+# Punctuation
+"punctuation" = "inconfidente-sol"
+"punctuation.bracket" = "inconfidente-violeta"
+"punctuation.delimiter" = "inconfidente-sol"
+"punctuation.special" = "inconfidente-violeta"
+
+# Strings
+"string" = "inconfidente-canastra"
+"string.escape" = "inconfidente-mocha"
+"string.regex" = "inconfidente-ouro"
+"string.special" = "inconfidente-altaneira"
+
+# Types
+"type" = "inconfidente-cascata"
+"type.builtin" = "inconfidente-ceu"
+
+# Variables
+"variable" = "inconfidente-cascata"
+"variable.builtin" = "inconfidente-ceu"
+"variable.other.member" = "inconfidente-queijo"
+"variable.parameter" = "inconfidente-cascata"
+"attribute" = "inconfidente-sol"
+
+# Misc.
+"label" = "inconfidente-ceu"
+"namespace" = "inconfidente-cascata"
+"operator" = "inconfidente-sol"
+"special" = "inconfidente-violeta"
+"tag" = "inconfidente-queijo"
+"comment" = { fg = "inconfidente-mocha", modifiers = ["italic"] }
+
+## EDITOR UI COLORS
+
+"ui.background" = { bg = "inconfidente-cafe0" }
+"ui.text" = "inconfidente-queijo"
+"ui.window" = "inconfidente-cafe1"
+
+# Debug
+"ui.debug.active" = "inconfidente-ouro"
+"ui.debug.breakpoint" = "inconfidente-sangue"
+
+# Popups and menus
+"ui.menu" = { bg = "inconfidente-cafe2", fg = "inconfidente-sol" }
+"ui.menu.scroll" = { bg = "inconfidente-cafe3", fg = "inconfidente-queijo" }
+"ui.menu.selected" = { bg = "inconfidente-mocha", fg = "inconfidente-cascata" }
+"ui.popup" = { bg = "inconfidente-cafe1" }
+"ui.popup.info" = { bg = "inconfidente-cafe1" }
+"ui.help" = { bg = "inconfidente-cafe1", fg = "inconfidente-sol" }
+"ui.text.focus" = { bg = "inconfidente-cafe2", fg = "inconfidente-cascata" }
+
+# Gutter
+"ui.gutter" = "inconfidente-queijo"
+"ui.linenr" = "inconfidente-mocha"
+"ui.linenr.selected" = "inconfidente-queijo"
+
+# Cursor
+"ui.cursor" = { fg = "inconfidente-sol", modifiers = [ "reversed" ] }
+"ui.cursorcolumn.primary" = { bg = "inconfidente-cafe1" }
+"ui.cursorline.primary" = { bg = "inconfidente-cafe1" }
+
+"ui.selection" = { bg = "inconfidente-cafe" }
+"ui.selection.primary" = { bg = "inconfidente-cafe" }
+"ui.highlight" = { bg = "inconfidente-cafe2", fg = "inconfidente-cascata" }
+
+# Statusline
+"ui.statusline" = { bg = "inconfidente-cafe2", fg = "inconfidente-cascata" }
+"ui.statusline.inactive" = { bg = "inconfidente-cafe1", fg = "inconfidente-cascata" }
+"ui.statusline.insert" = { bg = "inconfidente-sol", fg = "inconfidente-cafe1" }
+"ui.statusline.normal" = { bg = "inconfidente-cascata", fg = "inconfidente-cafe1" }
+"ui.statusline.select" = { bg = "inconfidente-ceu", fg = "inconfidente-cafe1" }
+"ui.statusline.separator" = "inconfidente-cafe3"
+
+# Virtual/invisible text
+"ui.virtual" = { fg = "inconfidente-queijo" }
+"ui.virtual.indent-guide" = "inconfidente-cafe3"
+"ui.virtual.inlay-hint" = { fg = "inconfidente-cafe3", modifiers = ["italic"] }
+"ui.virtual.ruler" = { bg = "inconfidente-cafe" }
+"ui.virtual.whitespace" = "inconfidente-cafe3"
+"ui.virtual.wrap" = "inconfidente-cafe3"
+
+# Bufferline
+"ui.bufferline" = { fg = "inconfidente-leite", bg = "inconfidente-cafe2" }
+"ui.bufferline.active" = { bg = "inconfidente-cafe3", fg = "inconfidente-queijo", modifiers = [ "bold" ], underline = { color = "inconfidente-cascata", style = "line" } }
+
+[palette]
+inconfidente-cafe = "#131212"
+inconfidente-cafe0 = "#191818"
+inconfidente-cafe1 = "#201F1F"
+inconfidente-cafe2 = "#292828"
+inconfidente-cafe3 = "#333131"
+inconfidente-mocha = "#363535"
+
+inconfidente-leite = "#635649"
+inconfidente-queijo = "#8A7D70"
+inconfidente-sol = "#BEB1A4"
+
+inconfidente-ceu = "#546F8A"
+inconfidente-cascata = "#548A8A"
+inconfidente-violeta = "#8A546F"
+inconfidente-sangue = "#8A5454"
+inconfidente-altaneira = "#8A6054"
+inconfidente-ouro = "#8A6F54"
+inconfidente-canastra = "#6F8A54"
