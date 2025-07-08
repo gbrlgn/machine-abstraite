@@ -13,8 +13,11 @@ if test -n "$eza_available"
     alias ls="eza --bytes --git --group-directories-first"
 end
 
-fzf --fish | source
-set FZF_DEFAULT_OPTS "--preview 'bat --color=always {}'"
+set -Ux FZF_DEFAULT_OPTS \
+    "--color=fg:#8a7d70,bg:#121212,hl:#546f8a" \
+    " --color=fg+:#beb1a4,bg+:#292828,hl+:#548a8a" \
+    " --color=info:#8a6f54,prompt:#8a6054,pointer:#6f8a54" \
+    " --color=marker:#8a5454,spinner:#8a546f,header:#548a8a"
 set FZF_DEFAULT_COMMAND "fd --type f"
 
 fnm env --use-on-cd --shell fish | source
