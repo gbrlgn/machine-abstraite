@@ -1,5 +1,6 @@
-alias ....="../../"
-alias f="fzf"
+alias ....="cd ../../"
+alias ......="cd ../../../"
+alias fcd="cd (dirname (fd --type file | fzf))"
 alias la="ls -lha"
 alias df="df -h"
 alias du="du -ch"
