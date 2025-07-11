@@ -71,7 +71,6 @@ in
           drawio
           efm-langserver
           eza
-          fd
           firefox-wayland
           firmwareLinuxNonfree
           fish

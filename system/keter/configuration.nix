@@ -74,7 +74,6 @@ in
           docker-compose
           efm-langserver
           eza
-          fd
           firefox-wayland
           firmwareLinuxNonfree
           fish
