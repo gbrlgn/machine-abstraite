@@ -112,8 +112,7 @@ in
           rustup
           starship
           taplo
-          tectonic
-          texlab
+          texliveSmall
           xdg-dbus-proxy
           yt-dlp
           zlib
