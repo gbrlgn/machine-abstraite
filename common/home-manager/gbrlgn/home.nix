@@ -105,10 +105,12 @@ in
           nodePackages_latest.typescript-language-server
           nodePackages_latest.yaml-language-server
           pipenv
+          postgresql
           python311Full
           python311Packages.pip
           python311Packages.pygit2
           python311Packages.python-lsp-server
+          redis
           rustup
           starship
           taplo

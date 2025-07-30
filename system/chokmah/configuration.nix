@@ -101,7 +101,6 @@ in
           ntfs3g
           openssl
           openvpn
-          orjail
           p7zip
           pciutils
           pdm
