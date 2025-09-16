@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+sudo ./scripts/update.sh local

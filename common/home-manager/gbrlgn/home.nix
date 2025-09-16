@@ -106,10 +106,10 @@ in
           nodePackages_latest.yaml-language-server
           pipenv
           postgresql
-          python311Full
-          python311Packages.pip
-          python311Packages.pygit2
-          python311Packages.python-lsp-server
+          python312
+          python312Packages.pip
+          python312Packages.pygit2
+          python312Packages.python-lsp-server
           redis
           rustup
           starship

@@ -55,6 +55,7 @@ in
           aspellDicts.pt_BR
           awscli2
           aws-sam-cli
+          azure-cli
           bat
           bash
           bc
@@ -91,6 +92,7 @@ in
           inetutils
           jq
           kubectl
+          kubelogin
           kubernetes-helm
           less
           mesa
@@ -102,6 +104,7 @@ in
           openssl
           openvpn
           p7zip
+          pandoc
           pciutils
           pdm
           pkg-config
@@ -109,7 +112,6 @@ in
           pritunl-client
           pstree
           ptyxis
-          python312
           python312Packages.boto3
           python312Packages.grpclib
           python312Packages.regex
