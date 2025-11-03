@@ -30,6 +30,7 @@ in
         [ cheese
           eog
           gnome-clocks
+          gnome-console
           gnome-contacts
           gnome-connections
           gnome-keyring
@@ -44,7 +45,6 @@ in
           yelp
           yelp-xsl
           epiphany
-          kgx
         ];
 
       localBinInPath = true;
@@ -54,7 +54,6 @@ in
         [ adwaita-icon-theme
           aspellDicts.pt_BR
           awscli2
-          aws-sam-cli
           azure-cli
           bat
           bash
@@ -72,8 +71,7 @@ in
           drawio
           efm-langserver
           eza
-          firefox-wayland
-          firmwareLinuxNonfree
+          firefox
           fish
           flatpak
           fnm
@@ -95,6 +93,7 @@ in
           kubelogin
           kubernetes-helm
           less
+          linux-firmware
           mesa
           netcat
           nettools
@@ -102,6 +101,7 @@ in
           nodejs
           ntfs3g
           openssl
+          opentofu
           openvpn
           p7zip
           pandoc
@@ -124,9 +124,9 @@ in
           terraform
           terraform-docs
           terraform-ls
-          terraform-providers.aws
-          terraform-providers.helm
-          terraform-providers.kubernetes
+          terraform-providers.hashicorp_aws
+          terraform-providers.hashicorp_helm
+          terraform-providers.hashicorp_kubernetes
           terragrunt
           tmux
           tree
@@ -172,7 +172,7 @@ in
         { enable = true;
 
           extraPackages = with pkgs;
-            [ vaapiVdpau
+            [ libva-vdpau-driver
               libvdpau-va-gl
             ];
         };

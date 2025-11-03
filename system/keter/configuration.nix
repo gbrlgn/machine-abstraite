@@ -36,6 +36,7 @@ in
           eog
           gnome-clocks
           gnome-connections
+          gnome-console
           gnome-contacts
           gnome-keyring
           gnome-music
@@ -49,7 +50,6 @@ in
           yelp
           yelp-xsl
           epiphany
-          kgx
         ];
 
       localBinInPath = true;
@@ -74,8 +74,7 @@ in
           docker-compose
           efm-langserver
           eza
-          firefox-wayland
-          firmwareLinuxNonfree
+          firefox
           fish
           flatpak
           (lib.hiPrio gcc)
@@ -93,6 +92,7 @@ in
           kubectl
           kubernetes-helm
           less
+          linux-firmware
           mesa
           nerdctl
           netcat
@@ -167,7 +167,7 @@ in
         { enable = true;
 
           extraPackages = with pkgs;
-            [ vaapiVdpau
+            [ libva-vdpau-driver
               libvdpau-va-gl
             ];
         };

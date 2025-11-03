@@ -88,7 +88,6 @@ in
           fzf
           geary
           glib
-          glxinfo
           go
           gopls
           home-manager
@@ -99,6 +98,7 @@ in
           lua54Packages.luarocks
           lua-language-server
           marksman
+          mesa-demos
           nil
           nodePackages_latest.npm
           nodePackages_latest.vscode-json-languageserver
@@ -144,12 +144,16 @@ in
 
       git =
         { enable = true;
-          userName = "Gabriel Lemos";
-          userEmail = "gabrielgian@protonmail.com";
-          extraConfig =
-            { credential.helper =
+
+          settings =
+            { user =
+                { name = "Gabriel Lemos";
+                  email = "gabrielgian@protonmail.com";
+                };
+
+              credential.helper =
                 "${pkgs.git.override { withLibsecret = true; }}/bin/git-credential-libsecret";
-              core.editor = "hx";
+                core.editor = "hx";
             };
         };
 

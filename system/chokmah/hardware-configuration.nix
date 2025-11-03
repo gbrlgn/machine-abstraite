@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, pkgs, ... }:
+{ config, lib, modulesPath, ... }:
 
 { boot.initrd.availableKernelModules = 
     [ "xhci_pci" 
