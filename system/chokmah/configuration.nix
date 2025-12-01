@@ -117,7 +117,7 @@ in
           python312Packages.regex
           python312Packages.virtualenv
           ripgrep
-          serverless
+          # serverless
           slack
           socat
           tcpdump
