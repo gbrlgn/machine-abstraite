@@ -52,6 +52,7 @@ in
 
       systemPackages = with pkgs;
         [ adwaita-icon-theme
+          appimage-run
           aspellDicts.pt_BR
           awscli2
           azure-cli
@@ -75,6 +76,7 @@ in
           fish
           flatpak
           fnm
+          fuse3
           (lib.hiPrio gcc)
           gdm
           git
@@ -97,6 +99,7 @@ in
           mesa
           netcat
           nettools
+          nix-ld
           nmap
           nodejs
           ntfs3g
