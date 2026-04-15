@@ -101,7 +101,6 @@ in
           nettools
           nix-ld
           nmap
-          nodejs
           ntfs3g
           openssl
           opentofu
@@ -120,7 +119,6 @@ in
           python312Packages.regex
           python312Packages.virtualenv
           ripgrep
-          # serverless
           slack
           socat
           tcpdump

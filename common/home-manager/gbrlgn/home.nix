@@ -100,10 +100,7 @@ in
           marksman
           mesa-demos
           nil
-          nodePackages_latest.npm
-          nodePackages_latest.vscode-json-languageserver
-          nodePackages_latest.typescript-language-server
-          nodePackages_latest.yaml-language-server
+          nodejs-slim
           pipenv
           postgresql
           python312
@@ -115,7 +112,10 @@ in
           starship
           taplo
           texliveSmall
+          typescript-language-server
+          vscode-json-languageserver
           xdg-dbus-proxy
+          yaml-language-server
           yt-dlp
           zlib
         ];
