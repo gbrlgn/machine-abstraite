@@ -108,7 +108,6 @@ in
           p7zip
           pandoc
           pciutils
-          pdm
           pkg-config
           pipewire
           pritunl-client
@@ -225,14 +224,6 @@ in
   services =
     { dbus.enable = true;
       desktopManager.gnome.enable = true;
-
-      displayManager =
-        { gdm =
-          { enable = true;
-            wayland = true;
-          };
-        };
-
       flatpak.enable = true;
       gnome.gnome-keyring.enable = true;
       gnome.gnome-online-accounts.enable = true;

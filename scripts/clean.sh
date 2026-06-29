@@ -9,4 +9,5 @@ fi
 
 nix-collect-garbage -dKk
 
+flatpak repair
 flatpak remove --unused

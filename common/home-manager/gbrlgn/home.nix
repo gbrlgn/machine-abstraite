@@ -37,7 +37,11 @@ in
           gtk-xft-rgba="rgb"
         '';
       gtk3.extraConfig = gtkconf;
-      gtk4.extraConfig = gtkconf;
+
+      gtk4 =
+        { theme = null;
+          extraConfig = gtkconf;
+        };
 
       theme =
         { name = "adw-gtk3-dark";
