@@ -86,6 +86,7 @@ in
           gnome-logs
           gnome-tweaks
           granted
+          graphviz
           grpcurl
           gum
           helix
